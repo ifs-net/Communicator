@@ -1,4 +1,12 @@
 <?php
+/**
+ * @package      Communicator
+ * @version      $Id$
+ * @author       Florian Schießl
+ * @link         http://www.ifs-net.de
+ * @copyright    Copyright (C) 20010
+ * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ */
 
 /**
  * Populate tables array for MyProfile module
@@ -34,7 +42,8 @@ function Communicator_pntables()
         'systemmail'            => 'c_systemmail',
         'reference'             => 'c_reference',
         'receipt'               => 'c_receipt',
-        'receipt_sent'          => 'c_receipt_sent'
+        'receipt_sent'          => 'c_receipt_sent',
+        'popup'                 => 'c_popup'
         );
     $pntable['communicator_mail_header_column_def'] = array(
         'id'                    => "I AUTOINCREMENT PRIMARY",
@@ -53,7 +62,8 @@ function Communicator_pntables()
         'systemmail'            => "I(1) NOTNULL DEFAULT 0",
         'reference'             => "I NOTNULL DEFAULT 0",
         'receipt'               => "I(1) NOTNULL DEFAULT 0",
-        'receipt_sent'          => "I(1) NOTNULL DEFAULT 0"
+        'receipt_sent'          => "I(1) NOTNULL DEFAULT 0",
+        'popup'                 => "I(1) NOTNULL DEFAULT 0"
         );
 
     $pntable['communicator_mail_body_column'] = array(
