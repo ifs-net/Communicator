@@ -1,0 +1,12 @@
+<!--[gt text="Dear user"]--> <!--[$mail_header.to_name]-->,
+ 
+<!--[gt text='the user %1$s has sent a private message to you with the title "%2$s".' tag1=$mail_header.from_name tag2=$mail_body.subject]-->
+
+<!--[gt text="Please take a look into your inbox folder. You have to be logged in to view your private messages."]-->
+
+<!--[gt text="Login at"]-->: <!--[pngetbaseurl]-->
+
+<!--[gt text="Read your messages"]-->: <!--[pnmodurl modname="Communicator" fqurl="1" assign="url"]--><!--[$url]-->
+
+<!--[gt text="If you do not want to recieve notifications about new private messages any more please change your personal settings in your communication centre. The settings can be changed directly at the communication centre's index page."]-->
+

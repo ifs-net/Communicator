@@ -1,0 +1,89 @@
+<!--[*$message|@prayer*]-->
+
+<!--[if $message.id gt 0]-->
+
+    <!--[if $printer_view ne 1]-->
+        <div id="c_message_actions">
+        <!--[pnmodapifunc modname="Communicator" type="user" func="getFolders" assign="folders"]-->
+
+        <!--[if $ajax ne "1"]-->
+            <ul>
+                <li class="c_link_reply"><a href="<!--[pnmodurl modname="Communicator" func="compose" include=$message.id action="reply"]-->"><!--[gt text="reply to message"]--></a></li>
+                <li class="c_link_forward"><a href="<!--[pnmodurl modname="Communicator" func="compose" include=$message.id action="forward"]-->"><!--[gt text="forward message"]--></a></li>
+                <!--[if $message.flagged eq 0]-->
+                    <li class="c_link_flag"><a href="<!--[pnmodurl modname="Communicator" action="flag" folder=$folder id=$message.id]-->"><!--[gt text="mark message"]--></a></li>
+                <!--[else]-->
+                    <li class="c_link_flag"><a href="<!--[pnmodurl modname="Communicator" action="deflag" folder=$folder id=$message.id]-->"><!--[gt text="unmark message"]--></a></li>
+                <!--[/if]-->
+                <li class="c_link_file"><!--[gt text="move into folder"]--></li>
+                    <ul>
+                        <!--[if $message.folder != 0]-->
+                        <li class="c_link_folder_inbox"> <a href="<!--[pnmodurl modname="Communicator" func="moveToFolder" message_id=$message.id folder_id="-1"]-->"><!--[gt text="Inbox"]--></a></li>
+                        <!--[/if]-->
+                        <!--[if $message.folder != 0]-->
+                        <li class="c_link_folder_sent"> <a href="<!--[pnmodurl modname="Communicator" func="moveToFolder" message_id=$message.id folder_id="-1"]-->"><!--[gt text="Sent"]--></a></li>
+                        <!--[/if]-->
+                        <!--[foreach from=$folders item="folder"]-->
+                            <!--[if $folder.id ne $message.folder]-->
+                                <li class="c_link_folder_misc"> <a href="<!--[pnmodurl modname="Communicator" func="moveToFolder" message_id=$message.id folder_id=$folder.id]-->"><!--[$folder.title]--></a></li>
+                            <!--[/if]-->
+                        <!--[/foreach]-->
+                    </ul>
+                <li class="c_link_print"><a target="_blanc" href="<!--[pnmodurl modname="Communicator" func="print" id=$message.id]-->"><!--[gt text="print message"]--></a></li>
+                <li class="c_link_delete"><a href="<!--[pnmodurl modname="Communicator" action="delete" folder=$message.folder id=$message.id]-->"><!--[gt text="delete message"]--></a></li>
+            </ul>
+        <!--[else]-->
+            <ul>
+                <li class="c_link_reply"><a href="<!--[pnmodurl modname="Communicator" func="compose" action="reply" include=$message.id]-->"><!--[gt text="reply to message"]--></a></li>
+                <li class="c_link_forward"><a href="<!--[pnmodurl modname="Communicator" func="compose" action="forward" include=$message.id]-->"><!--[gt text="forward message"]--></a></li>
+                <li id="c_message_ajax_flag"   class="c_link_flag c_link <!--[if $message.flagged eq 1]--> z-hide<!--[/if]-->"><a onclick="javascript:handle_ajax_flag(<!--[$message.id]-->,1);" ><!--[gt text="mark message"]--></a></li>
+                <li id="c_message_ajax_deflag" class="c_link_flag c_link <!--[if $message.flagged eq 0]--> z-hide<!--[/if]-->""><a onclick="javascript:handle_ajax_flag(<!--[$message.id]-->,0);" ><!--[gt text="unmark message"]--></a></li>
+                <li><span class="c_link_file c_link" onclick="javascript:$('c_move_folders').removeClassName('z-hide');" ><a><!--[gt text="move into folder"]-->:</a></span>
+                    <ul id="c_move_folders" class="z-hide">
+                        <!--[if $message.folder != 0]-->
+                            <li onclick="javascript:handle_ajax_move_to_folder(<!--[$message.id]-->,0);" class="c_link c_link_folder_inbox"><a><!--[gt text="Inbox"]--></a></li>
+                        <!--[/if]-->
+                        <!--[if $message.folder != -1]-->
+                            <li onclick="javascript:handle_ajax_move_to_folder(<!--[$message.id]-->,-1);" class="c_link c_link_folder_sent"><a><!--[gt text="Sent"]--></a></li>
+                        <!--[/if]-->
+                        <!--[foreach from=$folders item="folder"]-->
+                            <!--[if $folder.id ne $message.folder]-->
+                                <li onclick="javascript:handle_ajax_move_to_folder(<!--[$message.id]-->,<!--[$folder.id]-->);" class="c_link c_link_folder_misc"><a><!--[$folder.title]--></a></li>
+                            <!--[/if]-->
+                        <!--[/foreach]-->
+                    </ul>
+                </li>
+                <li class="c_link_print"><a target="_blanc" href="<!--[pnmodurl modname="Communicator" func="print" theme="Printer" id=$message.id]-->"><!--[gt text="print message"]--></a></li>
+                <li id="c_message_ajax_delete_<!--[$message.id]-->" class="c_link_delete c_link"><a onclick="javascript:handle_ajax_delete(<!--[$message.id]-->);" ><!--[gt text="delete message"]--></a></li>
+            </ul>
+        <!--[/if]-->
+        </div>
+    <!--[/if]-->
+    <h3><!--[gt text="Subject"]-->: <!--[$message.subject]--></h3>
+    <p>
+        <!--[gt text="To"]-->: <!--[$message.to_name|userprofilelink]--><br />
+        <!--[gt text="From"]-->: <!--[$message.from_name|userprofilelink]--><br />
+        <!--[gt text="Date"]-->: <!--[$message.date|pndate_format:$dateformat]--><br />
+        <!--[if $message.priority eq 3]-->
+            <img src="images/icons/extrasmall/agt_announcements.gif" /> <!--[gt text="The sender classified this mail as very important."]--><br />
+        <!--[/if]-->
+        <!--[if $message.receipt eq 1 and $message.receipt_sent ne 1]-->
+            <div id="c_receipt_information" class="z-informationmsg">
+                <!--[gt text="Message sender requested a notice of receipt."]--> 
+                <!--[if $ajax eq 1]-->
+                    <a class="c_link" onclick="javascript:handle_ajax_send_receipt(<!--[$message.id]-->);"><!--[gt text="Please click here to send receipt to sender."]--></a>
+                <!--[else]-->
+                    <a href="<!--[pnmodurl modname="Communicator" folder=$message.folder id=$message.id action="sendreceipt"]-->"><!--[gt text="Please click here to send receipt to sender."]--></a>
+                <!--[/if]-->
+            </div>
+        <!--[/if]-->
+    </p>
+    <p>
+        <!--[$message.body|nl2br|pnmodcallhooks]-->
+    </p>
+<!--[else]-->
+    <div class="z-errormsg">
+        <!--[gt text="Message could not be loaded."]-->
+    </div>
+<!--[/if]-->
+

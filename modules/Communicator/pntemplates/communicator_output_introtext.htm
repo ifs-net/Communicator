@@ -1,0 +1,79 @@
+<!--[pnusergetvar name="communicator_autoresponder_text" assign="autoresponder_text"]-->
+<!--[pnusergetvar name="communicator_enableAutoresponder" assign="enableAutoresponder"]-->
+<!--[pnusergetvar name="communicator_disableNotification" assign="disableNotification"]-->
+
+<!--[pnmodapifunc modname="Communicator" type="user" func="getFolders" assign="folders"]-->
+            <div class="c_message_preview_intro">
+                
+                <!--[if $ajax ne 1]-->
+                    <form method="post" action="<!--[pnmodurl modname="Communicator" func="preferences"]-->"
+                <!--[/if]-->
+                <h1><!--[gt text="Welcome to your communication centre"]--></h1>
+                <p>
+                    <!--[gt text="Welcome to your communication center. You can read your emails and compose new messages to other contacts. Messages are listed in the table above this text. If this table is not big enough just click at the gray line and resize the messages list as you need it. For the case that you have many messages in your inbox you can start to create custom folders for your messages."]-->
+                </p>
+                <h3><!--[gt text="My settings"]--></h3>
+                <p>
+                    <!--[gt text="You can manage some settings here."]-->
+                </p>
+                <p>
+                    <input type="checkbox" name="disableNotification" id="c_disableNotification" value="1" <!--[if $disableNotification eq 1]-->checked="cheched"<!--[/if]-->/>&nbsp;<label for="c_disableNotification"><!--[gt text="Disable email notification for new messages"]--></label><br />
+                    <input onclick="javascript:c_preferences_check_autoresponder();" type="checkbox" name="enableAutoresponder" value="1" <!--[if $enableAutoresponder eq 1]-->checked="cheched"<!--[/if]--> id="c_enableAutoresponder" value="1"/>&nbsp;<label for="c_enableAutoresponder"><!--[gt text="Activate autoresponder"]--></label><br />
+                    <div id="c_autoresponder_text" <!--[if $enableAutoresponder ne 1 and $ajax eq 1]-->class="z-hide"<!--[/if]-->>
+                        <label for="autoresponder_text"><!--[gt text="Enter some text that should be automatically sent as auto response for incoming mails"]-->:</label><br />
+                        <textarea id="c_autoresponder_text_textarea" name="autoresponder_text"style="width: 80%" cols="5" rows="4"><!--[$autoresponder_text]--></textarea>
+                    </div>
+                    </script>
+                </p>
+                <p>
+                    <input type="submit" onclick="javascript:c_preferences_store();" value="<!--[gt text="store settings"]-->" />
+                </p>
+                <!--[if $ajax ne 1]-->
+                    </form>
+                <!--[/if]-->
+
+
+
+
+                <h3><!--[gt text="Custom mail folders"]--></h3>
+                <p>
+                    <!--[gt text="Inbox and outbox are system folders. They cannot be renamed or deleted. If you want more folders, feel free to create new folders as you need them. If you want to edit a folder just click the folder name and you will be able to rename or delete the folder."]-->
+                </p>
+                <p>
+                <!--[if $ajax ne 1]-->
+                    <form method="post" action="<!--[pnmodurl modname="Communicator" func="createFolder"]-->"
+                <!--[/if]-->
+                    <label for="c_create_folder"><!--[gt text="Create a new folder with the title"]--></label>
+                    <input type="text" value="" name="create_folder" id="c_create_folder" />
+                    <input type="submit" onclick="javascript:c_folder_create();" value="<!--[gt text="create"]-->" />
+                <!--[if $ajax ne 1]-->
+                    </form>
+                <!--[/if]-->
+                </p>
+                <ul>
+                    <!--[foreach from=$folders item="item"]-->
+                        <li id="folder_li_<!--[$item.id]-->">
+                        <!--[if $ajax ne 1]-->
+                            <form method="post" action="<!--[pnmodurl modname="Communicator" func="modifyFolder"]-->"
+                        <!--[/if]-->
+                            <label id="c_folder_name_<!--[$item.id]-->" <!--[if $ajax == 1]--> class="c_link" onclick="javascript:c_folder_switch(<!--[$item.id]-->);" <!--[/if]-->for="folder<!--[$item.id]-->"><!--[$item.title]--></label>
+                            <span  <!--[if $ajax eq 1]--> class="z-hide"<!--[/if]--> id="c_folder_actions_<!--[$item.id]-->">
+                                <input type="text" value="<!--[$item.title]-->" name="folder" id="c_folder_title<!--[$item.id]-->" />
+                                <input type="hidden" name="id" value="<!--[$item.id]-->" />
+                                <input type="checkbox" name="delete" value="1" id="c_folder_action_delete<!--[$item.id]-->"/>&nbsp;<label for="c_folder_action_delete<!--[$item.id]-->"><!--[gt text="delete"]--></label>
+                                <input type="submit" onclick="javascript:c_folder_modify(<!--[$item.id]-->);" value="<!--[gt text="update"]-->" />
+                        <!--[if $ajax eq 1]-->
+                                <input type="submit" value="<!--[gt text="cancel"]--> "onclick="javascript: c_reset_message_preview();"/>
+                        <!--[/if]-->
+                            </span>
+                            
+                    <!--[if $ajax ne 1]-->
+                        </form>
+                    <!--[/if]-->
+                        </li>
+                    <!--[foreachelse]-->
+                        <!--[gt text="You have not ceated any custom folders yet."]-->
+                    <!--[/foreach]-->
+                </ul>
+                
+            </div>
