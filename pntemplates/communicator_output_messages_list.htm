@@ -1,0 +1,48 @@
+        <table>
+            <!--[foreach from=$messages item="item"]-->
+                <tr class="c_link" onclick="javascript:c_loadmessage(<!--[$item.id]-->);" id="c_msg_tablerow_<!--[$item.id]-->" <!--[if $item.read eq 0]--> class="c_message_unread" <!--[/if]-->">
+                    <td>
+                        <!--[if $ajax ne 1]-->
+                            <a href="<!--[pnmodurl modname="Communicator" id=$item.id folder=$folder fqurl=true]-->">
+                            <!--[$item.subject|pnvarprepfordisplay|truncate:120:'...']-->
+
+                            <!--[if $item.replied eq 1]-->
+                                <img src="images/icons/extrasmall/mail_reply.gif" class="c_message_list_status_icons" __title="Mail was replied"/>
+                            <!--[/if]-->
+                            <!--[if $item.forwarded eq 1]-->
+                                <img src="images/icons/extrasmall/mail_forward.gif" class="c_message_list_status_icons" __title="Mail was forwarded"/>
+                            <!--[/if]-->
+                            <!--[if $item.priority eq 3]-->
+                                <img src="images/icons/extrasmall/agt_announcements.gif" class="c_message_list_status_icons"/>
+                            <!--[/if]-->
+                            </a>
+                        <!--[/if]-->
+
+                        <!--[if $ajax eq 1]-->
+                            <!--[$item.subject|pnvarprepfordisplay|truncate:120:'...']-->
+                            <!--[if $item.replied eq 1]-->
+                                <img src="images/icons/extrasmall/mail_reply.gif" class="c_message_list_status_icons" __title="Mail was replied"/>
+                            <!--[/if]-->
+                            <!--[if $item.forwarded eq 1]-->
+                                <img src="images/icons/extrasmall/mail_forward.gif" class="c_message_list_status_icons" __title="Mail was forwarded"/>
+                            <!--[/if]-->
+                            <!--[if $item.priority eq 3]-->
+                                <img src="images/icons/extrasmall/agt_announcements.gif" class="c_message_list_status_icons"/>
+                            <!--[/if]-->
+                        <!--[/if]-->
+                    </td>
+                <!--[if $folder eq -1]-->
+                    <td class="c_messages_list_sender"><!--[$item.to_name|userprofilelink]--></td>
+                <!--[else]-->
+                    <td class="c_messages_list_sender"><!--[$item.from_name|userprofilelink]--></td>
+                <!--[/if]-->
+                    <td class="c_messages_list_date"><!--[$item.date|pndate_format:$dateformat]--></td>
+                    <td id="c_msg_tablecell_read<!--[$item.id]-->" class="c_messages_list_icon  <!--[if $item.read eq 0]-->c_messages_list_icon_unread<!--[/if]-->">&nbsp;</td>
+                    <td id="c_msg_tablecell_flagged<!--[$item.id]-->"class="c_messages_list_icon <!--[if $item.flagged eq 1]-->c_messages_list_icon_flagged<!--[/if]-->">&nbsp;</td>
+                </tr>
+            <!--[foreachelse]-->
+            <tr><td>
+                <!--[gt text="Folder is empty - no message found!"]-->
+            </td></tr>
+            <!--[/foreach]-->
+        </table>

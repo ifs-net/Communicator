@@ -1,0 +1,261 @@
+        /************************************
+        **            GENERAL              **
+        ************************************/
+
+.c_ajax_indicator {
+ font-weight: bold;
+ background: url('../../../images/ajax/indicator.white.gif');
+ background-repeat: no-repeat;
+ background-position: center;
+ height: 100%;
+ width: 100%;
+}
+
+.c_link {
+  cursor: pointer;
+}
+
+
+        /************************************
+        **            MAIN                 **
+        ************************************/
+
+#c_messages_wrapper {
+  padding: 0;
+  margin: 0; 
+}
+#c_messages_wrapper table {
+  width: 100%;
+}
+
+#c_messages_list {
+  height: 100%;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+}
+#c_messages_list a {
+  display: block;
+}
+#c_messages_list table tr:hover {
+  background: #ff9;
+}
+#c_messages_list table tr td {
+  border-bottom: 1px solid #ccc;
+}
+#c_messages_header {
+  clear: both;
+}
+
+.c_message_unread {
+  font-weight: bold;
+}
+
+.c_message_actual {
+  background: #ff9;
+}
+
+.c_message_list_status_icons {
+  float: right;
+  margin-right: 5px;
+}
+
+.c_messages_list_icon {
+  width: 20px;
+  text-align: center;
+  white-space:nowrap;
+}
+.c_messages_list_date {
+  width: 135px;
+  white-space:nowrap;
+}
+.c_messages_list_sender {
+  width: 150px;
+  white-space:nowrap;
+}
+.c_messages_list_scrollbarreplacement {
+  width: 15px;
+}
+.c_messages_list_icon_flagged {
+  background: url('../../../images/icons/extrasmall/favorites.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.c_messages_list_icon_unread {
+  background: url('../../../images/icons/extrasmall/inbox.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#c_message_preview {
+  height: 450px;
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  overflow-y: auto;
+}
+
+.c_message_preview_intro {
+  background: url('../../../images/icons/large/easymoblog.gif');
+  background-repeat: no-repeat;
+  background-position: top right;
+  height: 100%;
+  width: 100%;
+}
+
+.c_messages_list_icon_flagged {
+  background: url('../../../images/icons/extrasmall/favorites.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+/** styles for links with icons: compose message and view folders **/
+
+.c_link_compose {
+  background: url('../../../images/icons/extrasmall/xfmail.gif');
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+
+.c_link_folders {
+  background: url('../../../images/icons/extrasmall/folder_green.gif');
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+
+/** styles for styling display of folders **/
+
+.c_folder_actual {
+  border: 1px solid #ccc;
+}
+
+.c_folder_list{
+  height: 2em;
+}
+.c_folder_list li a{
+  display: block;
+}
+.c_folder_list li {
+  float: left;
+  list-style-type: none;
+  white-space: nowrap;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.c_link_folder_inbox {
+  background: url('../../../images/icons/extrasmall/folder_inbox.gif');
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+.c_link_folder_sent {
+  background: url('../../../images/icons/extrasmall/folder_outbox.gif');
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+.c_link_folder_misc {
+  background: url('../../../images/icons/extrasmall/folder_favorites.gif');
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+.c_link_folder_modify {
+  background: url('../../../images/icons/extrasmall/folder_new.gif');
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+
+        /************************************
+        **        DISPLAY MESSAGE          **
+        ************************************/
+
+
+#c_message_actions {
+  float: right;
+  border: 1px solid #ccc;
+  margin: 5px;
+  padding: 10px;
+}
+
+#c_message_actions ul {
+  list-style: none;
+  display: inline;
+  line-height: 1.8em;
+  
+}
+
+.c_link_delete {
+  background: url('../../../images/icons/extrasmall/mail_delete.gif');
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+.c_link_file {
+  background: url('../../../images/icons/extrasmall/save_all.gif');
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+.c_link_flag {
+  background: url('../../../images/icons/extrasmall/favorites.gif');
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+.c_link_forward {
+  background: url('../../../images/icons/extrasmall/mail_forward.gif');
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+.c_link_print {
+  background: url('../../../images/icons/extrasmall/printer1.gif');
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+.c_link_reply {
+  background: url('../../../images/icons/extrasmall/mail_reply.gif');
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+
+        /************************************
+        **         COMPOSE MESSAGE         **
+        ************************************/
+ 
+
+#c_buddylist {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#c_buddylist_link {
+  background: url('../../../images/icons/extrasmall/personal.gif') no-repeat;
+  padding-left: 20px;
+  cursor:pointer;
+}
+
+.c_autocomplete_highlighter {
+  font-weight: bold;
+  text-decoration: underline;
+  background-color: #ffb;
+}
+
+div.c_autocomplete {
+  position:absolute;
+  width:250px;
+  background-color:white;
+  border:1px solid #888;
+  margin:0;
+  padding:0;
+  height: 250px;
+  overflow-y: auto;
+}
+div.c_autocomplete ul {
+  list-style-type:none;
+  display: inline;
+  margin:0;
+  padding:0;
+}
+div.c_autocomplete ul li:hover { background-color: #ffb;}
+div.c_autocomplete ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  padding:1px;
+  cursor:pointer;
+}

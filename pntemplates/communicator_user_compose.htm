@@ -1,0 +1,108 @@
+<h1><!--[gt text="Compose new message"]--></h1>
+
+<!--[pngetstatusmsg|pnvarprephtmldisplay]-->
+
+
+<!--[pnajaxheader prototype="1" scriptaculous="1" builder="1" effects="1" lightbox="1"]-->
+
+<!--[if $preview eq 1]-->
+    <fieldset><legend><!--[gt text="Preview"]--></legend>
+        <!--[include file="communicator_output_message.htm"]-->
+    </fieldset>
+<!--[/if]-->
+
+<!--[pnform]-->
+    <!--[pnformvalidationsummary]-->
+    <h3><!--[gt text="Recipients"]-->:</h3>
+    <!--[pnformtextinput id="recipients" textMode="singleline" maxLength="32767" style="width: 90%"]-->
+    <span id="c_indicator" style="display: none;"><img src="images/ajax/indicator.white.gif" /></span>
+    <div id="recipients_choices" class="c_autocomplete"></div>
+    <br /><!--[gt text="You can enter multiple recipients separated with comma."]--><br />
+    <!--[if $buddylist]-->
+        <div id="c_buddylist_link" class="z-hide">
+        <!--[gt text="Show buddies for quicker recipipent selection."]-->
+        </div>
+        <div id="c_buddylist">
+
+            <!--[gt text="Mark the users who should recieve this message"]-->:<br />
+            <!--[foreach name="buddylist" from=$buddylist item="buddy"]-->
+                <!--[pnformcheckbox id=$buddy.formID]-->&nbsp;<!--[pnformlabel for=$buddy.formID text=$buddy.uname]--><!--[if $smarty.foreach.buddylist.last ne true]-->,<!--[else]-->.<!--[/if]-->
+            <!--[/foreach]-->
+
+        </div>
+    <!--[/if]-->
+    <h3><!--[gt text="Message subject"]-->:</h3>
+    <!--[pnformtextinput id="subject" textMode="singleline" maxLength="255" style="width: 90%"]-->
+    <h3><!--[gt text="Message body"]-->:</h3>
+    <!--[pnformtextinput id="mailbody" textMode="multiline" cols="15" rows="10" style="width: 90%; "]-->
+    <h3><!--[gt text="Delivery options"]-->:</h3>
+    <!--[pnformdropdownlist id=priority items=$items_priority]-->
+    <!--[pnformcheckbox id="receipt" checked="0"]--><!--[pnformlabel for="receipt" __text="Request notice of receipt"]--><br />
+    <br />
+    <!--[pnformbutton commandName="send" __text="send message"]-->
+    <!--[pnformbutton commandName="preview" __text="preview message"]-->
+    <!--[pnformbutton commandName="cancel" __text="cancel"]-->
+<!--[/pnform]-->
+
+
+<script type="text/javascript">
+
+    <!--[pnvarcleanfrominput name="func" assign="func"]-->
+    <!--[if ($preview eq 1 or $send eq 1) and ($func ne "compose")]-->
+        $('c_compose_msg_ajax_link').hide();
+     	$('c_folders_link').show();
+        $('c_messages_wrapper').fade();
+        $('c_compose_window').appear({duration: 3.0});
+    <!--[/if]-->
+
+
+    <!--[pnmodurl assign="ajaxurl" fqurl=true modname="Communicator" type="ajax" func="getUsers" parameter="recipients"]-->
+    new Ajax.Autocompleter('recipients','recipients_choices','<!--[$ajaxurl]-->', { 
+        frequency: 0.2,
+        minChars: 1,
+        indicator: 'c_indicator',
+        tokens: ', '
+    } );
+    
+    $('c_buddylist_link').removeClassName('z-hide');
+    $('c_buddylist').hide();
+
+    <!--[if $openBuddyList ne 1]-->
+	$('c_buddylist_link').observe('click',function() {
+        Effect.BlindDown('c_buddylist');
+        Effect.BlindUp('c_buddylist_link');
+    });
+    <!--[else]-->
+        $('c_buddylist').show();
+        $('c_buddylist_link').hide();
+    <!--[/if]-->
+
+
+/** RESIZABLE TEXTAREA **/
+
+var TextAreaResize = Class.create();
+
+TextAreaResize.prototype = {
+
+    /* Initialisation */
+    initialize: function(element, options) {
+        this.element = $(element);        
+        this.options = Object.extend({maxRows: 30}, options || {} );
+
+        Event.observe(this.element, 'keyup', this.onKeyUp.bindAsEventListener(this));
+        this.onKeyUp();
+    },
+
+    /* Public functions */    
+    onKeyUp: function() {        
+        while (this.element.scrollHeight > this.element.offsetHeight && this.element.rows < this.options.maxRows) {
+            if (this.element.rows < this.options.maxRows) {
+                this.element.rows = this.element.rows + 1;
+            }
+        }
+    }
+};
+
+new TextAreaResize('mailbody');
+
+</script>

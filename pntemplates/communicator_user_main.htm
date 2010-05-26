@@ -1,0 +1,482 @@
+<!--[*pndebug output="html"*]-->
+<!--[pnajaxheader prototype=true scriptaculous=true resizabel=true effects=true]-->
+
+<!--[pngetstatusmsg|pnvarprephtmldisplay]-->
+
+<p>
+    <a id="c_compose_msg_link" class="c_link_compose" href="<!--[pnmodurl modname="Communicator" func="compose"]-->"><!--[gt text="Compose new message"]--></a>
+    <a id="c_compose_msg_ajax_link" class="c_link_compose c_link z-hide"><!--[gt text="Compose new message"]--></a>
+    <a id="c_folders_link" class="c_link_folders c_link z-hide"><!--[gt text="Switch to mailbox folders"]--></a>
+</p>
+<div id="c_messages_wrapper">
+
+    <div id="c_folder_list" class="c_folder_list">
+    <!--[pnmodapifunc modname="Communicator" type="user" func="getFolders" assign="folders"]-->
+        <ul>
+            <li <!--[if $folder eq 0]-->class="c_folder_actual"<!--[/if]-->><a class="c_link_folder_inbox" href="<!--[pnmodurl modname="Communicator" folder="0"]-->"><!--[gt text="Inbox"]--></a></li>
+            <li <!--[if $folder eq -1]-->class="c_folder_actual"<!--[/if]-->><a class="c_link_folder_sent" href="<!--[pnmodurl modname="Communicator" folder="-1"]-->"><!--[gt text="Sent"]--></a></li>
+            <!--[foreach from=$folders item="item"]-->
+            <li <!--[if $folder eq $item.id]-->class="c_folder_actual"<!--[/if]-->><a class="c_link_folder_misc" href="<!--[pnmodurl modname="Communicator" folder=$item.id]-->"><!--[$item.title|pnvarprepfordisplay]--></a></li>
+            <!--[/foreach]-->
+            <li><a class="c_link_folder_modify" href="<!--[pnmodurl modname="Communicator"]-->"><!--[gt text="My settings"]--></a></li>
+            <!--[* todo folders here *]-->
+        </ul>
+    </div>
+    <div id="c_folder_ajax_list" class="z-hide c_folder_list">
+        <!--[pnmodapifunc modname="Communicator" type="output" func="showAjaxFolderMenu"]-->
+    </div>
+    <div id="c_messages_header_list_wrapper">
+        <div id="c_messages_header">
+            <table>
+                <tr>
+                    <th>
+                        <!--[gt text="Subject"]-->
+                            <a id="c_sortlink_subject_asc" href="<!--[pnmodurl modname="Communicator" folder=$folder sort="subject" mode="ASC"']-->"><img src="modules/Communicator/pnimages/arrow_down.gif" /></a>
+                        <a id="c_sortlink_subject_desc" href="<!--[pnmodurl modname="Communicator" folder=$folder sort="subject" mode="DESC"']-->"><img src="modules/Communicator/pnimages/arrow_up.gif" /></a>
+                        <img id="c_sortlink_subject_ajax_asc" class="c_link z-hide" src="modules/Communicator/pnimages/arrow_down.gif" />
+                        <img id="c_sortlink_subject_ajax_desc" class="c_link z-hide" src="modules/Communicator/pnimages/arrow_up.gif" />
+                    </th>
+                    <th class="c_messages_list_sender">
+                        <!--[gt text="User"]-->
+                        <a id="c_sortlink_uname_asc" href="<!--[pnmodurl modname="Communicator" folder=$folder sort="from_name" mode="ASC"']-->"><img src="modules/Communicator/pnimages/arrow_down.gif" /></a>
+                        <a id="c_sortlink_uname_desc" href="<!--[pnmodurl modname="Communicator" folder=$folder sort="from_name" mode="DESC"']-->"><img src="modules/Communicator/pnimages/arrow_up.gif" /></a>
+                        <img id="c_sortlink_uname_ajax_asc" class="c_link z-hide" src="modules/Communicator/pnimages/arrow_down.gif" />
+                        <img id="c_sortlink_uname_ajax_desc" class="c_link z-hide" src="modules/Communicator/pnimages/arrow_up.gif" />
+                    </th>
+                    <th class="c_messages_list_date">
+                        <!--[gt text="Date"]-->
+                        <a id="c_sortlink_date_desc" href="<!--[pnmodurl modname="Communicator" folder=$folder mode="ASC"']-->"><img src="modules/Communicator/pnimages/arrow_down.gif" /></a>
+                        <a id="c_sortlink_date_asc" href="<!--[pnmodurl modname="Communicator" folder=$folder mode="DESC"']-->"><img src="modules/Communicator/pnimages/arrow_up.gif" /></a>
+                        <img id="c_sortlink_date_ajax_desc" class="c_link z-hide" src="modules/Communicator/pnimages/arrow_down.gif" />
+                        <img id="c_sortlink_date_ajax_asc" class="c_link z-hide" src="modules/Communicator/pnimages/arrow_up.gif" />
+                        </th>
+                    <th class="c_messages_list_icon"></th>
+                    <th class="c_messages_list_icon"></th>
+                    <th class="c_messages_list_scrollbarreplacement"></th>
+                </tr>
+            </table>
+        </div>
+        <div id="c_messages_list_wrapper" style="position: relative; width: 100%; height:<!--[$communicator_messages_list_window_height]-->px; padding: 1px;">
+            <div id="c_messages_list">
+                <!--[include file="communicator_output_messages_list.htm"]-->
+            </div>
+           <div class="line" style="background-color:silver; bottom:0; cursor:row-resize; height:5px; position:absolute; left: 10%; width:80%;" id="c_messages_list_resizehandle">&nbsp;</div>
+        </div>
+    </div>
+    <div id="c_message_preview">
+        <!--[if $message.id gt 0]-->
+            <!--[pnmodapifunc modname="Communicator" type="output" func="showMessage" message=$message]-->
+        <!--[else]-->
+            <!--[pnmodapifunc modname="Communicator" type="output" func="showIntroText"]-->
+        <!--[/if]-->
+    </div>
+</div>
+
+<div id="c_compose_window" class="z-hide">
+<!--[pnmodfunc modname="Communicator" type="user" func="compose"]-->
+</div>
+
+
+
+<script type="text/javascript" language="javascript">
+
+<!--[pnmodurl modname="Communicator" type="ajax" func="updatePreviewHeight" fqurl="true" assign="ajaxupdateheighturl"]-->
+
+/** credits to http://www.cfchris.com/cfchris/index.cfm/2009/2/18/How-To-Prototype-Drag-Corner **/
+
+   /* inital value for height */
+   var stored_height = 102;
+
+   function c_messages_list_resizer(container, handle) {
+      var container = $(container);
+      var handle = $(handle);
+      
+      /* Add property to container to store position variables */
+      container.moveposition = {x:0, y:0};
+      
+      function moveListener(event) {
+         /* Calculate how far the mouse moved */
+         var moved = {
+                     x:(event.pointerX() - container.moveposition.x),
+                     y:(event.pointerY() - container.moveposition.y)
+                  };
+         /* Reset container's x/y utility property */
+         container.moveposition = {x:event.pointerX(), y:event.pointerY()}; 
+         /* Border adds to dimensions */
+         var borderStyle = container.getStyle('border-width');
+         var borderSize = borderStyle.split(' ')[0].replace(/[^0-9]/g,'');
+         /* Padding adds to dimensions */
+         var paddingStyle = container.getStyle('padding');
+         var paddingSize = paddingStyle.split(' ')[0].replace(/[^0-9]/g,'');
+         /* Add things up that change dimensions */
+         var sizeAdjust = (borderSize*2) + (paddingSize*2);
+         /* Update container's size */
+         var size = container.getDimensions();
+         container.setStyle({
+               height: size.height+moved.y-sizeAdjust+'px',
+            });
+      }
+      
+      /* Listen for 'mouse down' on handle to start the move listener */
+      handle.observe('mousedown', function(event) {
+         /* Set starting x/y */
+         container.moveposition = {x:event.pointerX(),y:event.pointerY()};
+         /* Start listening for mouse move on body */
+         Event.observe(document.body,'mousemove',moveListener);
+      });
+      
+      /* Listen for 'mouse up' to cancel 'move' listener */
+      Event.observe(document.body,'mouseup', function(event) {
+         Event.stopObserving(document.body,'mousemove',moveListener);
+         var size = container.getDimensions();
+         if (stored_height != size.height) { /* 0 if switched to compose window - so dont work with 0 */
+            /** user seems to have done a resize action **/
+                if (size.height != 0) {
+                 if (size.height < 50) size.height = 50;
+                 if (size.height > 250) size.height = 250;
+    
+                 new Ajax.Request('<!--[$ajaxupdateheighturl]-->', {
+                 method: 'post',
+                 parameters: 'height='+size.height
+                 });
+                 stored_height = size.height;
+            }
+         }
+      });
+   }
+   c_messages_list_resizer('c_messages_list_wrapper','c_messages_list_resizehandle');
+</script>
+
+<script type="text/javascript">
+    <!--[pnmodurl modname="Communicator" type="ajax" func="delMessage"    assign="ajaxdelurl"    fqurl=true]-->
+    <!--[pnmodurl modname="Communicator" type="ajax" func="getIntroText" assign="ajaxintrourl"  fqurl=true]-->
+    <!--[pnmodurl modname="Communicator" type="ajax" func="getMessage"    assign="ajaxgetmsgurl" fqurl=true]-->
+    <!--[pnmodurl modname="Communicator" type="ajax" func="moveMessageToFolder" assign="ajaxmovefolderurl"]-->
+
+    var c_actual_folder  = <!--[$folder]-->;
+    
+    var c_actual_message = <!--[$id]-->;
+
+    function c_reset_message_preview() {
+        $('c_message_preview').update('<div class="c_ajax_indicator"></div>'); 
+        new Ajax.Updater('c_message_preview','<!--[$ajaxintrourl]-->', { method: 'post'});
+    }
+
+    /* change normal links with ajax links and observe functions */
+    
+    function c_switch_ajax_links () {
+      
+        /* we have to refresh intro page to make ajax usable */
+      
+        c_reset_message_preview();
+        
+
+        /* now hide normal links for header sort functions */
+        
+        $('c_sortlink_subject_asc').hide();
+        $('c_sortlink_subject_desc').hide();
+        $('c_sortlink_uname_asc').hide();
+        $('c_sortlink_uname_desc').hide();
+        $('c_sortlink_date_asc').hide();
+        $('c_sortlink_date_desc').hide();
+        $('c_folder_list').hide();
+        $('c_sortlink_subject_ajax_asc').removeClassName('z-hide');
+        $('c_sortlink_subject_ajax_desc').removeClassName('z-hide');
+        $('c_sortlink_uname_ajax_asc').removeClassName('z-hide');
+        $('c_sortlink_uname_ajax_desc').removeClassName('z-hide');
+        $('c_sortlink_date_ajax_asc').removeClassName('z-hide');
+        $('c_sortlink_date_ajax_desc').removeClassName('z-hide');
+        $('c_folder_ajax_list').removeClassName('z-hide');
+
+        /* observe for re-sorting mail headers */
+
+        $('c_sortlink_subject_ajax_asc').observe('click',function() {
+            <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" sort="subject" mode="ASC" assign="ajaxtempurl"]-->
+            $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
+            new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=' + c_actual_folder });
+        });
+        $('c_sortlink_subject_ajax_desc').observe('click',function() {
+            <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" sort="subject" mode="DESC" assign="ajaxtempurl"]-->
+            $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
+            new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=' + c_actual_folder });
+        });
+        $('c_sortlink_uname_ajax_asc').observe('click',function() {
+            <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" sort="uname" mode="ASC" assign="ajaxtempurl"]-->
+            $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
+            new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=' + c_actual_folder });
+        });
+        $('c_sortlink_uname_ajax_desc').observe('click',function() {
+            <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" sort="uname" mode="DESC" assign="ajaxtempurl"]-->
+            $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
+            new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=' + c_actual_folder });
+        });
+        $('c_sortlink_date_ajax_asc').observe('click',function() {
+            <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" sort="date" mode="ASC" assign="ajaxtempurl"]-->
+            $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
+            new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=' + c_actual_folder });
+        });
+        $('c_sortlink_date_ajax_desc').observe('click',function() {
+            <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" sort="date" mode="DESC" assign="ajaxtempurl"]-->
+            $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
+            new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=' + c_actual_folder });
+        });
+        
+        /* Switch to settings / main page */
+        
+        $('c_link_ajax_mysettings').observe('click',function() {
+            c_reset_message_preview();
+        });
+        
+
+    }
+
+    c_switch_ajax_links();
+
+    /* Observe clicks for folder changes */
+    <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" assign="ajaxfolderswitchurl"]-->
+    function c_link_ajax_complete_folder_switch(id) {
+        c_new_folder = id;
+        $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
+        new Ajax.Updater('c_messages_list','<!--[$ajaxfolderswitchurl]-->', { method: 'post', parameters: 'folder=' + c_new_folder});
+        c_actual_folder = c_new_folder;
+        c_actual_message = 0;
+        c_reset_message_preview()
+    }
+
+
+    <!--[pnmodurl modname="Communicator" type="ajax" func="showAjaxFoldersMenu" assign="ajaxfolderreloadurl"]-->
+    function c_reset_folder_menu() {
+        new Ajax.Updater('c_folder_ajax_list','<!--[$ajaxfolderreloadurl]-->', { method: 'post' });
+    }
+
+
+            <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" sort="subject" mode="ASC" assign="ajaxtempurl"]-->
+            $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
+            new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=<!--[$folder]-->' });
+
+
+    function c_loadmessage(id) {
+
+        /** show loading indicator **/
+
+        $('c_message_preview').update('<div class="c_ajax_indicator"></div>'); 
+        new Ajax.Updater('c_message_preview','<!--[$ajaxgetmsgurl]-->', {
+            method: 'post',
+            parameters: 'id='+id, 
+        }
+        );
+            
+        /** mark only actual message as "active" **/
+            
+        $('c_msg_tablerow_'+id).removeClassName('c_message_unread');
+        $('c_msg_tablecell_read'+id).removeClassName('c_messages_list_icon_unread');
+        $('c_msg_tablerow_'+id).addClassName('c_message_actual');
+        if (c_actual_message > 0) {
+            $('c_msg_tablerow_'+c_actual_message).removeClassName('c_message_actual');
+        }
+        
+        c_actual_message = id;
+    }
+
+
+    /** handle move to folder request **/
+
+    function handle_ajax_move_to_folder(messageID,folderID) {
+        if (folderID == c_actual_folder) {
+            alert('<!--[gt text="This message is already in specified target folder!"]-->');
+        } else {
+            new Ajax.Request('<!--[$ajaxmovefolderurl]-->', {
+            method: 'post',
+            parameters: 'message_id=' + messageID + '&folder_id=' + folderID,
+            onSuccess: function(transport) {
+                if (transport.responseText == 'ok') {
+                $('c_msg_tablerow_' + messageID).hide();
+                c_reset_message_preview()
+                    c_last_modify_folder = 0;
+                 } else {
+                    alert(transport.responseText);
+                 }
+            }});
+        }
+    }
+
+
+    /** handle delete via ajax action **/
+
+    function handle_ajax_delete(id) {
+        var confirmed = confirm('<!--[gt text="Please confirm to delete the message"]-->');
+        if (confirmed == true) {
+            new Ajax.Request('<!--[$ajaxdelurl]-->', {
+            method: 'post',
+            parameters: 'id='+id,
+            onSuccess: function(transport) {
+                if (transport.responseText == 'ok') {
+                    $('c_msg_tablerow_' + id).hide();
+                    c_reset_message_preview()
+                } else {
+                    alert(transport.responseText);
+                }
+            }});
+        } 
+    }
+
+    /** handle mark via ajax action **/
+    
+    function handle_ajax_flag(id,flag) {
+        var flaggedElement = 'c_msg_tablecell_flagged' + id;
+        if (flag == 0) {
+            <!--[pnmodurl modname="Communicator" type="ajax" func="flagMessage"  flag="0" assign="ajaxurl"]-->
+            new Ajax.Request('<!--[$ajaxurl]-->', {
+            method: 'postt',
+            parameters: 'id='+id,
+            onSuccess: function(transport) {
+                if (transport.responseText == 'ok') {
+                    $(flaggedElement).removeClassName('c_messages_list_icon_flagged');
+                    $('c_message_ajax_deflag').addClassName('z-hide');
+                    $('c_message_ajax_flag').removeClassName('z-hide');
+                } else {
+                    alert(transport.responseText);
+                }
+            }});
+
+        } else {
+            <!--[pnmodurl modname="Communicator" type="ajax" func="flagMessage" flag="1" assign="ajaxurl"]-->
+            new Ajax.Request('<!--[$ajaxurl]-->', {
+            method: 'post',
+            parameters: 'id='+id,
+            onSuccess: function(transport) {
+                if (transport.responseText == 'ok') {
+                    $(flaggedElement).addClassName('c_messages_list_icon_flagged');
+                    $('c_message_ajax_deflag').removeClassName('z-hide');
+                    $('c_message_ajax_flag').addClassName('z-hide');
+                } else {
+                    alert(transport.responseText);
+                }
+            }});
+        }
+    }
+    
+    /** handle send receipt ajax action **/
+
+    <!--[pnmodurl modname="Communicator" type="ajax" func="sendreceipt" assign="ajaxurl"]-->
+    
+    function handle_ajax_send_receipt(id) {
+        new Ajax.Request('<!--[$ajaxurl]-->', {
+        method: 'post',
+        parameters: 'id='+id,
+        onSuccess: function(transport) {
+            if (transport.responseText == 'ok') {
+                $('c_receipt_information').hide();
+            } else {
+                alert(transport.responseText);
+            }
+        }});
+    }
+
+</script>
+
+<!-- javascript for compose message window -->
+
+<script>
+
+    /** initial function calls to make easy switching afterwards possible **/
+
+    $('c_compose_msg_link').hide();
+    $('c_compose_msg_ajax_link').removeClassName('z-hide');
+    $('c_compose_window').removeClassName('z-hide');
+    $('c_compose_window').hide();
+ 	$('c_folders_link').removeClassName('z-hide');
+ 	$('c_folders_link').hide();
+ 	
+ 	/** observe functions to make switching between compose window and folder view possible **/
+ 	
+ 	$('c_compose_msg_ajax_link').observe('click',function() {
+        $('c_compose_msg_ajax_link').hide();
+     	$('c_folders_link').show();
+        $('c_messages_wrapper').fade();
+        $('c_compose_window').appear({duration: 3.0});
+ 	});
+ 	$('c_folders_link').observe('click',function() {
+        $('c_compose_msg_ajax_link').show();
+     	$('c_folders_link').hide();
+        $('c_compose_window').fade();
+        $('c_messages_wrapper').appear({duration: 3.0});
+ 	});
+
+</script>
+
+<!-- javascript for intro text and preferences -->
+
+<!--[pnmodurl modname="Communicator" type="ajax" func="storeSettings"       assign="ajaxstoresettingsurl"]-->
+<!--[pnmodurl modname="Communicator" type="ajax" func="createFolder"        assign="ajaxcreatefolderurl"]-->
+<!--[pnmodurl modname="Communicator" type="ajax" func="modifyFolder"        assign="ajaxmodifyurl"]-->
+
+
+<script type="text/javascript">
+
+    var c_last_modify_folder = 0;
+
+    function c_preferences_check_autoresponder() {
+        if ($F('c_enableAutoresponder') == 1) {
+            $('c_autoresponder_text').removeClassName('z-hide');
+        } else {
+            $('c_autoresponder_text').addClassName('z-hide');
+        }
+    }
+    
+    function c_preferences_store() {
+        var c_disableNotification = $F('c_disableNotification');
+        var c_enableAutoresponder = $F('c_enableAutoresponder');
+        var c_autoresponder_text  = $F('c_autoresponder_text_textarea');
+        new Ajax.Request('<!--[$ajaxstoresettingsurl]-->', {
+        method: 'post',
+        parameters: 'disableNotification='+c_disableNotification+'&enableAutoresponder='+c_enableAutoresponder+'&autoresponder_text='+c_autoresponder_text,
+        onSuccess: function(transport) {
+            if (transport.responseText == 'ok') {
+                alert ('<!--[gt text="Your settings have been stored"]-->');
+            } else {
+                alert(transport.responseText);
+            }
+        }});
+    }
+    
+    function c_folder_create() {
+        new Ajax.Request('<!--[$ajaxcreatefolderurl]-->', {
+        method: 'post',
+        parameters: 'folder=' + $F('c_create_folder'),
+        onSuccess: function(transport) {
+            if (transport.responseText == 'ok') {
+                c_reset_folder_menu();
+                c_reset_message_preview();
+            } else {
+                alert(transport.responseText);
+            }
+        }});
+    }
+    
+    function c_folder_switch(id) {
+        if (c_last_modify_folder > 0) {
+            $('c_folder_actions_'+c_last_modify_folder).addClassName('z-hide');
+            $('c_folder_name_'+c_last_modify_folder).show();
+        }
+        $('c_folder_actions_'+id).removeClassName('z-hide');
+        $('c_folder_name_'+id).hide();
+        c_last_modify_folder = id;
+    }
+    
+    function c_folder_modify(id) {
+        new Ajax.Request('<!--[$ajaxmodifyurl]-->', {
+        method: 'post',
+        parameters: 'id=' + id + '&delete=' + $F('c_folder_action_delete' + id) + '&title='+$F('c_folder_title' + id),
+        onSuccess: function(transport) {
+            if (transport.responseText == 'ok') {
+                c_reset_folder_menu();
+                c_reset_message_preview();
+                c_last_modify_folder = 0;
+            } else {
+                alert(transport.responseText);
+            }
+        }});
+    }
+    
+</script>

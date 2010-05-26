@@ -1,0 +1,43 @@
+<!--[ admincategorymenu xhtml=1 ]-->
+<div class="pn-adminbox">
+  <h2><!--[gt text="Backend for Zikula Communication Center"]--></h2>
+
+  <!--[pnformvalidationsummary]-->
+  <!--[pnform]-->
+
+    <h3><!--[gt text="General settings"]--></h3>
+    <p>
+    <!--[pnformlabel for="dateformat" __text="Format (from zikula pndate modifier) that should be used inside Communication Centre"]-->:<br />
+    <!--[pnformtextinput id="dateformat" maxLength="20"]-->
+    </p>
+    <p>
+    <!--[pnformlabel for="quota" __text="Message limit for a single user (after this limit is reached the user will not be able to send mails any more). To disable quota enter 0 please"]-->:<br />
+    <!--[pnformintinput id="quota" minValue="0"]-->
+    </p>
+
+    <p>
+    <!--[pnformcheckbox id="allow_html" checked="0"]-->
+    <!--[pnformlabel for="allow_html" __text="Enable WYSIWYG editor (This only works if scribite! is installed)."]-->
+    </p>
+
+    <h3><!--[gt text="Spam guard"]--></h3>
+    <!--[pnformlabel for="spam_allowed_time" __text="Time in minutes (0 to disable)"]--> <!--[pnformintinput id="spam_allowed_time" minValue="0"]-->
+    <!--[pnformlabel for="spam_allow_max" __text="a user is allowed to send a maximum of messages"]-->: <!--[pnformintinput id="spam_allow_max" minValue="0"]--> <!--[gt text="Messages"]-->.<br />
+    <div class="z-informationmsg"><!--[gt text="Please note: Mails that are sent to buddies (ContactList module) will not be included into the spam guard calculation!"]--></div>
+
+    <p>
+        <!--[pnformbutton commandName="update" __text="Store configuration"]-->
+    </p>
+
+
+    <div class="z-informationmsg"><!--[gt text="You do not need any clean up or repair functions for this module. This module will do a daily self-check and orphan messages will be deleted automatically. Just have fun with the module."]--><br />
+    <a href="http://www.zksoft.de/donate.php"><!--[gt text="You like the module? Help us to keep this module up to date for the future, click here and donate some cents!"]--></a></div>
+
+  <!--[/pnform]-->
+
+  <p>
+    <!--[pnmodgetinfo modname=Communicator info=all assign=modinfo]-->
+    <!--[$modinfo.name]-->&nbsp;<!--[$modinfo.version]-->&nbsp;&copy;&nbsp;<a href="http://www.ifs-net.de">Florian Schie&szlig;l</a>
+  </p>
+
+</div>
