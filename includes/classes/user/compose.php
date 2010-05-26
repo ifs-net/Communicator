@@ -1,4 +1,13 @@
 <?php
+/**
+ * @package      Communicator
+ * @version      $Id$
+ * @author       Florian Schießl
+ * @link         http://www.ifs-net.de
+ * @copyright    Copyright (C) 20010
+ * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ */
+
 class communicator_user_compose_handler
 {
     var $user;
