@@ -1,0 +1,526 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Zikula component\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-28 18:51+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pnuserapi.php:238
+msgid "Notice of receipt"
+msgstr ""
+
+#: pnuserapi.php:275
+msgid "no subject"
+msgstr ""
+
+#: pnuserapi.php:300
+msgid "Mail sending failed - mail body could not be stored."
+msgstr ""
+
+#: pnuserapi.php:325 pnuserapi.php:347
+msgid "Mail sending failed for user"
+msgstr ""
+
+#: pnuserapi.php:374
+msgid "A private message is waiting for you!"
+msgstr ""
+
+#: pnuserapi.php:379
+msgid "Sending email notification failed!"
+msgstr ""
+
+#: pnuserapi.php:386
+msgid "Autoresponse"
+msgstr ""
+
+#: pnuserapi.php:391
+msgid "Sending autoresponse failed!"
+msgstr ""
+
+#: pnversion.php:14
+msgid "Communicator"
+msgstr ""
+
+#: pnversion.php:16
+msgid "More than just private messaging"
+msgstr ""
+
+#: pninit.php:33
+msgid "Error creating Hook!"
+msgstr ""
+
+#: pninit.php:59
+msgid "Error deleting Hook!"
+msgstr ""
+
+#: pnuser.php:56
+msgid "Message was marked!"
+msgstr ""
+
+#: pnuser.php:59
+msgid "Message was unmarked!"
+msgstr ""
+
+#: pnuser.php:62
+msgid "Notice of receipt was sent to message sender."
+msgstr ""
+
+#: pnuser.php:66
+msgid "Error: Message could not be deleted!"
+msgstr ""
+
+#: pnuser.php:68
+msgid "Selected message was deleted!"
+msgstr ""
+
+#: pnuser.php:141 pnajax.php:229
+msgid "Settings could not be stored!"
+msgstr ""
+
+#: pnuser.php:143
+msgid "Your settings have been stored!"
+msgstr ""
+
+#: pnuser.php:167 pnajax.php:256
+msgid "Folder could not be created!"
+msgstr ""
+
+#: pnuser.php:169
+msgid "Folder was created."
+msgstr ""
+
+#: pnuser.php:197 pnajax.php:287
+msgid "Folder could not be deleted!"
+msgstr ""
+
+#: pnuser.php:199
+msgid "Folder deleted!"
+msgstr ""
+
+#: pnuser.php:204 pnajax.php:294
+msgid "Folder could not be renamed!"
+msgstr ""
+
+#: pnuser.php:206
+msgid "Folder was renamed!"
+msgstr ""
+
+#: pnuser.php:235
+msgid "Message was moved to folder."
+msgstr ""
+
+#: pnuser.php:237 pnajax.php:347
+msgid "Message could not be moved to target folder!"
+msgstr ""
+
+#: pnajax.php:19 pnajax.php:88 pnajax.php:121 pnajax.php:220 pnajax.php:250
+#: pnajax.php:277
+msgid "You have no permissions for this action"
+msgstr ""
+
+#: pnajax.php:101
+msgid "Message could not be deleted"
+msgstr ""
+
+#: pnajax.php:141
+msgid "Message could not be (de)marked"
+msgstr ""
+
+#: pnajax.php:382
+msgid "Notice of receipt could not be send!"
+msgstr ""
+
+#: includes/classes/user/compose.php:28
+msgid "normal priority"
+msgstr ""
+
+#: includes/classes/user/compose.php:29
+msgid "high priority"
+msgstr ""
+
+#: includes/classes/user/compose.php:64
+msgid "wrote at"
+msgstr ""
+
+#: includes/classes/user/compose.php:69
+msgid "Re:"
+msgstr ""
+
+#: includes/classes/user/compose.php:73
+msgid "Fwd:"
+msgstr ""
+
+#: includes/classes/user/compose.php:105
+msgid "Message body is mandatory"
+msgstr ""
+
+#: includes/classes/user/compose.php:134
+msgid "Please check recipients: user not found: "
+msgstr ""
+
+#: includes/classes/user/compose.php:172
+msgid ""
+"An error occured while trying to send the message. Please try again and "
+"contact the webmaster if sending fails again."
+msgstr ""
+
+#: includes/classes/user/compose.php:179
+msgid "Message sent succesfully to "
+msgstr ""
+
+#: includes/classes/admin/settings.php:42
+msgid "Settings updated"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:13
+#: pntemplates/communicator_output_message.htm:39
+msgid "reply to message"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:14
+#: pntemplates/communicator_output_message.htm:40
+msgid "forward message"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:16
+#: pntemplates/communicator_output_message.htm:41
+msgid "mark message"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:18
+#: pntemplates/communicator_output_message.htm:42
+msgid "unmark message"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:20
+#: pntemplates/communicator_output_message.htm:43
+msgid "move into folder"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:23
+#: pntemplates/communicator_output_message.htm:46
+#: pntemplates/communicator_user_main.htm:17
+#: pntemplates/communicator_output_ajax_folder_menu.htm:4
+msgid "Inbox"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:26
+#: pntemplates/communicator_output_message.htm:49
+#: pntemplates/communicator_user_main.htm:18
+#: pntemplates/communicator_output_ajax_folder_menu.htm:5
+msgid "Sent"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:34
+#: pntemplates/communicator_output_message.htm:58
+msgid "print message"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:35
+#: pntemplates/communicator_output_message.htm:59
+msgid "delete message"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:64
+#: pntemplates/communicator_user_main.htm:34
+#: pntemplates/communicator_email_receipt.htm:7
+msgid "Subject"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:66
+msgid "To"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:67
+msgid "From"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:68
+#: pntemplates/communicator_user_main.htm:48
+msgid "Date"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:70
+msgid "The sender classified this mail as very important."
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:74
+msgid "Message sender requested a notice of receipt."
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:76
+#: pntemplates/communicator_output_message.htm:78
+msgid "Please click here to send receipt to sender."
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:88
+msgid "Message could not be loaded."
+msgstr ""
+
+#: pntemplates/communicator_user_main.htm:8
+#: pntemplates/communicator_user_main.htm:9
+#: pntemplates/communicator_user_compose.htm:3
+msgid "Compose new message"
+msgstr ""
+
+#: pntemplates/communicator_user_main.htm:10
+msgid "Switch to mailbox folders"
+msgstr ""
+
+#: pntemplates/communicator_user_main.htm:22
+#: pntemplates/communicator_output_ajax_folder_menu.htm:9
+#: pntemplates/communicator_output_introtext.htm:17
+msgid "My settings"
+msgstr ""
+
+#: pntemplates/communicator_user_main.htm:41
+msgid "User"
+msgstr ""
+
+#: pntemplates/communicator_user_main.htm:287
+msgid "This message is already in specified target folder!"
+msgstr ""
+
+#: pntemplates/communicator_user_main.htm:308
+msgid "Please confirm to delete the message"
+msgstr ""
+
+#: pntemplates/communicator_user_main.htm:437
+msgid "Your settings have been stored"
+msgstr ""
+
+#: pntemplates/communicator_email_notification.htm:3
+#: pntemplates/communicator_email_receipt.htm:3
+msgid "Dear user"
+msgstr ""
+
+#: pntemplates/communicator_email_notification.htm:5
+#, php-format
+msgid ""
+"the user %1$s has sent a private message to you with the title \"%2$s\"."
+msgstr ""
+
+#: pntemplates/communicator_email_notification.htm:7
+msgid ""
+"Please take a look into your inbox folder. You have to be logged in to view "
+"your private messages."
+msgstr ""
+
+#: pntemplates/communicator_email_notification.htm:9
+msgid "Login at"
+msgstr ""
+
+#: pntemplates/communicator_email_notification.htm:11
+msgid "Read your messages"
+msgstr ""
+
+#: pntemplates/communicator_email_notification.htm:13
+msgid ""
+"If you do not want to recieve notifications about new private messages any "
+"more please change your personal settings in your communication centre. The "
+"settings can be changed directly at the communication centre's index page."
+msgstr ""
+
+#: pntemplates/communicator_output_introtext.htm:13
+msgid "Welcome to your communication centre"
+msgstr ""
+
+#: pntemplates/communicator_output_introtext.htm:15
+msgid ""
+"Welcome to your communication center. You can read your emails and compose "
+"new messages to other contacts. Messages are listed in the table above this "
+"text. If this table is not big enough just click at the gray line and resize "
+"the messages list as you need it. For the case that you have many messages "
+"in your inbox you can start to create custom folders for your messages."
+msgstr ""
+
+#: pntemplates/communicator_output_introtext.htm:19
+msgid "You can manage some settings here."
+msgstr ""
+
+#: pntemplates/communicator_output_introtext.htm:22
+msgid "Disable email notification for new messages"
+msgstr ""
+
+#: pntemplates/communicator_output_introtext.htm:23
+msgid "Activate autoresponder"
+msgstr ""
+
+#: pntemplates/communicator_output_introtext.htm:25
+msgid ""
+"Enter some text that should be automatically sent as auto response for "
+"incoming mails"
+msgstr ""
+
+#: pntemplates/communicator_output_introtext.htm:31
+msgid "store settings"
+msgstr ""
+
+#: pntemplates/communicator_output_introtext.htm:40
+msgid "Custom mail folders"
+msgstr ""
+
+#: pntemplates/communicator_output_introtext.htm:42
+msgid ""
+"Inbox and outbox are system folders. They cannot be renamed or deleted. If "
+"you want more folders, feel free to create new folders as you need them. If "
+"you want to edit a folder just click the folder name and you will be able to "
+"rename or delete the folder."
+msgstr ""
+
+#: pntemplates/communicator_output_introtext.htm:48
+msgid "Create a new folder with the title"
+msgstr ""
+
+#: pntemplates/communicator_output_introtext.htm:50
+msgid "create"
+msgstr ""
+
+#: pntemplates/communicator_output_introtext.htm:65
+msgid "delete"
+msgstr ""
+
+#: pntemplates/communicator_output_introtext.htm:66
+msgid "update"
+msgstr ""
+
+#: pntemplates/communicator_output_introtext.htm:68
+#: pntemplates/communicator_user_compose.htm:46
+msgid "cancel"
+msgstr ""
+
+#: pntemplates/communicator_output_introtext.htm:77
+msgid "You have not ceated any custom folders yet."
+msgstr ""
+
+#: pntemplates/communicator_user_compose.htm:11
+msgid "Preview"
+msgstr ""
+
+#: pntemplates/communicator_user_compose.htm:18
+msgid "Recipients"
+msgstr ""
+
+#: pntemplates/communicator_user_compose.htm:22
+msgid "You can enter multiple recipients separated with comma."
+msgstr ""
+
+#: pntemplates/communicator_user_compose.htm:25
+msgid "Show buddies for quicker recipipent selection."
+msgstr ""
+
+#: pntemplates/communicator_user_compose.htm:29
+msgid "Mark the users who should recieve this message"
+msgstr ""
+
+#: pntemplates/communicator_user_compose.htm:36
+msgid "Message subject"
+msgstr ""
+
+#: pntemplates/communicator_user_compose.htm:38
+msgid "Message body"
+msgstr ""
+
+#: pntemplates/communicator_user_compose.htm:40
+msgid "Delivery options"
+msgstr ""
+
+#: pntemplates/communicator_user_compose.htm:42
+msgid "Request notice of receipt"
+msgstr ""
+
+#: pntemplates/communicator_user_compose.htm:44
+msgid "send message"
+msgstr ""
+
+#: pntemplates/communicator_user_compose.htm:45
+msgid "preview message"
+msgstr ""
+
+#: pntemplates/communicator_admin_settings.htm:5
+msgid "Backend for Zikula Communication Center"
+msgstr ""
+
+#: pntemplates/communicator_admin_settings.htm:10
+msgid "General settings"
+msgstr ""
+
+#: pntemplates/communicator_admin_settings.htm:12
+msgid ""
+"Format (from zikula pndate modifier) that should be used inside "
+"Communication Centre"
+msgstr ""
+
+#: pntemplates/communicator_admin_settings.htm:16
+msgid ""
+"Message limit for a single user (after this limit is reached the user will "
+"not be able to send mails any more). To disable quota enter 0 please"
+msgstr ""
+
+#: pntemplates/communicator_admin_settings.htm:22
+msgid "Enable WYSIWYG editor (This only works if scribite! is installed)."
+msgstr ""
+
+#: pntemplates/communicator_admin_settings.htm:25
+msgid "Spam guard"
+msgstr ""
+
+#: pntemplates/communicator_admin_settings.htm:26
+msgid "Time in minutes (0 to disable)"
+msgstr ""
+
+#: pntemplates/communicator_admin_settings.htm:27
+msgid "a user is allowed to send a maximum of messages"
+msgstr ""
+
+#: pntemplates/communicator_admin_settings.htm:27
+msgid "Messages"
+msgstr ""
+
+#: pntemplates/communicator_admin_settings.htm:28
+msgid ""
+"Please note: Mails that are sent to buddies (ContactList module) will not be "
+"included into the spam guard calculation!"
+msgstr ""
+
+#: pntemplates/communicator_admin_settings.htm:31
+msgid "Store configuration"
+msgstr ""
+
+#: pntemplates/communicator_admin_settings.htm:35
+msgid ""
+"You do not need any clean up or repair functions for this module. This "
+"module will do a daily self-check and orphan messages will be deleted "
+"automatically. Just have fun with the module."
+msgstr ""
+
+#: pntemplates/communicator_admin_settings.htm:36
+msgid ""
+"You like the module? Help us to keep this module up to date for the future, "
+"click here and donate some cents!"
+msgstr ""
+
+#: pntemplates/communicator_output_messages_list.htm:47
+msgid "Folder is empty - no message found!"
+msgstr ""
+
+#: pntemplates/communicator_email_receipt.htm:5
+msgid ""
+"This message was generated by the mail system. The user sending this mail "
+"has read the following message you sent to this user."
+msgstr ""
+
+#: pntemplates/communicator_email_receipt.htm:8
+msgid "Message was read at"
+msgstr ""
