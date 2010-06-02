@@ -371,6 +371,23 @@
         }});
     }
 
+    /** handle send message as mail in home mailbox **/
+
+    <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="forwardAsMail" assign="ajaxurl"]-->
+    <!--[pnusergetvar name="email" assign="c_email"]-->
+    
+    function handle_ajax_forward_as_mail(id) {
+        var confirmed = confirm('<!--[gt text="Please confirm to send the message to your private mailbox (%s)" tag1=$c_email]-->');
+        if (confirmed == true) {
+            new Ajax.Request('<!--[$ajaxurl]-->', {
+            method: 'post',
+            parameters: 'id='+id,
+            onSuccess: function(transport) {
+                alert(transport.responseText);
+            }});
+        }
+    }
+
 </script>
 
 <!-- javascript for compose message window -->

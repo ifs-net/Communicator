@@ -386,3 +386,28 @@ function Communicator_ajax_sendReceipt()
     print $output;
     return true;
 }
+
+/**
+ * forward an email in user's real email box
+ *
+ * @param   $args['id']     int
+ * @return output;
+ */
+function Communicator_ajax_forwardAsMail()
+{
+    // Get parameters
+    $id = (int) FormUtil::getPassedValue('id');
+
+    // Language Domain
+    $dom = ZLanguage::getModuleDomain('Communicator');
+
+    // get message and let API send the receipt
+    $forwardAction = pnModAPIFunc('Communicator','user','sendMailAtHome',array('id' => $id));
+    if (!$forwardAction) {
+        $output = __('Mail could not be read for forwarding!', $dom);
+    } else {
+        $output = __('Mail was forwarded to your mailbox:', $dom).' '.$forwardAction;
+    }
+    print $output;
+    return true;
+}

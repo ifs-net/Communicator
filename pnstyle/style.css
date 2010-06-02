@@ -198,6 +198,11 @@
   background-repeat: no-repeat;
   padding-left: 20px;
 }
+.c_link_forwardasmail {
+  background: url('../../../images/icons/extrasmall/mail_send.gif');
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
 .c_link_print {
   background: url('../../../images/icons/extrasmall/printer1.gif');
   background-repeat: no-repeat;

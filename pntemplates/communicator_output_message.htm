@@ -17,12 +17,13 @@
                 <!--[else]-->
                     <li class="c_link_flag"><a href="<!--[pnmodurl fqurl="true"  modname="Communicator" action="deflag" folder=$folder id=$message.id]-->"><!--[gt text="unmark message"]--></a></li>
                 <!--[/if]-->
+                <li class="c_link_forwardasmail"><a href="<!--[pnmodurl fqurl="true"  modname="Communicator" action="forwardasmail" folder=$folder id=$message.id]-->"><!--[gt text="mail @ home"]--></a></li>
                 <li class="c_link_file"><!--[gt text="move into folder"]--></li>
                     <ul>
                         <!--[if $message.folder != 0]-->
                         <li class="c_link_folder_inbox"> <a href="<!--[pnmodurl fqurl="true"  modname="Communicator" func="moveToFolder" message_id=$message.id folder_id="-1"]-->"><!--[gt text="Inbox"]--></a></li>
                         <!--[/if]-->
-                        <!--[if $message.folder != 0]-->
+                        <!--[if $message.folder != -1]-->
                         <li class="c_link_folder_sent"> <a href="<!--[pnmodurl fqurl="true"  modname="Communicator" func="moveToFolder" message_id=$message.id folder_id="-1"]-->"><!--[gt text="Sent"]--></a></li>
                         <!--[/if]-->
                         <!--[foreach from=$folders item="folder"]-->
@@ -39,6 +40,7 @@
                 <li class="c_link_reply"><a href="<!--[pnmodurl fqurl="true"  modname="Communicator" func="compose" action="reply" include=$message.id]-->"><!--[gt text="reply to message"]--></a></li>
                 <li class="c_link_forward"><a href="<!--[pnmodurl fqurl="true"  modname="Communicator" func="compose" action="forward" include=$message.id]-->"><!--[gt text="forward message"]--></a></li>
                 <li id="c_message_ajax_flag"   class="c_link_flag c_link <!--[if $message.flagged eq 1]--> z-hide<!--[/if]-->"><a onclick="javascript:handle_ajax_flag(<!--[$message.id]-->,1);" ><!--[gt text="mark message"]--></a></li>
+                <li id="c_message_ajax_foward_as_mail" class="c_link_forwardasmail c_link"><a onclick="javascript:handle_ajax_forward_as_mail(<!--[$message.id]-->,1);" ><!--[gt text="mail @ home"]--></a></li>
                 <li id="c_message_ajax_deflag" class="c_link_flag c_link <!--[if $message.flagged eq 0]--> z-hide<!--[/if]-->""><a onclick="javascript:handle_ajax_flag(<!--[$message.id]-->,0);" ><!--[gt text="unmark message"]--></a></li>
                 <li><span class="c_link_file c_link" onclick="javascript:$('c_move_folders').removeClassName('z-hide');" ><a><!--[gt text="move into folder"]-->:</a></span>
                     <ul id="c_move_folders" class="z-hide">
