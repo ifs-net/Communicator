@@ -1,7 +1,7 @@
 <?php
 /**
  * @package      Communicator
- * @version      $Id: pnoutputapi.php 4 2010-05-26 16:29:35Z quan $
+ * @version      $Id$
  * @author       Florian Schießl
  * @link         http://www.ifs-net.de
  * @copyright    Copyright (C) 20010
