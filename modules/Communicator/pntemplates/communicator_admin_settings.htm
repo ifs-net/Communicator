@@ -7,7 +7,7 @@
   <!--[pnformvalidationsummary]-->
   <!--[pnform]-->
 
-    <h3><!--[gt text="General settings"]--></h3>
+    <h3><!--[gt text="General Settings"]--></h3>
     <p>
     <!--[pnformlabel for="dateformat" __text="Format (from zikula pndate modifier) that should be used inside Communication Centre"]-->:<br />
     <!--[pnformtextinput id="dateformat" maxLength="20"]-->
@@ -27,13 +27,20 @@
     <!--[pnformlabel for="spam_allow_max" __text="a user is allowed to send a maximum of messages"]-->: <!--[pnformintinput id="spam_allow_max" minValue="0"]--> <!--[gt text="Messages"]-->.<br />
     <div class="z-informationmsg"><!--[gt text="Please note: Mails that are sent to buddies (ContactList module) will not be included into the spam guard calculation!"]--></div>
 
+    <h3><!--[gt text="Popup Notification"]--></h3>
     <p>
-        <!--[pnformbutton commandName="update" __text="Store configuration"]-->
+    <!--[gt text="If you want your users to be informed about new messages with an upcoming ajax notification please put the following code inside your theme templates - best place is before the body tag closes."]-->
     </p>
-
+    <p><code>
+        &lt;!--[pnmodapifunc modname="Communicator" type="popup"]--&gt;
+    </code></p>
 
     <div class="z-informationmsg"><!--[gt text="You do not need any clean up or repair functions for this module. This module will do a daily self-check and orphan messages will be deleted automatically. Just have fun with the module."]--><br />
     <a href="http://www.zksoft.de/donate.php"><!--[gt text="You like the module? Help us to keep this module up to date for the future, click here and donate some cents!"]--></a></div>
+
+    <p>
+        <!--[pnformbutton commandName="update" __text="Store configuration"]-->
+    </p>
 
   <!--[/pnform]-->
 
