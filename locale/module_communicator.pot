@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula component\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-28 18:51+0200\n"
+"POT-Creation-Date: 2010-06-02 22:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,36 +16,40 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pnuserapi.php:238
+#: pnuserapi.php:239
 msgid "Notice of receipt"
 msgstr ""
 
-#: pnuserapi.php:275
+#: pnuserapi.php:276
 msgid "no subject"
 msgstr ""
 
-#: pnuserapi.php:300
+#: pnuserapi.php:301
 msgid "Mail sending failed - mail body could not be stored."
 msgstr ""
 
-#: pnuserapi.php:325 pnuserapi.php:347
+#: pnuserapi.php:324 pnuserapi.php:346
 msgid "Mail sending failed for user"
 msgstr ""
 
-#: pnuserapi.php:374
+#: pnuserapi.php:376
 msgid "A private message is waiting for you!"
 msgstr ""
 
-#: pnuserapi.php:379
+#: pnuserapi.php:381
 msgid "Sending email notification failed!"
 msgstr ""
 
-#: pnuserapi.php:386
+#: pnuserapi.php:388
 msgid "Autoresponse"
 msgstr ""
 
-#: pnuserapi.php:391
+#: pnuserapi.php:393
 msgid "Sending autoresponse failed!"
+msgstr ""
+
+#: pnuserapi.php:678
+msgid "Forwarded Mail"
 msgstr ""
 
 #: pnversion.php:14
@@ -56,12 +60,24 @@ msgstr ""
 msgid "More than just private messaging"
 msgstr ""
 
+#: pnaccountapi.php:32
+msgid "Read Mails"
+msgstr ""
+
 #: pninit.php:33
 msgid "Error creating Hook!"
 msgstr ""
 
 #: pninit.php:59
 msgid "Error deleting Hook!"
+msgstr ""
+
+#: pnadminapi.php:12
+msgid "Main Modul Configuration"
+msgstr ""
+
+#: pnadminapi.php:13
+msgid "Import Mails from InterCom"
 msgstr ""
 
 #: pnuser.php:56
@@ -84,43 +100,51 @@ msgstr ""
 msgid "Selected message was deleted!"
 msgstr ""
 
-#: pnuser.php:141 pnajax.php:229
+#: pnuser.php:73
+msgid "Error: mail could not be sent to your private email address!"
+msgstr ""
+
+#: pnuser.php:75
+msgid "Mail was forwarded as email to your private mailbox:"
+msgstr ""
+
+#: pnuser.php:148 pnajax.php:229
 msgid "Settings could not be stored!"
 msgstr ""
 
-#: pnuser.php:143
+#: pnuser.php:150
 msgid "Your settings have been stored!"
 msgstr ""
 
-#: pnuser.php:167 pnajax.php:256
+#: pnuser.php:174 pnajax.php:256
 msgid "Folder could not be created!"
 msgstr ""
 
-#: pnuser.php:169
+#: pnuser.php:176
 msgid "Folder was created."
 msgstr ""
 
-#: pnuser.php:197 pnajax.php:287
+#: pnuser.php:204 pnajax.php:287
 msgid "Folder could not be deleted!"
 msgstr ""
 
-#: pnuser.php:199
+#: pnuser.php:206
 msgid "Folder deleted!"
 msgstr ""
 
-#: pnuser.php:204 pnajax.php:294
+#: pnuser.php:211 pnajax.php:294
 msgid "Folder could not be renamed!"
 msgstr ""
 
-#: pnuser.php:206
+#: pnuser.php:213
 msgid "Folder was renamed!"
 msgstr ""
 
-#: pnuser.php:235
+#: pnuser.php:242
 msgid "Message was moved to folder."
 msgstr ""
 
-#: pnuser.php:237 pnajax.php:347
+#: pnuser.php:244 pnajax.php:347
 msgid "Message could not be moved to target folder!"
 msgstr ""
 
@@ -139,6 +163,14 @@ msgstr ""
 
 #: pnajax.php:382
 msgid "Notice of receipt could not be send!"
+msgstr ""
+
+#: pnajax.php:407
+msgid "Mail could not be read for forwarding!"
+msgstr ""
+
+#: pnajax.php:409
+msgid "Mail was forwarded to your mailbox:"
 msgstr ""
 
 #: includes/classes/user/compose.php:28
@@ -161,110 +193,182 @@ msgstr ""
 msgid "Fwd:"
 msgstr ""
 
-#: includes/classes/user/compose.php:105
+#: includes/classes/user/compose.php:116
 msgid "Message body is mandatory"
 msgstr ""
 
-#: includes/classes/user/compose.php:134
+#: includes/classes/user/compose.php:146
+msgid ""
+"You cannot send mails to the following user because this user does not want "
+"to recieve emails from you: "
+msgstr ""
+
+#: includes/classes/user/compose.php:153
 msgid "Please check recipients: user not found: "
 msgstr ""
 
-#: includes/classes/user/compose.php:172
+#: includes/classes/user/compose.php:191
 msgid ""
 "An error occured while trying to send the message. Please try again and "
 "contact the webmaster if sending fails again."
 msgstr ""
 
-#: includes/classes/user/compose.php:179
+#: includes/classes/user/compose.php:198
 msgid "Message sent succesfully to "
+msgstr ""
+
+#: includes/classes/admin/intercom.php:34
+msgid "InterCom module not found!"
+msgstr ""
+
+#: includes/classes/admin/intercom.php:51
+msgid "Reset done!"
+msgstr ""
+
+#: includes/classes/admin/intercom.php:73
+msgid "Import done! No InterCom mails left for import!"
+msgstr ""
+
+#: includes/classes/admin/intercom.php:136
+msgid "Messages imported successfully"
 msgstr ""
 
 #: includes/classes/admin/settings.php:42
 msgid "Settings updated"
 msgstr ""
 
+#: pntemplates/communicator_output_popup.htm:7
+#, php-format
+msgid "You have %s new Message(s)"
+msgstr ""
+
+#: pntemplates/communicator_output_popup.htm:10
+msgid "Open Inbox Folder"
+msgstr ""
+
+#: pntemplates/communicator_output_popup.htm:11
+msgid "Close Notification"
+msgstr ""
+
+#: pntemplates/communicator_admin_intercom.htm:8
+msgid "InterCom Import"
+msgstr ""
+
+#: pntemplates/communicator_admin_intercom.htm:11
+msgid ""
+"The InterCom import might take a long time and will be done step by step. On "
+"large installations this might take a long time. Just click the import "
+"button as long as the import needs... Mails that do not belong to any users "
+"any more will be skipped automatically..."
+msgstr ""
+
+#: pntemplates/communicator_admin_intercom.htm:14
+msgid "InterCom messages are procesed up tp message id"
+msgstr ""
+
+#: pntemplates/communicator_admin_intercom.htm:17
+msgid "How many InterCom mails should be processed with each request?"
+msgstr ""
+
+#: pntemplates/communicator_admin_intercom.htm:22
+msgid "Get the mails..."
+msgstr ""
+
+#: pntemplates/communicator_admin_intercom.htm:23
+msgid "Reset internal counter"
+msgstr ""
+
 #: pntemplates/communicator_output_message.htm:13
-#: pntemplates/communicator_output_message.htm:39
+#: pntemplates/communicator_output_message.htm:40
 msgid "reply to message"
 msgstr ""
 
 #: pntemplates/communicator_output_message.htm:14
-#: pntemplates/communicator_output_message.htm:40
+#: pntemplates/communicator_output_message.htm:41
 msgid "forward message"
 msgstr ""
 
 #: pntemplates/communicator_output_message.htm:16
-#: pntemplates/communicator_output_message.htm:41
+#: pntemplates/communicator_output_message.htm:42
 msgid "mark message"
 msgstr ""
 
 #: pntemplates/communicator_output_message.htm:18
-#: pntemplates/communicator_output_message.htm:42
+#: pntemplates/communicator_output_message.htm:44
 msgid "unmark message"
 msgstr ""
 
 #: pntemplates/communicator_output_message.htm:20
 #: pntemplates/communicator_output_message.htm:43
+msgid "mail @ home"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:21
+#: pntemplates/communicator_output_message.htm:45
 msgid "move into folder"
 msgstr ""
 
-#: pntemplates/communicator_output_message.htm:23
-#: pntemplates/communicator_output_message.htm:46
+#: pntemplates/communicator_output_message.htm:24
+#: pntemplates/communicator_output_message.htm:48
 #: pntemplates/communicator_user_main.htm:17
 #: pntemplates/communicator_output_ajax_folder_menu.htm:4
 msgid "Inbox"
 msgstr ""
 
-#: pntemplates/communicator_output_message.htm:26
-#: pntemplates/communicator_output_message.htm:49
+#: pntemplates/communicator_output_message.htm:27
+#: pntemplates/communicator_output_message.htm:51
 #: pntemplates/communicator_user_main.htm:18
 #: pntemplates/communicator_output_ajax_folder_menu.htm:5
 msgid "Sent"
 msgstr ""
 
-#: pntemplates/communicator_output_message.htm:34
-#: pntemplates/communicator_output_message.htm:58
+#: pntemplates/communicator_output_message.htm:35
+#: pntemplates/communicator_output_message.htm:60
 msgid "print message"
 msgstr ""
 
-#: pntemplates/communicator_output_message.htm:35
-#: pntemplates/communicator_output_message.htm:59
+#: pntemplates/communicator_output_message.htm:36
+#: pntemplates/communicator_output_message.htm:61
 msgid "delete message"
 msgstr ""
 
-#: pntemplates/communicator_output_message.htm:64
+#: pntemplates/communicator_output_message.htm:66
 #: pntemplates/communicator_user_main.htm:34
 #: pntemplates/communicator_email_receipt.htm:7
 msgid "Subject"
 msgstr ""
 
-#: pntemplates/communicator_output_message.htm:66
-msgid "To"
-msgstr ""
-
-#: pntemplates/communicator_output_message.htm:67
+#: pntemplates/communicator_output_message.htm:68
 msgid "From"
 msgstr ""
 
-#: pntemplates/communicator_output_message.htm:68
+#: pntemplates/communicator_output_message.htm:69
+msgid "To"
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:70
 #: pntemplates/communicator_user_main.htm:48
 msgid "Date"
 msgstr ""
 
-#: pntemplates/communicator_output_message.htm:70
+#: pntemplates/communicator_output_message.htm:72
 msgid "The sender classified this mail as very important."
 msgstr ""
 
-#: pntemplates/communicator_output_message.htm:74
+#: pntemplates/communicator_output_message.htm:76
 msgid "Message sender requested a notice of receipt."
 msgstr ""
 
-#: pntemplates/communicator_output_message.htm:76
 #: pntemplates/communicator_output_message.htm:78
+#: pntemplates/communicator_output_message.htm:80
 msgid "Please click here to send receipt to sender."
 msgstr ""
 
-#: pntemplates/communicator_output_message.htm:88
+#: pntemplates/communicator_output_message.htm:85
+msgid "Notice of Receipt was requested by sender and was already sent by you."
+msgstr ""
+
+#: pntemplates/communicator_output_message.htm:93
 msgid "Message could not be loaded."
 msgstr ""
 
@@ -288,15 +392,20 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: pntemplates/communicator_user_main.htm:287
+#: pntemplates/communicator_user_main.htm:285
 msgid "This message is already in specified target folder!"
 msgstr ""
 
-#: pntemplates/communicator_user_main.htm:308
+#: pntemplates/communicator_user_main.htm:306
 msgid "Please confirm to delete the message"
 msgstr ""
 
-#: pntemplates/communicator_user_main.htm:437
+#: pntemplates/communicator_user_main.htm:381
+#, php-format
+msgid "Please confirm to send the message to your private mailbox (%s)"
+msgstr ""
+
+#: pntemplates/communicator_user_main.htm:453
 msgid "Your settings have been stored"
 msgstr ""
 
@@ -308,7 +417,7 @@ msgstr ""
 #: pntemplates/communicator_email_notification.htm:5
 #, php-format
 msgid ""
-"the user %1$s has sent a private message to you with the title \"%2$s\"."
+"the user \"%s\" has sent a private message to you with the title \"%s\"."
 msgstr ""
 
 #: pntemplates/communicator_email_notification.htm:7
@@ -318,14 +427,25 @@ msgid ""
 msgstr ""
 
 #: pntemplates/communicator_email_notification.htm:9
-msgid "Login at"
+#, php-format
+msgid ""
+"Actually, there are %s unread messages awaiting you in your inbox folder."
+msgstr ""
+
+#: pntemplates/communicator_email_notification.htm:9
+msgid ""
+"Actually, there is one unread messages awaiting you in your inbox folder."
 msgstr ""
 
 #: pntemplates/communicator_email_notification.htm:11
-msgid "Read your messages"
+msgid "Login at"
 msgstr ""
 
 #: pntemplates/communicator_email_notification.htm:13
+msgid "Read your messages"
+msgstr ""
+
+#: pntemplates/communicator_email_notification.htm:15
 msgid ""
 "If you do not want to recieve notifications about new private messages any "
 "more please change your personal settings in your communication centre. The "
@@ -448,70 +568,81 @@ msgstr ""
 msgid "preview message"
 msgstr ""
 
-#: pntemplates/communicator_admin_settings.htm:5
+#: pntemplates/communicator_admin_header.htm:3
 msgid "Backend for Zikula Communication Center"
 msgstr ""
 
-#: pntemplates/communicator_admin_settings.htm:10
-msgid "General settings"
+#: pntemplates/communicator_admin_settings.htm:8
+msgid "General Settings"
 msgstr ""
 
-#: pntemplates/communicator_admin_settings.htm:12
+#: pntemplates/communicator_admin_settings.htm:10
 msgid ""
 "Format (from zikula pndate modifier) that should be used inside "
 "Communication Centre"
 msgstr ""
 
-#: pntemplates/communicator_admin_settings.htm:16
+#: pntemplates/communicator_admin_settings.htm:14
 msgid ""
 "Message limit for a single user (after this limit is reached the user will "
 "not be able to send mails any more). To disable quota enter 0 please"
 msgstr ""
 
-#: pntemplates/communicator_admin_settings.htm:22
+#: pntemplates/communicator_admin_settings.htm:19
 msgid "Enable WYSIWYG editor (This only works if scribite! is installed)."
 msgstr ""
 
-#: pntemplates/communicator_admin_settings.htm:25
+#: pntemplates/communicator_admin_settings.htm:23
 msgid "Spam guard"
 msgstr ""
 
-#: pntemplates/communicator_admin_settings.htm:26
+#: pntemplates/communicator_admin_settings.htm:24
 msgid "Time in minutes (0 to disable)"
 msgstr ""
 
-#: pntemplates/communicator_admin_settings.htm:27
+#: pntemplates/communicator_admin_settings.htm:25
 msgid "a user is allowed to send a maximum of messages"
 msgstr ""
 
-#: pntemplates/communicator_admin_settings.htm:27
+#: pntemplates/communicator_admin_settings.htm:25
 msgid "Messages"
 msgstr ""
 
-#: pntemplates/communicator_admin_settings.htm:28
+#: pntemplates/communicator_admin_settings.htm:26
 msgid ""
 "Please note: Mails that are sent to buddies (ContactList module) will not be "
 "included into the spam guard calculation!"
 msgstr ""
 
-#: pntemplates/communicator_admin_settings.htm:31
-msgid "Store configuration"
+#: pntemplates/communicator_admin_settings.htm:28
+msgid "Popup Notification"
 msgstr ""
 
-#: pntemplates/communicator_admin_settings.htm:35
+#: pntemplates/communicator_admin_settings.htm:30
+msgid ""
+"If you want your users to be informed about new messages with an upcoming "
+"ajax notification please put the following code inside your theme templates "
+"- best place is before the body tag closes."
+msgstr ""
+
+#: pntemplates/communicator_admin_settings.htm:36
 msgid ""
 "You do not need any clean up or repair functions for this module. This "
 "module will do a daily self-check and orphan messages will be deleted "
 "automatically. Just have fun with the module."
 msgstr ""
 
-#: pntemplates/communicator_admin_settings.htm:36
+#: pntemplates/communicator_admin_settings.htm:37
 msgid ""
 "You like the module? Help us to keep this module up to date for the future, "
 "click here and donate some cents!"
 msgstr ""
 
-#: pntemplates/communicator_output_messages_list.htm:47
+#: pntemplates/communicator_admin_settings.htm:40
+msgid "Store configuration"
+msgstr ""
+
+#: pntemplates/communicator_output_messages_list.htm:46
 msgid "Folder is empty - no message found!"
 msgstr ""
 
