@@ -1,0 +1,23 @@
+<!--[pnajaxheader prototype=true scriptaculous=true effects=true]-->
+
+<div class="z-hide" id="c_popup_wrapper">
+    <div id="c_popup_window">
+        <img style="float:right;" src="<!--[pngetbaseurl]-->/modules/Communicator/pnimages/letter.gif" />
+        <p>
+            <!--[gt text="You have %s new Message(s)" tag1=$messageinfo.unread]-->
+        </p>
+        <div id="c_popup_window_links">
+            [<a onclick="javascript:c_hide_popup();" href="<!--[pnmodurl modname="Communicator"]-->"><!--[gt text="Open Inbox Folder"]--></a>]
+            [<a class="c_link" onclick="javascript:c_hide_popup();"><!--[gt text="Close Notification"]--></a>]
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function c_hide_popup() {
+        $('c_popup_wrapper').fade();
+    }
+    $('c_popup_window').hide();
+    $('c_popup_wrapper').removeClassName('z-hide');
+    $('c_popup_window').appear();
+</script>
