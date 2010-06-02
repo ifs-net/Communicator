@@ -242,7 +242,7 @@ div.c_autocomplete {
   border:1px solid #888;
   margin:0;
   padding:0;
-  height: 250px;
+  max-height: 250px;
   overflow-y: auto;
 }
 div.c_autocomplete ul {
