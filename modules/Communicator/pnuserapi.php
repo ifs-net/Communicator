@@ -161,6 +161,7 @@ function Communicator_userapi_getAll($args)
     $orderby = $header_ob1.' '.$header_ob2;
     $messages = DBUtil::selectExpandedObjectArray('communicator_mail_header',$joinInfo,$where,$orderby);
 
+    // Return messages
     return $messages;
 }
 
