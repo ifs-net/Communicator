@@ -5,7 +5,7 @@
 <!--[pngetstatusmsg|pnvarprephtmldisplay]-->
 
 <p>
-    <a id="c_compose_msg_link" class="c_link_compose" href="<!--[pnmodurl modname="Communicator" func="compose"]-->"><!--[gt text="Compose new message"]--></a>
+    <a id="c_compose_msg_link" class="c_link_compose" href="<!--[pnmodurl fqurl="true"  modname="Communicator" func="compose"]-->"><!--[gt text="Compose new message"]--></a>
     <a id="c_compose_msg_ajax_link" class="c_link_compose c_link z-hide"><!--[gt text="Compose new message"]--></a>
     <a id="c_folders_link" class="c_link_folders c_link z-hide"><!--[gt text="Switch to mailbox folders"]--></a>
 </p>
@@ -14,12 +14,12 @@
     <div id="c_folder_list" class="c_folder_list">
     <!--[pnmodapifunc modname="Communicator" type="user" func="getFolders" assign="folders"]-->
         <ul>
-            <li <!--[if $folder eq 0]-->class="c_folder_actual"<!--[/if]-->><a class="c_link_folder_inbox" href="<!--[pnmodurl modname="Communicator" folder="0"]-->"><!--[gt text="Inbox"]--></a></li>
-            <li <!--[if $folder eq -1]-->class="c_folder_actual"<!--[/if]-->><a class="c_link_folder_sent" href="<!--[pnmodurl modname="Communicator" folder="-1"]-->"><!--[gt text="Sent"]--></a></li>
+            <li <!--[if $folder eq 0]-->class="c_folder_actual"<!--[/if]-->><a class="c_link_folder_inbox" href="<!--[pnmodurl fqurl="true"  modname="Communicator" folder="0"]-->"><!--[gt text="Inbox"]--></a></li>
+            <li <!--[if $folder eq -1]-->class="c_folder_actual"<!--[/if]-->><a class="c_link_folder_sent" href="<!--[pnmodurl fqurl="true"  modname="Communicator" folder="-1"]-->"><!--[gt text="Sent"]--></a></li>
             <!--[foreach from=$folders item="item"]-->
-            <li <!--[if $folder eq $item.id]-->class="c_folder_actual"<!--[/if]-->><a class="c_link_folder_misc" href="<!--[pnmodurl modname="Communicator" folder=$item.id]-->"><!--[$item.title|pnvarprepfordisplay]--></a></li>
+            <li <!--[if $folder eq $item.id]-->class="c_folder_actual"<!--[/if]-->><a class="c_link_folder_misc" href="<!--[pnmodurl fqurl="true"  modname="Communicator" folder=$item.id]-->"><!--[$item.title|pnvarprepfordisplay]--></a></li>
             <!--[/foreach]-->
-            <li><a class="c_link_folder_modify" href="<!--[pnmodurl modname="Communicator"]-->"><!--[gt text="My settings"]--></a></li>
+            <li><a class="c_link_folder_modify" href="<!--[pnmodurl fqurl="true"  modname="Communicator"]-->"><!--[gt text="My settings"]--></a></li>
             <!--[* todo folders here *]-->
         </ul>
     </div>
@@ -32,22 +32,22 @@
                 <tr>
                     <th>
                         <!--[gt text="Subject"]-->
-                            <a id="c_sortlink_subject_asc" href="<!--[pnmodurl modname="Communicator" folder=$folder sort="subject" mode="ASC"']-->"><img src="modules/Communicator/pnimages/arrow_down.gif" /></a>
-                        <a id="c_sortlink_subject_desc" href="<!--[pnmodurl modname="Communicator" folder=$folder sort="subject" mode="DESC"']-->"><img src="modules/Communicator/pnimages/arrow_up.gif" /></a>
+                            <a id="c_sortlink_subject_asc" href="<!--[pnmodurl fqurl="true"  modname="Communicator" folder=$folder sort="subject" mode="ASC"']-->"><img src="modules/Communicator/pnimages/arrow_down.gif" /></a>
+                        <a id="c_sortlink_subject_desc" href="<!--[pnmodurl fqurl="true"  modname="Communicator" folder=$folder sort="subject" mode="DESC"']-->"><img src="modules/Communicator/pnimages/arrow_up.gif" /></a>
                         <img id="c_sortlink_subject_ajax_asc" class="c_link z-hide" src="modules/Communicator/pnimages/arrow_down.gif" />
                         <img id="c_sortlink_subject_ajax_desc" class="c_link z-hide" src="modules/Communicator/pnimages/arrow_up.gif" />
                     </th>
                     <th class="c_messages_list_sender">
                         <!--[gt text="User"]-->
-                        <a id="c_sortlink_uname_asc" href="<!--[pnmodurl modname="Communicator" folder=$folder sort="from_name" mode="ASC"']-->"><img src="modules/Communicator/pnimages/arrow_down.gif" /></a>
-                        <a id="c_sortlink_uname_desc" href="<!--[pnmodurl modname="Communicator" folder=$folder sort="from_name" mode="DESC"']-->"><img src="modules/Communicator/pnimages/arrow_up.gif" /></a>
+                        <a id="c_sortlink_uname_asc" href="<!--[pnmodurl fqurl="true"  modname="Communicator" folder=$folder sort="from_name" mode="ASC"']-->"><img src="modules/Communicator/pnimages/arrow_down.gif" /></a>
+                        <a id="c_sortlink_uname_desc" href="<!--[pnmodurl fqurl="true"  modname="Communicator" folder=$folder sort="from_name" mode="DESC"']-->"><img src="modules/Communicator/pnimages/arrow_up.gif" /></a>
                         <img id="c_sortlink_uname_ajax_asc" class="c_link z-hide" src="modules/Communicator/pnimages/arrow_down.gif" />
                         <img id="c_sortlink_uname_ajax_desc" class="c_link z-hide" src="modules/Communicator/pnimages/arrow_up.gif" />
                     </th>
                     <th class="c_messages_list_date">
                         <!--[gt text="Date"]-->
-                        <a id="c_sortlink_date_desc" href="<!--[pnmodurl modname="Communicator" folder=$folder mode="ASC"']-->"><img src="modules/Communicator/pnimages/arrow_down.gif" /></a>
-                        <a id="c_sortlink_date_asc" href="<!--[pnmodurl modname="Communicator" folder=$folder mode="DESC"']-->"><img src="modules/Communicator/pnimages/arrow_up.gif" /></a>
+                        <a id="c_sortlink_date_desc" href="<!--[pnmodurl fqurl="true"  modname="Communicator" folder=$folder mode="ASC"']-->"><img src="modules/Communicator/pnimages/arrow_down.gif" /></a>
+                        <a id="c_sortlink_date_asc" href="<!--[pnmodurl fqurl="true"  modname="Communicator" folder=$folder mode="DESC"']-->"><img src="modules/Communicator/pnimages/arrow_up.gif" /></a>
                         <img id="c_sortlink_date_ajax_desc" class="c_link z-hide" src="modules/Communicator/pnimages/arrow_down.gif" />
                         <img id="c_sortlink_date_ajax_asc" class="c_link z-hide" src="modules/Communicator/pnimages/arrow_up.gif" />
                         </th>
@@ -81,7 +81,7 @@
 
 <script type="text/javascript" language="javascript">
 
-<!--[pnmodurl modname="Communicator" type="ajax" func="updatePreviewHeight" fqurl="true" assign="ajaxupdateheighturl"]-->
+<!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="updatePreviewHeight" assign="ajaxupdateheighturl"]-->
 
 /** credits to http://www.cfchris.com/cfchris/index.cfm/2009/2/18/How-To-Prototype-Drag-Corner **/
 
@@ -149,10 +149,10 @@
 </script>
 
 <script type="text/javascript">
-    <!--[pnmodurl modname="Communicator" type="ajax" func="delMessage"    assign="ajaxdelurl"    fqurl=true]-->
-    <!--[pnmodurl modname="Communicator" type="ajax" func="getIntroText" assign="ajaxintrourl"  fqurl=true]-->
-    <!--[pnmodurl modname="Communicator" type="ajax" func="getMessage"    assign="ajaxgetmsgurl" fqurl=true]-->
-    <!--[pnmodurl modname="Communicator" type="ajax" func="moveMessageToFolder" assign="ajaxmovefolderurl"]-->
+    <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="delMessage"    assign="ajaxdelurl"    fqurl=true]-->
+    <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="getIntroText" assign="ajaxintrourl"  fqurl=true]-->
+    <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="getMessage"    assign="ajaxgetmsgurl" fqurl=true]-->
+    <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="moveMessageToFolder" assign="ajaxmovefolderurl"]-->
 
     var c_actual_folder  = <!--[$folder]-->;
     
@@ -192,32 +192,32 @@
         /* observe for re-sorting mail headers */
 
         $('c_sortlink_subject_ajax_asc').observe('click',function() {
-            <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" sort="subject" mode="ASC" assign="ajaxtempurl"]-->
+            <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="getHeaders" sort="subject" mode="ASC" assign="ajaxtempurl"]-->
             $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
             new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=' + c_actual_folder });
         });
         $('c_sortlink_subject_ajax_desc').observe('click',function() {
-            <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" sort="subject" mode="DESC" assign="ajaxtempurl"]-->
+            <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="getHeaders" sort="subject" mode="DESC" assign="ajaxtempurl"]-->
             $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
             new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=' + c_actual_folder });
         });
         $('c_sortlink_uname_ajax_asc').observe('click',function() {
-            <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" sort="uname" mode="ASC" assign="ajaxtempurl"]-->
+            <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="getHeaders" sort="uname" mode="ASC" assign="ajaxtempurl"]-->
             $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
             new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=' + c_actual_folder });
         });
         $('c_sortlink_uname_ajax_desc').observe('click',function() {
-            <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" sort="uname" mode="DESC" assign="ajaxtempurl"]-->
+            <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="getHeaders" sort="uname" mode="DESC" assign="ajaxtempurl"]-->
             $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
             new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=' + c_actual_folder });
         });
         $('c_sortlink_date_ajax_asc').observe('click',function() {
-            <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" sort="date" mode="ASC" assign="ajaxtempurl"]-->
+            <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="getHeaders" sort="date" mode="ASC" assign="ajaxtempurl"]-->
             $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
             new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=' + c_actual_folder });
         });
         $('c_sortlink_date_ajax_desc').observe('click',function() {
-            <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" sort="date" mode="DESC" assign="ajaxtempurl"]-->
+            <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="getHeaders" sort="date" mode="DESC" assign="ajaxtempurl"]-->
             $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
             new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=' + c_actual_folder });
         });
@@ -234,7 +234,7 @@
     c_switch_ajax_links();
 
     /* Observe clicks for folder changes */
-    <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" assign="ajaxfolderswitchurl"]-->
+    <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="getHeaders" assign="ajaxfolderswitchurl"]-->
     function c_link_ajax_complete_folder_switch(id) {
         c_new_folder = id;
         $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
@@ -245,13 +245,13 @@
     }
 
 
-    <!--[pnmodurl modname="Communicator" type="ajax" func="showAjaxFoldersMenu" assign="ajaxfolderreloadurl"]-->
+    <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="showAjaxFoldersMenu" assign="ajaxfolderreloadurl"]-->
     function c_reset_folder_menu() {
         new Ajax.Updater('c_folder_ajax_list','<!--[$ajaxfolderreloadurl]-->', { method: 'post' });
     }
 
 
-            <!--[pnmodurl modname="Communicator" type="ajax" func="getHeaders" sort="subject" mode="ASC" assign="ajaxtempurl"]-->
+            <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="getHeaders" sort="subject" mode="ASC" assign="ajaxtempurl"]-->
             $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
             new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=<!--[$folder]-->' });
 
@@ -326,7 +326,7 @@
     function handle_ajax_flag(id,flag) {
         var flaggedElement = 'c_msg_tablecell_flagged' + id;
         if (flag == 0) {
-            <!--[pnmodurl modname="Communicator" type="ajax" func="flagMessage"  flag="0" assign="ajaxurl"]-->
+            <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="flagMessage"  flag="0" assign="ajaxurl"]-->
             new Ajax.Request('<!--[$ajaxurl]-->', {
             method: 'postt',
             parameters: 'id='+id,
@@ -341,7 +341,7 @@
             }});
 
         } else {
-            <!--[pnmodurl modname="Communicator" type="ajax" func="flagMessage" flag="1" assign="ajaxurl"]-->
+            <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="flagMessage" flag="1" assign="ajaxurl"]-->
             new Ajax.Request('<!--[$ajaxurl]-->', {
             method: 'post',
             parameters: 'id='+id,
@@ -359,7 +359,7 @@
     
     /** handle send receipt ajax action **/
 
-    <!--[pnmodurl modname="Communicator" type="ajax" func="sendreceipt" assign="ajaxurl"]-->
+    <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="sendreceipt" assign="ajaxurl"]-->
     
     function handle_ajax_send_receipt(id) {
         new Ajax.Request('<!--[$ajaxurl]-->', {
@@ -408,9 +408,9 @@
 
 <!-- javascript for intro text and preferences -->
 
-<!--[pnmodurl modname="Communicator" type="ajax" func="storeSettings"       assign="ajaxstoresettingsurl"]-->
-<!--[pnmodurl modname="Communicator" type="ajax" func="createFolder"        assign="ajaxcreatefolderurl"]-->
-<!--[pnmodurl modname="Communicator" type="ajax" func="modifyFolder"        assign="ajaxmodifyurl"]-->
+<!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="storeSettings"       assign="ajaxstoresettingsurl"]-->
+<!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="createFolder"        assign="ajaxcreatefolderurl"]-->
+<!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="modifyFolder"        assign="ajaxmodifyurl"]-->
 
 
 <script type="text/javascript">

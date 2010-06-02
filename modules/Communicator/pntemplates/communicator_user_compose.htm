@@ -58,7 +58,7 @@
     <!--[/if]-->
 
 
-    <!--[pnmodurl assign="ajaxurl" fqurl=true modname="Communicator" type="ajax" func="getUsers" parameter="recipients"]-->
+    <!--[pnmodurl fqurl="true"  assign="ajaxurl" fqurl=true modname="Communicator" type="ajax" func="getUsers" parameter="recipients"]-->
     new Ajax.Autocompleter('recipients','recipients_choices','<!--[$ajaxurl]-->', { 
         frequency: 0.2,
         minChars: 1,
