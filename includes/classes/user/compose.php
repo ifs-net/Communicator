@@ -75,6 +75,15 @@ class communicator_user_compose_handler
                     $this->action = 'forward';
                 }
             }
+        } else {
+            // Add recipients via $_GET
+            $uid = (int)FormUtil::getPassedValue('uid');
+            if ($uid > 1) {
+                $uname = pnUserGetVar('uname',$uid);
+                if (isset($uname) && ($uname != '')) {
+                    $tpl_vars['recipients'] = $uname;
+                }
+            }
         }
         // Add variables to templates
         $render->assign($tpl_vars);
