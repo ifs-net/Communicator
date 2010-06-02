@@ -1,0 +1,28 @@
+<!--[*  $Id: communicator_admin_settings.htm 25 2010-06-02 17:36:06Z quan $  *]-->
+
+<!--[include file="communicator_admin_header.htm"]-->
+
+  <!--[pnformvalidationsummary]-->
+  <!--[pnform]-->
+
+    <h3><!--[gt text="InterCom Import"]--></h3>
+
+    <p>
+        <!--[gt text="The InterCom import might take a long time and will be done step by step. On large installations this might take a long time. Just click the import button as long as the import needs... Mails that do not belong to any users any more will be skipped automatically..."]-->
+    </p>
+    
+    <div class="z-informationmsg"><!--[gt text="InterCom messages are procesed up tp message id"]-->: <!--[$c_counter]--></div>
+
+    <p>
+        <!--[pnformlabel for="interval" __text="How many InterCom mails should be processed with each request?"]--><br />
+        <!--[pnformintinput id="interval" minValue="1"]-->
+    </p>
+    
+    <p>
+        <!--[pnformbutton commandName="import" __text="Get the mails..."]-->
+        <!--[pnformbutton commandName="reset" __text="Reset internal counter"]-->
+    </p>
+
+  <!--[/pnform]-->
+
+<!--[include file="communicator_admin_footer.htm"]-->
