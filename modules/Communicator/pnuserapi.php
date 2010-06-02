@@ -302,8 +302,6 @@ function Communicator_userapi_send($args)
         $id = $insertBodyAction['id'];
         $from_uname = pnUserGetVar('uname',$from);
     }
-    // ToDo: Spam protection for recipients that are not inside buddy list
-    // ...
     $to_unames = array();
     $to_uids   = array();
     foreach ($to as $recipient) {
@@ -359,12 +357,15 @@ function Communicator_userapi_send($args)
         if ($communicator_disableNotification != 1) {
             // Generate rendering object
             $render = pnRender::getInstance('Communicator');
+            // get message info
+            $messageinfo = pnModAPIFunc('Communicator','user','getmessagecount',array('uid' => $to));
             // fake last header
             $mail_header['to'] = $to;
             $mail_header['to_name'] = pnUserGetVar('uname',$to);
             // Assign to template
             $render->assign('mail_body',    $mail_body);
             $render->assign('mail_header',  $mail_header);
+            $render->assign('messageinfo',  $messageinfo);
             // get content for email
             $content = $render->fetch('communicator_email_notification.htm');
             // send mail
@@ -688,11 +689,11 @@ function Communicator_userapi_systeminit()
 /** 
  * This function returns the amount of Messages within the inbox, outbox, and the archives 
  * 
- * @author Sven Strickroth 
- * @param   $
- * @return  int
+ * @author Florian Schießl anf Sven Strickroth
+ * @param   $args['uid']        int     user-id (optional)
+ * @return  array               array['unread'] containd number of unread mails.
  */ 
-function Communicator_userapi_getmessagecount() 
+function Communicator_userapi_getmessagecount($args) 
 { 
     // Security check 
     if (!SecurityUtil::checkPermission('Communicator::', '::', ACCESS_READ)) { 
@@ -702,18 +703,23 @@ function Communicator_userapi_getmessagecount()
         return; 
     } 
 
+    $uid = (int)$args['uid'];
+    if (!($uid > 1)) {
+        $uid = pnUserGetVar('uid');
+    }
+
     // get table information 
     $tables = pnDBGetTables(); 
     $tbl_header = $tables['communicator_mail_header_column']; 
 
     // Count messages 
-    $where = $tbl_header['to']." = ".pnUserGetVar('uid')." and ".$tbl_header['read']." =0"; 
+    $where = $tbl_header['to']." = ".$uid." and ".$tbl_header['read']." = 0"; 
 
     // form a variable to return 
-    $ReturnArray = array(); 
-    $ReturnArray['unread'] = DBUtil::selectObjectCount('communicator_mail_header',$where); 
+    $returnArray = array(); 
+    $returnArray['unread'] = DBUtil::selectObjectCount('communicator_mail_header',$where); 
 
     // Return the variable 
-    return $ReturnArray; 
+    return $returnArray; 
 }
 

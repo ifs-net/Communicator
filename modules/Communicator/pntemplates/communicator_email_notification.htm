@@ -2,9 +2,11 @@
 
 <!--[gt text="Dear user"]--> <!--[$mail_header.to_name]-->,
  
-<!--[gt text='the user %1$s has sent a private message to you with the title "%2$s".' tag1=$mail_header.from_name tag2=$mail_body.subject]-->
+<!--[gt text='the user "%s" has sent a private message to you with the title "%s".' tag1=$mail_header.from_name tag2=$mail_body.subject]-->
 
 <!--[gt text="Please take a look into your inbox folder. You have to be logged in to view your private messages."]-->
+
+<!--[if $messageinfo.unread ne 1]--><!--[gt text="Actually, there are %s unread messages awaiting you in your inbox folder." tag1=$messageinfo.unread]--><!--[else]--><!--[gt text="Actually, there is one unread messages awaiting you in your inbox folder." ]--><!--[/if]-->
 
 <!--[gt text="Login at"]-->: <!--[pngetbaseurl]-->
 
