@@ -260,3 +260,53 @@ div.c_autocomplete ul li {
   padding:1px;
   cursor:pointer;
 }
+
+        /************************************
+        **          POPUP WINDOW           **
+        ************************************/
+
+#c_popup_wrapper {
+  position: fixed; 
+  left: 0px; 
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  text-align: center;
+  background-color:#4C4C4C;
+  opacity:0.9;
+  moz-opacity:0.9;
+  z-index:500;
+}
+#c_popup_window {
+  position: relative;
+  width: 300px;
+  height: 100px;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -50px;
+  padding: 10px;
+  border: 2px solid #eee;
+  color: #fff;
+  background-color: #000;
+}
+
+#c_popup_window_links {
+  position: absolute;
+  bottom: 25px;
+  width: 290px;
+  text-align: center;
+  color: yellow;
+}
+
+#c_popup_window_links a {
+  color: yellow;
+}
+
+#c_popup_window_links a:hover {
+  color: #fff;
+}
+
+#c_popup_window_links a:visited {
+  color: yellow;
+}

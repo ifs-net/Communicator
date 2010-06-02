@@ -63,3 +63,33 @@ function Communicator_outputapi_showAjaxFolderMenu($args) {
     $output = $render->display('communicator_output_ajax_folder_menu.htm');
     return $output;
 }
+
+/**
+ * display popup if there are new messages for a user
+ *
+ * @return output
+ */
+function Communicator_outputapi_popup()
+{
+    $module = strtolower(FormUtil::getPassedValue('module'));
+    if (pnUserLoggedIn() && ($module != 'communicator')) {
+        $uid = pnUserGetVar('uid');
+        pnModDBInfoLoad('Communicator');
+        $tables = pnDBGetTables();
+        $header_column = $tables['communicator_mail_header_column'];
+        $where = $header_column['popup']." = 0 AND ".$header_column['read']." = 0 AND ".$header_column['uid']." = ".$uid;
+        $countAction = DBUtil::selectObjectCount('communicator_mail_header',$where);
+        if ($countAction > 0) {
+            // get unread messages
+            $messageinfo = pnModAPIFunc('Communicator','user','getMessageCount');
+            // create output
+            $render = pnRender::getInstance('Communicator');
+            $output = $render->fetch('communicator_output_popup.htm');
+            // now mark the as "popped up"
+            $sql = "UPDATE ".$tables['communicator_mail_header']." SET ".$header_column['popup']." = 1 WHERE ".$header_column['popup']." = 0 AND ".$header_column['uid']." = $uid";
+            DBUtil::executeSQL($sql);
+            // return output
+            return $output;
+        }
+    }
+}

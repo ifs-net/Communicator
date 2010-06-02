@@ -650,39 +650,6 @@ function Communicator_userapi_getSpamPoints($args)
 }
 
 /**
- * systeminit routine
- */
-function Communicator_userapi_systeminit()
-{
-    // get last checkup
-    $lastCheckUp = pnModGetVar('Communicator','lastCheckUp');
-    if ($lastCheckUp != date('Y-m-d',time())) {
- 
-        // set last checkup timestamp - next time tomorrow...
-        pnModSetVar('Communicator','lastCheckUp',date('Y-m-d',time()));
- 
-        // get all messages that do not belong to a user any more
-        $tables = pnDBGetTables();
-        $header_column = $tables['communicator_mail_header_column'];
-        $body_column   = $tables['communicator_mail_header_column'];
-        $folders_column= $tables['communicator_folders_column'];
-        $users_column  = $tables['users_column'];
- 
-        // delete old headers
-        $deleteWhere   = $header_column['uid'].' NOT IN (SELECT '.$users_column['uid'].' FROM '.DBUtil::getLimitedTablename('users').')';
-        $deleteAction  = DBUtil::deleteWhere('communicator_mail_header',$deleteWhere);
- 
-        // now delete all mails that do not belong to a header any more
-        $deleteWhere   = $body_column['id'].' NOT IN (SELECT '.$header_column['mid'].' FROM '.DBUtil::getLimitedTablename('communicator_mail_header').')';
-        $deleteAction  = DBUtil::deleteWhere('communicator_mail_body',$deleteWhere);
-        
-        // now delete folders that belong to users that are not existing any more
-        $deleteWhere   = $folders_column['uid'].' NOT IN (SELECT '.$users_column['uid'].' FROM '.DBUtil::getLimitedTablename('users').')';
-        $deleteAction  = DBUtil::deleteWhere('communicator_folders',$deleteWhere);
-    }
-}
-
-/**
  * forward mail in user's real email box
  *
  * @param   $args['id']         int         user-id
@@ -719,24 +686,67 @@ function Communicator_userapi_sendMailAtHome($args)
     }
 }
 
+/**
+ * systeminit routine
+ */
+function Communicator_userapi_systeminit()
+{
+    // get last checkup
+    $lastCheckUp = pnModGetVar('Communicator','lastCheckUp');
+    if ($lastCheckUp != date('Y-m-d',time())) {
+ 
+        // set last checkup timestamp - next time tomorrow...
+        pnModSetVar('Communicator','lastCheckUp',date('Y-m-d',time()));
+ 
+        // get all messages that do not belong to a user any more
+        $tables = pnDBGetTables();
+        $header_column = $tables['communicator_mail_header_column'];
+        $body_column   = $tables['communicator_mail_header_column'];
+        $folders_column= $tables['communicator_folders_column'];
+        $users_column  = $tables['users_column'];
+ 
+        // delete old headers
+        $deleteWhere   = $header_column['uid'].' NOT IN (SELECT '.$users_column['uid'].' FROM '.DBUtil::getLimitedTablename('users').')';
+        $deleteAction  = DBUtil::deleteWhere('communicator_mail_header',$deleteWhere);
+ 
+        // now delete all mails that do not belong to a header any more
+        $deleteWhere   = $body_column['id'].' NOT IN (SELECT '.$header_column['mid'].' FROM '.DBUtil::getLimitedTablename('communicator_mail_header').')';
+        $deleteAction  = DBUtil::deleteWhere('communicator_mail_body',$deleteWhere);
+        
+        // now delete folders that belong to users that are not existing any more
+        $deleteWhere   = $folders_column['uid'].' NOT IN (SELECT '.$users_column['uid'].' FROM '.DBUtil::getLimitedTablename('users').')';
+        $deleteAction  = DBUtil::deleteWhere('communicator_folders',$deleteWhere);
+    }
+}
 
-/** **** **** THIS FUNCTIONS BELOW WERE MADE TO BE COMPATIBLE TO INTERCOM MODULE **** **** **/
+/**
+ * Popup if there are new mails arrived
+ *
+ * @return output
+ */
+function Communicator_userapi_popup()
+{
+    return pnModAPIFunc('Communicator','output','popup');
+}
 
 /** 
- * This function returns the amount of Messages within the inbox, outbox, and the archives 
+ * This function returns the amount of Messages within the inbox that are unread
  * 
- * @author Florian Schieﬂl anf Sven Strickroth
+ * @author Florian Schieﬂl and Sven Strickroth
+ *
  * @param   $args['uid']        int     user-id (optional)
+ * @param   $args['folder']     int     folder-id
+ * @param   $args['popup']      boolean optional
  * @return  array               array['unread'] containd number of unread mails.
  */ 
-function Communicator_userapi_getmessagecount($args) 
+function Communicator_userapi_getMessageCount($args) 
 { 
     // Security check 
     if (!SecurityUtil::checkPermission('Communicator::', '::', ACCESS_READ)) { 
         return LogUtil::registerPermissionError();; 
     } 
     if (!pnUserLoggedIn()) { 
-        return; 
+        return null; 
     } 
 
     $uid = (int)$args['uid'];
@@ -749,11 +759,11 @@ function Communicator_userapi_getmessagecount($args)
     $tbl_header = $tables['communicator_mail_header_column']; 
 
     // Count messages 
-    $where = $tbl_header['to']." = ".$uid." and ".$tbl_header['read']." = 0"; 
+    $where_unread_all = $tbl_header['to']." = ".$uid." and ".$tbl_header['read']." = 0"; 
 
     // form a variable to return 
     $returnArray = array(); 
-    $returnArray['unread'] = DBUtil::selectObjectCount('communicator_mail_header',$where); 
+    $returnArray['unread'] = DBUtil::selectObjectCount('communicator_mail_header',$where_unread_all); 
 
     // Return the variable 
     return $returnArray; 
