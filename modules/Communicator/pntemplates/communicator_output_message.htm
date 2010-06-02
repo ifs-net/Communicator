@@ -79,6 +79,9 @@
                 <!--[/if]-->
             </div>
         <!--[/if]-->
+        <!--[if $message.receipt_sent eq 1]-->
+            <!--[gt text="Notice of Receipt was requested by sender and was already sent by you."]-->
+        <!--[/if]-->
     </p>
     <p>
         <!--[$message.body|nl2br|pnmodcallhooks]-->
