@@ -67,7 +67,8 @@ function Communicator_upgrade($oldversion)
 {
     $dom = ZLanguage::getModuleDomain('Communicator');
     switch($oldversion) {
-        case '1.0':
+        case '0.9.0':
+        case '0.9.1':
         default:
     	    return true;
     }
