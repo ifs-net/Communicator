@@ -166,10 +166,11 @@
     
     function c_switch_ajax_links () {
       
-        /* we have to refresh intro page to make ajax usable */
+        /* we have to refresh intro page and selected folder to make ajax usable */
       
+        c_link_ajax_complete_folder_switch(c_actual_folder);
+
         c_reset_message_preview();
-        
 
         /* now hide normal links for header sort functions */
         
@@ -387,6 +388,7 @@
             }});
         }
     }
+
 
 </script>
 
