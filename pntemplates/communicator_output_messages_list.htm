@@ -2,8 +2,8 @@
 
         <table>
             <!--[foreach from=$messages item="item"]-->
-                <tr class="c_link" onclick="javascript:c_loadmessage(<!--[$item.id]-->);" id="c_msg_tablerow_<!--[$item.id]-->" <!--[if $item.read eq 0]--> class="c_message_unread" <!--[/if]-->">
-                    <td>
+                <tr id="c_msg_tablerow_<!--[$item.id]-->" class="<!--[if $item.read ne 1]-->c_message_unread <!--[/if]-->c_link" >
+                    <td onclick="javascript:c_loadmessage(<!--[$item.id]-->);" >
                         <!--[if $ajax ne 1]-->
                             <a href="<!--[pnmodurl modname="Communicator" id=$item.id folder=$folder fqurl=true]-->">
                             <!--[$item.subject|pnvarprepfordisplay|truncate:120:'...']-->
@@ -38,8 +38,7 @@
                 <!--[else]-->
                     <td class="c_messages_list_sender"><!--[$item.from_name|userprofilelink]--></td>
                 <!--[/if]-->
-                    <td class="c_messages_list_date"><!--[$item.date|pndate_format:$dateformat]--></td>
-                    <td id="c_msg_tablecell_read<!--[$item.id]-->" class="c_messages_list_icon  <!--[if $item.read eq 0]-->c_messages_list_icon_unread<!--[/if]-->">&nbsp;</td>
+                    <td onclick="javascript:c_loadmessage(<!--[$item.id]-->);" class="c_messages_list_date"><!--[$item.date|pndate_format:$dateformat]--></td>
                     <td id="c_msg_tablecell_flagged<!--[$item.id]-->"class="c_messages_list_icon <!--[if $item.flagged eq 1]-->c_messages_list_icon_flagged<!--[/if]-->">&nbsp;</td>
                 </tr>
             <!--[foreachelse]-->

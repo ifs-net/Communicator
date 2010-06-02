@@ -63,8 +63,8 @@
     <!--[/if]-->
     <h3><!--[gt text="Subject"]-->: <!--[$message.subject]--></h3>
     <p>
-        <!--[gt text="To"]-->: <!--[$message.to_name|userprofilelink]--><br />
         <!--[gt text="From"]-->: <!--[$message.from_name|userprofilelink]--><br />
+        <!--[gt text="To"]-->: <!--[$message.to_name|userprofilelink]--><br />
         <!--[gt text="Date"]-->: <!--[$message.date|pndate_format:$dateformat]--><br />
         <!--[if $message.priority eq 3]-->
             <img src="images/icons/extrasmall/agt_announcements.gif" /> <!--[gt text="The sender classified this mail as very important."]--><br />

@@ -38,6 +38,7 @@
 }
 #c_messages_list table tr:hover {
   background: #ff9;
+  font-weight: bold;
 }
 #c_messages_list table tr td {
   border-bottom: 1px solid #ccc;
@@ -77,11 +78,6 @@
 }
 .c_messages_list_icon_flagged {
   background: url('../../../images/icons/extrasmall/favorites.gif');
-  background-repeat: no-repeat;
-  background-position: center;
-}
-.c_messages_list_icon_unread {
-  background: url('../../../images/icons/extrasmall/inbox.gif');
   background-repeat: no-repeat;
   background-position: center;
 }
