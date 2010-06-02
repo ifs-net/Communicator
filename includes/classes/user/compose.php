@@ -133,12 +133,20 @@ class communicator_user_compose_handler
             $recipients = explode(',',$obj['recipients']);
             $toRegular = 0;
             // get regular users
+            $ContactListAvailable = pnModAvailable('ContactList');
             foreach ($recipients as $recipient) {
                 $recipient = trim($recipient);
                 $uid = pnModAPIFunc('Communicator','user','getIDFromUname',array('uname' => $recipient));
                 if ($uid > 1) {
-                    $to[$uid] = $uid;
-                    $toRegular++;
+                    // Check ignorelist settings
+                    if ($ContactListAvailable && (pnModAPIFunc('ContactList','user','isIgnored',array('uid' => $uid, 'iuid' =>$this->user['id'])) == true)) {
+                        // Sending user is ignored by recipient - don't send!
+                        LogUtil::registerError(__('You cannot send mails to the following user because this user does not want to recieve emails from you:'.' '.pnUserGetVar('uname',$uid),$dom));
+                    } else {
+                        // Send mail
+                        $to[$uid] = $uid;
+                        $toRegular++;
+                    }
                 } else {
                     LogUtil::registerError(__('Please check recipients: user not found:'.' '.$recipient,$dom));
                     $error = true;
