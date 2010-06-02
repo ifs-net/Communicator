@@ -104,6 +104,8 @@ class communicator_user_compose_handler
 		    $render->assign('message', $obj);
 		    $render->assign('preview', 1);
 		    $render->assign('printer_view', 1);
+		} else if ($args['commandName']=='cancel') {
+		    return $render->pnFormRedirect(pnModURL('Communicator'));
 		} else if ($args['commandName']=='send') {
 		    $obj = $render->pnFormGetValues();
 		    $message['composemode'] = 1;
