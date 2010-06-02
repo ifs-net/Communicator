@@ -1,8 +1,6 @@
 <!--[*  $Id$  *]-->
 
-<!--[ admincategorymenu xhtml=1 ]-->
-<div class="pn-adminbox">
-  <h2><!--[gt text="Backend for Zikula Communication Center"]--></h2>
+<!--[include file="communicator_admin_header.htm"]-->
 
   <!--[pnformvalidationsummary]-->
   <!--[pnform]-->
@@ -17,10 +15,12 @@
     <!--[pnformintinput id="quota" minValue="0"]-->
     </p>
 
+<!--[* preparations for later versions
     <p>
     <!--[pnformcheckbox id="allow_html" checked="0"]-->
     <!--[pnformlabel for="allow_html" __text="Enable WYSIWYG editor (This only works if scribite! is installed)."]-->
     </p>
+*]-->
 
     <h3><!--[gt text="Spam guard"]--></h3>
     <!--[pnformlabel for="spam_allowed_time" __text="Time in minutes (0 to disable)"]--> <!--[pnformintinput id="spam_allowed_time" minValue="0"]-->
@@ -44,9 +44,4 @@
 
   <!--[/pnform]-->
 
-  <p>
-    <!--[pnmodgetinfo modname=Communicator info=all assign=modinfo]-->
-    <!--[$modinfo.name]-->&nbsp;<!--[$modinfo.version]-->&nbsp;&copy;&nbsp;<a href="http://www.ifs-net.de">Florian Schie&szlig;l</a>
-  </p>
-
-</div>
+<!--[include file="communicator_admin_footer.htm"]-->

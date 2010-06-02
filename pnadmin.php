@@ -35,3 +35,21 @@ function Communicator_admin_settings()
 	Loader::requireOnce('modules/Communicator/includes/classes/admin/settings.php');
 	return $render->pnFormExecute('communicator_admin_settings.htm',new communicator_admin_settings_handler());
 }
+
+/**
+ * import intercom mails
+ * 
+ * @return       output
+ */
+function Communicator_admin_intercom()
+{
+	// Security check 
+	if (!SecurityUtil::checkPermission('Communicator::', '::', ACCESS_ADMIN)) {
+        return LogUtil::registerPermissionError();
+    }
+
+	// Create output object
+	$render = FormUtil::newpnForm('Communicator');
+	Loader::requireOnce('modules/Communicator/includes/classes/admin/intercom.php');
+	return $render->pnFormExecute('communicator_admin_intercom.htm',new communicator_admin_intercom_handler());
+}
