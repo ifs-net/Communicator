@@ -9,7 +9,7 @@
  */
 
 /**
- * Populate tables array for MyProfile module
+ * Populate tables array
  *
  * @return       array       The table information.
  */
