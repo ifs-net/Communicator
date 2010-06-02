@@ -29,7 +29,7 @@ function Communicator_accountapi_getall($args)
         $dom = ZLanguage::getModuleDomain('Communicator');
         return array(
             array(  'url'     => pnModURL('Communicator'),
-                    'title'   => __('Inbox', $dom),
+                    'title'   => __('Read Mails', $dom),
                     'icon'    => 'letter.gif'));
     }
 
