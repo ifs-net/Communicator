@@ -51,9 +51,8 @@
                         <img id="c_sortlink_date_ajax_desc" class="c_link z-hide" src="modules/Communicator/pnimages/arrow_down.gif" />
                         <img id="c_sortlink_date_ajax_asc" class="c_link z-hide" src="modules/Communicator/pnimages/arrow_up.gif" />
                         </th>
-                    <th class="c_messages_list_icon"></th>
-                    <th class="c_messages_list_icon"></th>
-                    <th class="c_messages_list_scrollbarreplacement"></th>
+                    <th class="c_messages_list_icon">&nbsp;</th>
+                    <th class="c_messages_list_scrollbarreplacement">&nbsp;</th>
                 </tr>
             </table>
         </div>
@@ -269,7 +268,6 @@
         /** mark only actual message as "active" **/
             
         $('c_msg_tablerow_'+id).removeClassName('c_message_unread');
-        $('c_msg_tablecell_read'+id).removeClassName('c_messages_list_icon_unread');
         $('c_msg_tablerow_'+id).addClassName('c_message_actual');
         if (c_actual_message > 0) {
             $('c_msg_tablerow_'+c_actual_message).removeClassName('c_message_actual');
