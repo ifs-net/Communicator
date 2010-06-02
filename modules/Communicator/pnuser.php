@@ -67,6 +67,13 @@ function Communicator_user_main()
             } else {
                 LogUtil::registerStatus(__('Selected message was deleted!', $dom));
             }
+        } else if ($action == 'forwardasmail') {
+            $forwardAction = pnModAPIFunc('Communicator','user','sendMailAtHome',array('id' => $id));
+            if (!$forwardAction) {
+                LogUtil::registerError(__('Error: mail could not be sent to your private email address!',$dom));
+            } else {
+                LogUtil::registerStatus(__('Mail was forwarded as email to your private mailbox:',$dom).' '.$forwardAction);
+            }
         }
         $message = pnModAPIFunc('Communicator','user','get',$args);
         $render->assign('message',$message);
@@ -262,6 +269,7 @@ function Communicator_user_print()
     return true;
     
 }
+
 
 /**
  * System init hook function

@@ -682,7 +682,42 @@ function Communicator_userapi_systeminit()
     }
 }
 
+/**
+ * forward mail in user's real email box
+ *
+ * @param   $args['id']         int         user-id
+ * @return  output          user's email address or false otherwise
+ */
+function Communicator_userapi_sendMailAtHome($args)
+{
+    // Get parameters
+    $id = (int) $args['id'];
 
+    // get message
+    $message = pnModAPIFunc('Communicator','user','get',array('id' => $id));
+    if (!$message || (!($message['id'] == $id))) {
+        return false;
+    } else {
+        // Language Domain
+        $dom = ZLanguage::getModuleDomain('Communicator');
+        // Send as HTML mail
+        $to = pnUserGetVar('email',$message['uid']);
+        $body = pnModAPIFunc('Communicator','output','showMessage',array('message' => $message, 'printer_view' => 1));
+        $params = array (
+            'toname'    => pnUserGetVar('uname',$message['uid']),
+            'toaddress' => $to,
+            'html'      => true,
+            'body'      => $body,
+            'subject'   => __('Forwarded Mail', $dom).': '.$message['subject']
+        );
+        $sendAction = pnModAPIFunc('Mailer','user','sendmessage',$params);
+        if (!$sendAction) {
+            return false;
+        } else {
+            return $to;
+        }
+    }
+}
 
 
 /** **** **** THIS FUNCTIONS BELOW WERE MADE TO BE COMPATIBLE TO INTERCOM MODULE **** **** **/
