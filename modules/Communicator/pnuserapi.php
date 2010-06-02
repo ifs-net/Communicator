@@ -679,3 +679,41 @@ function Communicator_userapi_systeminit()
         $deleteAction  = DBUtil::deleteWhere('communicator_folders',$deleteWhere);
     }
 }
+
+
+
+
+/** **** **** THIS FUNCTIONS BELOW WERE MADE TO BE COMPATIBLE TO INTERCOM MODULE **** **** **/
+
+/** 
+ * This function returns the amount of Messages within the inbox, outbox, and the archives 
+ * 
+ * @author Sven Strickroth 
+ * @param   $
+ * @return  int
+ */ 
+function Communicator_userapi_getmessagecount() 
+{ 
+    // Security check 
+    if (!SecurityUtil::checkPermission('Communicator::', '::', ACCESS_READ)) { 
+        return LogUtil::registerPermissionError();; 
+    } 
+    if (!pnUserLoggedIn()) { 
+        return; 
+    } 
+
+    // get table information 
+    $tables = pnDBGetTables(); 
+    $tbl_header = $tables['communicator_mail_header_column']; 
+
+    // Count messages 
+    $where = $tbl_header['to']." = ".pnUserGetVar('uid')." and ".$tbl_header['read']." =0"; 
+
+    // form a variable to return 
+    $ReturnArray = array(); 
+    $ReturnArray['unread'] = DBUtil::selectObjectCount('communicator_mail_header',$where); 
+
+    // Return the variable 
+    return $ReturnArray; 
+}
+

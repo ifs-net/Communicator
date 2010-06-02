@@ -271,3 +271,20 @@ function Communicator_user_systeminit()
 {
     pnModAPIFunc('Communicator','user','systeminit');
 }
+
+
+
+/** **** **** THIS FUNCTIONS BELOW WERE MADE TO BE COMPATIBLE TO INTERCOM MODULE **** **** **/
+
+/**
+ * new pm / compose message redirect
+ *
+ */
+function Communicator_user_newpm() {
+    $uid   = (int) FormUtil::getPassedValue('uid');
+    $uname =       FormUtil::getPassedValue('uname');
+    if (!($uid > 1)) {
+        $uid = (int) pnModAPIFunc('Communicator','user','getIDFromUname',array('uname' => $uname));
+    }
+    return pnRedirect(pnModURL('Communicator','user','compose',array('uid' => $uid)));
+}
