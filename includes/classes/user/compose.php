@@ -92,6 +92,8 @@ class communicator_user_compose_handler
 
     function handleCommand(&$render, &$args)
     {
+        // Language Domain
+        $dom = ZLanguage::getModuleDomain('Communicator');
         $render->assign('send', 1);
 		if ($args['commandName']=='preview') {
 		    $obj = $render->pnFormGetValues();
@@ -195,7 +197,7 @@ class communicator_user_compose_handler
                         $to_unames[] = pnUserGetVar('uname',$to_uid);
                     }
                     $to_unames = implode(', ',$to_unames).'.';
-                    LogUtil::registerStatus(__('Message sent succesfully to '.$to_unames,$dom));
+                    LogUtil::registerStatus(__('Message sent succesfully to ',$dom).' '.$to_unames);
                     
                     // register new status for mail
                     if ($this->reference['id'] > 0) {
