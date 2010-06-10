@@ -296,3 +296,28 @@ function Communicator_user_newpm() {
     }
     return pnRedirect(pnModURL('Communicator','user','compose',array('uid' => $uid)));
 }
+
+/**
+ * inbox folder
+ */
+function Communicator_user_inbox() {
+    return pnRedirect(pnModURL('Communicator'));
+}
+/**
+ * archive folder (function does nox exist - redirect to inbox!)
+ */
+function Communicator_user_archive() {
+    return pnRedirect(pnModURL('Communicator'));
+}
+/**
+ * settings can be done via main index page
+ */
+function Communicator_user_settings() {
+    return pnRedirect(pnModURL('Communicator'));
+}
+/**
+ * outbox folder
+ */
+function Communicator_user_outbox() {
+    return pnRedirect(pnModURL('Communicator','user','main',array('folder' => -1)));
+}
