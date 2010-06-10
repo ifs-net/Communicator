@@ -2,7 +2,7 @@
 
 /**
  * @package      Communicator
- * @version      $Id:  $
+ * @version      $Id$
  * @author       File pasted from avatar project
  * @link         http://www.ifs-net.de
  * @copyright    Copyright (C) 20010
