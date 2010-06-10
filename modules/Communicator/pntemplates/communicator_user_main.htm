@@ -73,8 +73,6 @@
 </div>
 
 <div id="c_compose_window" class="z-hide">
-<!--[pnmodfunc modname="Communicator" type="user" func="compose"]-->
-</div>
 
 
 
@@ -407,18 +405,31 @@
  	
  	/** observe functions to make switching between compose window and folder view possible **/
  	
- 	$('c_compose_msg_ajax_link').observe('click',function() {
-        $('c_compose_msg_ajax_link').hide();
-     	$('c_folders_link').show();
-        $('c_messages_wrapper').fade();
-        $('c_compose_window').appear({duration: 3.0});
- 	});
- 	$('c_folders_link').observe('click',function() {
+    function c_switch_to_folder_func() {
         $('c_compose_msg_ajax_link').show();
      	$('c_folders_link').hide();
         $('c_compose_window').fade();
         $('c_messages_wrapper').appear({duration: 3.0});
+    }
+    function c_switch_to_compose_func() {
+        $('c_compose_msg_ajax_link').hide();
+     	$('c_folders_link').show();
+        $('c_messages_wrapper').fade();
+        $('c_compose_window').appear({duration: 3.0});
+    }
+
+ 	$('c_compose_msg_ajax_link').observe('click',function() {
+ 	    c_switch_to_compose_func();
  	});
+
+ 	$('c_folders_link').observe('click',function() {
+ 	    c_switch_to_folder_func();
+ 	});
+
+
+    <!--[if $message.composemode eq 1]-->
+        alert('compose');
+    <!--[/if]-->
 
 </script>
 
@@ -497,3 +508,7 @@
     }
     
 </script>
+
+
+<!--[pnmodfunc modname="Communicator" type="user" func="compose"]-->
+</div>

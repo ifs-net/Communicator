@@ -49,15 +49,6 @@
 
 <script type="text/javascript">
 
-    <!--[pnvarcleanfrominput name="func" assign="func"]-->
-    <!--[if ($preview eq 1 or $send eq 1) and ($func ne "compose")]-->
-        $('c_compose_msg_ajax_link').hide();
-     	$('c_folders_link').show();
-        $('c_messages_wrapper').fade();
-        $('c_compose_window').appear({duration: 3.0});
-    <!--[/if]-->
-
-
     <!--[pnmodurl fqurl="true"  assign="ajaxurl" fqurl=true modname="Communicator" type="ajax" func="getUsers" parameter="recipients"]-->
     new Ajax.Autocompleter('recipients','recipients_choices','<!--[$ajaxurl]-->', { 
         frequency: 0.2,
@@ -78,6 +69,15 @@
         $('c_buddylist').show();
         $('c_buddylist_link').hide();
     <!--[/if]-->
+
+
+    /** switch to compose function if ajax composing was used to compose message and an error occured **/
+    <!--[pnvarcleanfrominput name="func" assign="func"]-->
+    <!--[if $message.composemode eq 1 and $func ne 'compose']-->
+    c_switch_to_compose_func();    
+    <!--[/if]-->
+    <!--[$message|@prayer]-->
+    
 
 
 /** RESIZABLE TEXTAREA **/
