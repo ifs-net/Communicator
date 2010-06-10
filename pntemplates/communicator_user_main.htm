@@ -248,9 +248,9 @@
     }
 
 
-            <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="getHeaders" sort="subject" mode="ASC" assign="ajaxtempurl"]-->
-            $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
-            new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=<!--[$folder]-->' });
+    <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="getHeaders" sort="date" mode="ASC" assign="ajaxtempurl"]-->
+    $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
+    new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=<!--[$folder]-->' });
 
 
     function c_loadmessage(id) {
