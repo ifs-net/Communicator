@@ -226,17 +226,22 @@ function Communicator_userapi_del($args)
  */
 function Communicator_userapi_sendReceipt($args)
 {
+    // Get Parameters
     $obj['to']    = (int)    $args['from'];
     $obj['from']  = (int)    $args['to'];
     $subject      = (string) $args['subject'];
-    
+
+    // Language Domain
+    $dom = ZLanguage::getModuleDomain('Communicator');
+
+    // create and send receipt    
     $render = pnRender::getInstance('Communicator');
     $render->assign('subject',   $subject);
     $render->assign('dateformat',pnModGetVar('Communicator','dateformat'));
     $render->assign('date_now', date("Y-m-d H:i:s",time()));
     $obj['body'] = $render->fetch('communicator_email_receipt.htm');
     $obj['systemmail'] = 1;
-    $obj['subject'] = __('Notice of receipt');
+    $obj['subject'] = __('Notice of receipt',$dom);
     $sendAction = pnModAPIFunc('Communicator','user','send',$obj);
     return $sendAction;
 }
@@ -268,12 +273,15 @@ function Communicator_userapi_send($args)
     $receipt    = (int)    $args['receipt'];
     $systemmail = (int)    $args['systemmail'];
 
+    // Language Domain
+    $dom = ZLanguage::getModuleDomain('Communicator');
+
     // validate parameters
     if (!($from > 0)) {
         return false;      
     }
     if ($subject == '') {
-        $subject = '('.__('no subject').')';
+        $subject = '('.__('no subject',$dom).')';
     }
     if (!(count($to) > 0)) {
         return false;
@@ -298,7 +306,7 @@ function Communicator_userapi_send($args)
     );
     $insertBodyAction = DBUtil::insertObject($mail_body,'communicator_mail_body');
     if (!$insertBodyAction || (!$insertBodyAction['id'] > 0)) {
-        return LogUtil::registerError(__('Mail sending failed - mail body could not be stored.'));
+        return LogUtil::registerError(__('Mail sending failed - mail body could not be stored.',$dom));
     } else {
         $id = $insertBodyAction['id'];
         $from_uname = pnUserGetVar('uname',$from);
@@ -321,7 +329,7 @@ function Communicator_userapi_send($args)
         );
         $insertMailAction = DBUtil::insertObject($mail_header,'communicator_mail_header');
         if (!$insertMailAction) {
-            LogUtil::registerError(__('Mail sending failed for user').' '.$to_name);
+            LogUtil::registerError(__('Mail sending failed for user',$dom).' '.$to_name);
             $failure = true;
         } else {
             $to_unames[] = $to_uname;
@@ -343,7 +351,7 @@ function Communicator_userapi_send($args)
     );
     $insertMailAction = DBUtil::insertObject($mail_header,'communicator_mail_header');
     if (!$insertMailAction) {
-        LogUtil::registerError(__('Mail sending failed for user').' '.$to_name);
+        LogUtil::registerError(__('Mail sending failed for user',$dom).' '.$to_name);
         $failure = true;
     }
     
@@ -373,24 +381,24 @@ function Communicator_userapi_send($args)
             $args = array (
                 'toname'    => $mail_header['to_name'],
                 'toaddress' => pnUserGetVar('email',$mail_header['to']),
-                'subject'   => __('A private message is waiting for you!'),
+                'subject'   => __('A private message is waiting for you!',$dom),
                 'body'      => $content
             );
             $result = pnModAPIFunc('Mailer','user','sendmessage',$args);
             if (!$result) {
-                LogUtil::registerError(__('Sending email notification failed!'));
+                LogUtil::registerError(__('Sending email notification failed!',$dom));
             }
         }
         // send autoresponder
         if (($communicator_enableAutoresponder == 1) && ($communicator_autoresponder_text != '') && ($systemmail != 1)) {
             $args['from']       = $to;
             $args['to']         = $mail_header['from'];
-            $args['subject']    = __('Autoresponse').': '.$mail_body['subject'];
+            $args['subject']    = __('Autoresponse',$dom).': '.$mail_body['subject'];
             $args['body']       = $communicator_autoresponder_text;
             $args['systemmail'] = 1;
             $result = pnModAPIFunc('Communicator','user','send',$args);
             if (!$result) {
-                LogUtil::registerError(__('Sending autoresponse failed!'));
+                LogUtil::registerError(__('Sending autoresponse failed!',$dom));
             }
         }
     }    
@@ -659,6 +667,9 @@ function Communicator_userapi_sendMailAtHome($args)
 {
     // Get parameters
     $id = (int) $args['id'];
+
+    // Language Domain
+    $dom = ZLanguage::getModuleDomain('Communicator');
 
     // get message
     $message = pnModAPIFunc('Communicator','user','get',array('id' => $id));
