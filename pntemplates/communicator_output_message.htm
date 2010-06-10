@@ -64,7 +64,11 @@
         </div>
     <!--[/if]-->
     <div style="float:right">
-    <!--[useravatar uid=$message.from]-->
+        <!--[if $message.folder eq -1]-->
+            <!--[useravatar uid=$message.to]-->
+        <!--[else]-->
+            <!--[useravatar uid=$message.from]-->
+        <!--[/if]-->
     </div>
     <h3><!--[gt text="Subject"]-->: <!--[$message.subject]--></h3>
     <p>
