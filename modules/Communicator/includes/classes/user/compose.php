@@ -145,7 +145,7 @@ class communicator_user_compose_handler
                     // Check ignorelist settings
                     if ($ContactListAvailable && (pnModAPIFunc('ContactList','user','isIgnored',array('uid' => $uid, 'iuid' =>$this->user['id'])) == true)) {
                         // Sending user is ignored by recipient - don't send!
-                        LogUtil::registerError(__('You cannot send mails to the following user because this user does not want to recieve emails from you:'.' '.pnUserGetVar('uname',$uid),$dom));
+                        LogUtil::registerError(__('You cannot send mails to the following user because this user does not want to recieve emails from you:',$dom).' '.pnUserGetVar('uname',$uid));
                     } else {
                         // Send mail
                         $to[$uid] = $uid;
