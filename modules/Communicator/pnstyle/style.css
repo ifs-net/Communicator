@@ -167,15 +167,14 @@
 #c_message_actions {
   float: right;
   border: 1px solid #ccc;
-  margin: 5px;
-  padding: 10px;
+  margin-left: 5px;
+  padding: 0px;
+  font-size:0.9em;
 }
 
 #c_message_actions ul {
   list-style: none;
   display: inline;
-  line-height: 1.8em;
-  
 }
 
 .c_link_delete {
