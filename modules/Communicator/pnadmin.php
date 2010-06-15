@@ -48,6 +48,13 @@ function Communicator_admin_intercom()
         return LogUtil::registerPermissionError();
     }
 
+    // Language Domain
+    $dom = ZLanguage::getModuleDomain('Communicator');
+    
+    if (!pnModAvailable('InterCom')) {
+        LogUtil::registerError(__('InterCom was not found as active module at your zikula instance. To import InterCom data InterCom has to be installed.',$dom));
+    }
+    
 	// Create output object
 	$render = FormUtil::newpnForm('Communicator');
 	Loader::requireOnce('modules/Communicator/includes/classes/admin/intercom.php');
