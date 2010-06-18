@@ -103,7 +103,7 @@ class communicator_admin_intercom_handler
                             'from_name' => $fromname,
                             'to_name'   => $toname,
                             'mid'       => $new_body['id'],
-                            'mail'      => $ic['msg_read'],
+                            'read'      => $ic['msg_read'],
                             'replied'   => $ic['msg_replied'],
                             'popup'     => 0,
                             'folder'    => 0
