@@ -636,7 +636,7 @@ function Communicator_userapi_getSpamPoints($args)
     $tables = pnDBGetTables();
     $header_column = $tables['communicator_mail_header_column'];
     $where = array();
-    
+    $where[] = $header_column['uid']." = ".$uid." AND ".$header_column['from']." = ".$uid;    
     // get contacts
     if (pnModAvailable('ContactList')) {
         $contacts = pnModAPIFunc('ContactList','user','getall',array('state' => 1, 'uid' => $uid));
