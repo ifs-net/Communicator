@@ -155,9 +155,13 @@
     
     var c_actual_message = <!--[$id]-->;
 
-    function c_reset_message_preview() {
-        $('c_message_preview').update('<div class="c_ajax_indicator"></div>'); 
-        new Ajax.Updater('c_message_preview','<!--[$ajaxintrourl]-->', { method: 'post'});
+    function c_reset_message_preview(mode) {
+        if (mode == 'clear') {
+            $('c_message_preview').update('<!--[gt text="No message selected"]-->'); 
+        } else {
+            $('c_message_preview').update('<div class="c_ajax_indicator"></div>'); 
+            new Ajax.Updater('c_message_preview','<!--[$ajaxintrourl]-->', { method: 'post'});
+        }
     }
 
     /* change normal links with ajax links and observe functions */
@@ -310,7 +314,7 @@
             onSuccess: function(transport) {
                 if (transport.responseText == 'ok') {
                     $('c_msg_tablerow_' + id).hide();
-                    c_reset_message_preview()
+                    c_reset_message_preview('clear')
                 } else {
                     alert(transport.responseText);
                 }
