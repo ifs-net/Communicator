@@ -260,6 +260,16 @@ div.c_autocomplete ul li {
   cursor:pointer;
 }
 
+#c_compose_bbcode {
+  float: left;
+  margin-left: 20px;
+}
+
+#c_compose_bbsmile {
+  float: left;
+}
+
+
         /************************************
         **          POPUP WINDOW           **
         ************************************/
