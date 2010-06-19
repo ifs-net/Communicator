@@ -16,6 +16,7 @@
 <!--[pnform]-->
     <!--[pnformvalidationsummary]-->
     <h3><!--[gt text="Recipients"]-->:</h3>
+    
     <!--[pnformtextinput id="recipients" textMode="singleline" maxLength="32767" style="width: 90%"]-->
     <span id="c_indicator" style="display: none;"><img src="images/ajax/indicator.white.gif" /></span>
     <div id="recipients_choices" class="c_autocomplete"></div>
@@ -25,12 +26,12 @@
         <!--[gt text="Show buddies for quicker recipipent selection."]-->
         </div>
         <div id="c_buddylist">
-
+			<ul>
             <!--[gt text="Mark the users who should recieve this message"]-->:<br />
             <!--[foreach name="buddylist" from=$buddylist item="buddy"]-->
-                <!--[pnformcheckbox id=$buddy.formID]-->&nbsp;<!--[pnformlabel for=$buddy.formID text=$buddy.uname]--><!--[if $smarty.foreach.buddylist.last ne true]-->,<!--[else]-->.<!--[/if]-->
+                <li><!--[pnformcheckbox id=$buddy.formID]-->&nbsp;<!--[pnformlabel for=$buddy.formID text=$buddy.uname]--></li>
             <!--[/foreach]-->
-
+			</ul>
         </div>
     <!--[/if]-->
     <h3><!--[gt text="Message subject"]-->:</h3>
