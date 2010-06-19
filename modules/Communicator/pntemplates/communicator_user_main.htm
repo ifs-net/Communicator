@@ -248,7 +248,8 @@
     }
 
 
-    <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="getHeaders" sort="date" mode="ASC" assign="ajaxtempurl"]-->
+    /* update messages for later ajax usage  */
+    <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="getHeaders" sort="date" mode="DESC" assign="ajaxtempurl"]-->
     $('c_messages_list').update('<div class="c_ajax_indicator"></div>'); 
     new Ajax.Updater('c_messages_list','<!--[$ajaxtempurl]-->', { method: 'post', parameters: 'folder=<!--[$folder]-->' });
 
