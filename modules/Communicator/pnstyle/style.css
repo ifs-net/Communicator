@@ -222,6 +222,12 @@
   max-height: 200px;
   overflow-y: auto;
 }
+#c_buddylist ul li {
+  float: left;
+  width: 150px;
+  list-style-type: none;
+  padding: 3px;
+}
 
 #c_buddylist_link {
   background: url('../../../images/icons/extrasmall/personal.gif') no-repeat;
@@ -237,7 +243,7 @@
 
 div.c_autocomplete {
   position:absolute;
-  width:250px;
+  width:90%;
   background-color:white;
   border:1px solid #888;
   margin:0;
