@@ -37,7 +37,17 @@
     <!--[pnformtextinput id="subject" textMode="singleline" maxLength="255" style="width: 90%"]-->
     <h3><!--[gt text="Message body"]-->:</h3>
     <!--[pnformtextinput id="mailbody" textMode="multiline" cols="15" rows="10" style="width: 90%; "]-->
-    <h3><!--[gt text="Delivery options"]-->:</h3>
+	<!--[if $bbsmile]-->
+		<div id="c_compose_bbsmile">
+		<!--[pnmodfunc modname=bbsmile func=bbsmiles textfieldid=mailbody]-->
+		</div>
+	<!--[/if]-->
+	<!--[if $bbcode]-->
+		<div id="c_compose_bbcode">
+		<!--[pnmodfunc modname=bbcode type=user func=bbcodes textfieldid=mailbody images=0]-->
+		</div>
+	<!--[/if]-->
+    <h3 style="clear: both;"><!--[gt text="Delivery options"]-->:</h3>
     <!--[pnformdropdownlist id=priority items=$items_priority]-->
     <!--[pnformcheckbox id="receipt" checked="0"]--><!--[pnformlabel for="receipt" __text="Request notice of receipt"]--><br />
     <br />

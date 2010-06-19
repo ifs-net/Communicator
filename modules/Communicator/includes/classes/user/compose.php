@@ -13,6 +13,8 @@ class communicator_user_compose_handler
     var $user;
     var $reference;
     var $action;
+    var $bbsmiles;
+    var $hooks;
     function initialize(&$render)
     {
         // Language Domain
@@ -20,8 +22,11 @@ class communicator_user_compose_handler
 
         // Some default variables
         $this->user['id'] = pnUserGetVar('uid');
+        $this->hooks['bbcode']   = (pnModAvailable('bbcode')   && pnModIsHooked('bbcode', 'Communicator'));
+        $this->hooks['bbsmile']  = (pnModAvailable('bbsmile')  && pnModIsHooked('bbsmile','Communicator'));
         
         // Assign some default values to template
+        $tpl_vars = $this->hooks;
         // priority
         $tpl_vars['items_priority'] = array (
 //                array('text' => __('low priority', dom),    'value' => 1),
@@ -59,10 +64,9 @@ class communicator_user_compose_handler
         $includeID = (int) FormUtil::getPassedValue('include');
         if ($includeID > 0) {
             $includeMail = pnModAPIFunc('Communicator','user','get',array('id' => $includeID));
-            $bbcode = pnModIsHooked('bbcode','Communicator');
             if ($includeMail['id'] == $includeID) {
                 // Permission check passed  - Add text now to template
-                if ($bbcode) {
+                if ($this->hooks['bbcode']) {
                     $includeMail['body'] = "\n\n[quote=".$includeMail['from_name']." ".__('wrote at',$dom)." ".$includeMail['date']."]".$includeMail['body']."[/quote]\n\n";
                 } else {
                     $includeMail['body'] = $includeMail['from_name']." ".__('wrote at',$dom)." ".$includeMail['date'].":\n>\n>".str_replace("\n","\n> ",$includeMail['body']);
