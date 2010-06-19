@@ -64,7 +64,7 @@ class communicator_user_compose_handler
         $includeID = (int) FormUtil::getPassedValue('include');
         if ($includeID > 0) {
             $includeMail = pnModAPIFunc('Communicator','user','get',array('id' => $includeID));
-            if ($includeMail['id'] == $includeID) {
+            if (($includeMail['id'] == $includeID) && ($includeMail['uid'] == $this->user['id'])) {
                 // Permission check passed  - Add text now to template
                 if ($this->hooks['bbcode']) {
                     $includeMail['body'] = "\n\n[quote=".$includeMail['from_name']." ".__('wrote at',$dom)." ".$includeMail['date']."]".$includeMail['body']."[/quote]\n\n";
@@ -83,6 +83,8 @@ class communicator_user_compose_handler
                     $this->reference = $includeMail;
                     $this->action = 'forward';
                 }
+            } else {
+                    LogUtil::registerError(__('You have no permission to include the specified message id',$dom));
             }
         } else {
             // Add recipients via $_GET
