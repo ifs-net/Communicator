@@ -74,12 +74,22 @@ class communicator_user_compose_handler
                 $tpl_vars['mailbody'] = $includeMail['body'];
                 $action = FormUtil::getPassedValue('action');
                 if ($action == 'reply') {
+                    $re = __('Re:',$dom);
                     $tpl_vars['recipients']= pnUserGetVar('uname',$includeMail['from']);
-                    $tpl_vars['subject']   = __('Re:',$dom)." ".$includeMail['subject'];
+                    if (!preg_match('/^'.$re.'/',$includeMail['subject'])) {
+                        $tpl_vars['subject']   = $re." ".$includeMail['subject'];
+                    } else {
+                        $tpl_vars['subject']   = $includeMail['subject'];
+                    }
                     $this->reference = $includeMail;
                     $this->action = 'reply';
                 } else if ($action == 'forward') {
-                    $tpl_vars['subject']   = __('Fwd:',$dom)." ".$includeMail['subject'];
+                    $fwd = __('Fwd:',$dom);
+                    if (!preg_match('/^'.$fwd.'/',$includeMail['subject'])) {
+                        $tpl_vars['subject']   = $fwd." ".$includeMail['subject'];
+                    } else {
+                        $tpl_vars['subject']   = $includeMail['subject'];
+                    }
                     $this->reference = $includeMail;
                     $this->action = 'forward';
                 }
