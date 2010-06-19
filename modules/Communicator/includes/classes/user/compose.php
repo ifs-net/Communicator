@@ -79,7 +79,7 @@ class communicator_user_compose_handler
                     $this->reference = $includeMail;
                     $this->action = 'reply';
                 } else if ($action == 'forward') {
-                    $tpl_vars['subject']   = __('Fwd:'.$dom).$includeMail['subject'];
+                    $tpl_vars['subject']   = __('Fwd:',$dom).$includeMail['subject'];
                     $this->reference = $includeMail;
                     $this->action = 'forward';
                 }
