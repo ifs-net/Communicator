@@ -59,9 +59,14 @@ class communicator_user_compose_handler
         $includeID = (int) FormUtil::getPassedValue('include');
         if ($includeID > 0) {
             $includeMail = pnModAPIFunc('Communicator','user','get',array('id' => $includeID));
+            $bbcode = pnModIsHooked('bbcode','Communicator');
             if ($includeMail['id'] == $includeID) {
                 // Permission check passed  - Add text now to template
-                $includeMail['body'] = $includeMail['from_name']." ".__('wrote at',$dom)." ".$includeMail['date'].":\n>\n>".str_replace("\n","\n> ",$includeMail['body']);
+                if ($bbcode) {
+                    $includeMail['body'] = "\n\n[quote=".$includeMail['from_name']." ".__('wrote at',$dom)." ".$includeMail['date']."]".$includeMail['body']."[/quote]\n\n";
+                } else {
+                    $includeMail['body'] = $includeMail['from_name']." ".__('wrote at',$dom)." ".$includeMail['date'].":\n>\n>".str_replace("\n","\n> ",$includeMail['body']);
+                }
                 $tpl_vars['mailbody'] = $includeMail['body'];
                 $action = FormUtil::getPassedValue('action');
                 if ($action == 'reply') {
