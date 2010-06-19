@@ -7,6 +7,10 @@
  */
 function Communicator_adminapi_getlinks()
 {
+
+    // Language Domain
+    $dom = ZLanguage::getModuleDomain('Communicator');
+    
     $links = array();
     if (SecurityUtil::checkPermission('Communicator::', '::', ACCESS_ADMIN)) {
         $links[] = array('url' => pnModURL('Communicator', 'admin', 'main'), 'text' => __('Main Modul Configuration', $dom));
