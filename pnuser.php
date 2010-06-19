@@ -23,6 +23,9 @@ function Communicator_user_main()
     // Language Domain
     $dom = ZLanguage::getModuleDomain('Communicator');
     
+    // set title
+    PageUtil::setVar('title', __('Inbox', $dom).", ".__('Sent', $dom).", ".__('Folders', $dom).", ".__('Preferences', $dom));
+    
     // variables for display
     $uid        = pnUserGetVar('uid');
     $dateformat = pnModGetVar('Communicator','dateformat');
@@ -117,6 +120,15 @@ function Communicator_user_compose()
 	if (!SecurityUtil::checkPermission('Communicator::', '::', ACCESS_COMMENT)) {
         return LogUtil::registerPermissionError();
     }
+
+    // Language Domain
+    $dom = ZLanguage::getModuleDomain('Communicator');
+
+    // set title
+    $func = (string) FormUtil::getPassedValue('func');
+    if ($func == 'compose') { // we have to do this workaround because compose message function is also integrated into main function with ajax
+        PageUtil::setVar('title', __('Compose new message', $dom));
+    }
     
 	// Create output object
 	$render = FormUtil::newpnForm('Communicator');
@@ -140,6 +152,9 @@ function Communicator_user_preferences()
     // Language Domain
     $dom = ZLanguage::getModuleDomain('Communicator');
 
+    // set title
+    PageUtil::setVar('title', __('Preferences', $dom));
+    
     $settings['disableNotification'] = (int)    FormUtil::getPassedValue('disableNotification');
     $settings['enableAutoresponder'] = (int)    FormUtil::getPassedValue('enableAutoresponder');
     $settings['autoresponder_text']  = (string) FormUtil::getPassedValue('autoresponder_text');
@@ -198,6 +213,8 @@ function Communicator_user_modifyFolder()
     // Language Domain
     $dom = ZLanguage::getModuleDomain('Communicator');
 
+    // set title
+    PageUtil::setVar('title', __('Folder Management', $dom));
     if ($delete == 1) {
         $result = pnModAPIFunc('Communicator','user','delFolder',array('id' => $id));
         if (!$result) { 
@@ -235,6 +252,9 @@ function Communicator_user_moveToFolder()
 
     // Language Domain
     $dom = ZLanguage::getModuleDomain('Communicator');
+
+    // set title
+    PageUtil::setVar('title', __('Move message into folder', $dom));
     
     // get message first
     $result = pnModAPIFunc('Communicator','user','moveMessageToFolder',array('message_id' => $message_id, 'folder_id' => $folder_id));
@@ -261,6 +281,12 @@ function Communicator_user_print()
     // Parameters
     $id = (int) FormUtil::getPassedValue('id');
 
+    // Language Domain
+    $dom = ZLanguage::getModuleDomain('Communicator');
+
+    // set title
+    PageUtil::setVar('title', __('Message print view', $dom));
+    
     // get message
     $message = pnModAPIFunc('Communicator','user','get',array('id' => $id));
     $output = pnModAPIFunc('Communicator','output','showMessage',array('message' => $message, 'printer_view' => 1));
