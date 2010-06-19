@@ -71,8 +71,9 @@ function Communicator_outputapi_showAjaxFolderMenu($args) {
  */
 function Communicator_outputapi_popup()
 {
-    $module = strtolower(FormUtil::getPassedValue('module'));
-    if (pnUserLoggedIn() && ($module != 'communicator')) {
+	$module = strtolower(pnModGetName());
+    $type   = FormUtil::getPassedValue('type');
+    if (pnUserLoggedIn() && ($module != 'communicator') && ($type != 'ajax')) {
         $uid = pnUserGetVar('uid');
         pnModDBInfoLoad('Communicator');
         $tables = pnDBGetTables();
