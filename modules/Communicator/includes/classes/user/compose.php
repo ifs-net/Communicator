@@ -133,7 +133,7 @@ class communicator_user_compose_handler
             // get recipients from buddylist
             foreach ($obj as $key=>$value) {
                 $checked = (int)$value;
-                if (($key[0] == 'X') && ($checked == 1)) {
+                if (($key[0] == 'X') && ($value == 1)) {
                     $dummy = explode('X',$key);
                     $uid = $dummy[1];
                     if (pnUserGetVar('uname',$uid) != '')  {
@@ -143,7 +143,9 @@ class communicator_user_compose_handler
                 }
             }
             // get normal recipients
-            $recipients = explode(',',$obj['recipients']);
+            if (trim($obj['recipients']) != '') {
+                $recipients = explode(',',$obj['recipients']);                
+            }
             $toRegular = 0;
             // get regular users
             $ContactListAvailable = pnModAvailable('ContactList');
