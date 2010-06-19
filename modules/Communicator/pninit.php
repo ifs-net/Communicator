@@ -69,6 +69,7 @@ function Communicator_upgrade($oldversion)
     switch($oldversion) {
         case '0.9.0':
         case '0.9.1':
+        case '1.0.0':
         default:
     	    return true;
     }
