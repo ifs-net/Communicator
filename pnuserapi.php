@@ -623,20 +623,36 @@ function Communicator_userapi_moveMessageToFolder($args)
  * @args    $param['uid']   int     user id
  * @return  int
  */
-function Communicator_userapi_getSpamPoints($args)
+function Communicator_userapi_spamCheck($args)
 {
     // Get Parameters
     $uid = (int) $args['uid'];
+    $to  = $args['to'];
     if (!pnUserLoggedIn()) {
         return false;
-    } else if (!($uid > 0)) {
+    } else if (!($uid > 1)) {
         $uid = pnUserGetVar('uid');
     }
+
+    // Get Module Vars
+    $spam_allowed_time = (int) pnModGetVar('Communicator', 'spam_allowed_time');
+    $spam_allow_max    = (int) pnModGetVar('Communicator', 'spam_allow_max');
+    
+    if (($spam_allowed_time == 0) || ($spam_allow_max == 0)) {
+        return true;    // No Spam Check configured
+    }
+
+	$joinInfo[] = array (	'join_table'          =>  'communicator_mail_body',
+							'join_field'          =>  'date',
+                         	'object_field_name'   =>  'date',
+                         	'compare_field_table' =>  'mid',
+                         	'compare_field_join'  =>  'id');
     
     $tables = pnDBGetTables();
     $header_column = $tables['communicator_mail_header_column'];
+    $body_column   = $tables['communicator_mail_body_column'];
     $where = array();
-    $where[] = $header_column['uid']." = ".$uid." AND ".$header_column['from']." = ".$uid;    
+    $where[] = $header_column['uid']." != ".$uid." AND ".$header_column['from']." = ".$uid;    
     // get contacts
     if (pnModAvailable('ContactList')) {
         $contacts = pnModAPIFunc('ContactList','user','getall',array('state' => 1, 'uid' => $uid));
@@ -645,16 +661,27 @@ function Communicator_userapi_getSpamPoints($args)
             $buddies[] = $buddy['bid'];
         }
         if (count($buddies) > 0) {
-            $where[] = $header_column['from']." NOT IN (".implode(',',$buddies).")";
+            $where[] = $header_column['to']." NOT IN (".implode(',',$buddies).")";
         }
     }
     // Get valid time for spam protection
-    $spam_allowed_time = (int) pnModGetVar('Communicator', 'spam_allowed_time');
-    $timestamp = time()-($spam_allowed_time*60);
+    $timestamp = date("Y-m-d H:i:s",time()-($spam_allowed_time*60));
+    $where[] = $body_column['date']." > '".$timestamp."'";
 
     // Count sent mails now
-    $mailsCounter = DBUtil::selectObjectCount('communicator_mail_header',implode(' AND ',$where));
-    return $mailsCounter;
+    $whereString = implode(' AND ',$where);
+    $mailsCounter = $spam_allow_max - (int) DBUtil::selectExpandedObjectCount('communicator_mail_header',$joinInfo,$whereString);
+//    $mailsCounter = DBUtil::selectObjectCount('communicator_mail_header',$whereString);
+
+    // Now remove all recipients that are no buddies from counter
+    foreach ($to as $recipient) {
+        if (in_array($recipient,$buddies)) {
+            $mailsCounter++;
+        }
+    } 
+
+//    LogUtil::registerStatus($mailsCounter);return false;
+    return ($mailsCounter >= 0);
 }
 
 /**
