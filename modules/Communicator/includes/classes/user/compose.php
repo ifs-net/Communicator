@@ -170,9 +170,11 @@ class communicator_user_compose_handler
                         // Sending user is ignored by recipient - don't send!
                         LogUtil::registerError(__('You cannot send mails to the following user because this user does not want to recieve emails from you:',$dom).' '.pnUserGetVar('uname',$uid));
                     } else {
-                        // Send mail
-                        $to[$uid] = $uid;
-                        $toRegular++;
+                        // Send mail (later)
+                        if ($to[$uid] != $uid) {    // otherwise user already added via contactlist
+                            $to[$uid] = $uid;
+                            $toRegular++;
+                        }
                     }
                 } else {
                     LogUtil::registerError(__('Please check recipients: user not found:'.' '.$recipient,$dom));
@@ -180,19 +182,14 @@ class communicator_user_compose_handler
                 }
             }
             // SPAM protection
-            $spamCount = count($recipients)-($toContactList+$toRegular);
-            $spam_allowed_time = pnModGetVar('Communicator', 'spam_allowed_time');
-            $spam_allow_max = pnModGetVar('Communicator', 'spam_allow_max');
-            if (($spam_allowed_time > 0) && ($spam_allow_max > 0)) {
-                // get number of sent mails of message authos
-                $spam_points = pnModAPIFunc('Communicator','user','getSpamPoints',array('uid' => $this->user['id']));
-                $spam_diff = $spam_allow_max - $spam_points;
-                if ($spam_diff < 0) {
-                    LogUtil::registerError(__("You cannot sent so many mails - spam guard does not allow you to send more than $spam_allow_max messages in $spam_allowed_time minutes to other users that are not confirmed contacts.",$dom));
-                    $error = true;
-                }
+            $spamCheck = pnModAPIFunc('Communicator','user','spamCheck',array('uid' => $this->user['id'], 'to' => $to));
+            if (!$spamCheck) {
+                $spam_allowed_time = pnModGetVar('Communicator', 'spam_allowed_time');
+                $spam_allow_max    = pnModGetVar('Communicator', 'spam_allow_max');
+                LogUtil::registerError(__("You cannot sent so many mails - spam guard does not allow you to send more than $spam_allow_max messages in $spam_allowed_time minutes to other users that are not confirmed contacts.",$dom));
+                $error = true;
             }
-
+            
             // integrate quota function
             $usercount = pnModAPIFunc('Communicator','user','count');
             $userquota = pnModGetVar('Communicator','quota');
