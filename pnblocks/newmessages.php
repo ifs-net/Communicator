@@ -1,7 +1,7 @@
 <?php
 /**
  * @package      Communicator
- * @version      $Id: pnadmin.php 50 2010-06-15 13:07:53Z quan $
+ * @version      $Id$
  * @author       Florian Schießl
  * @link         http://www.ifs-net.de
  * @copyright    Copyright (C) 20010
