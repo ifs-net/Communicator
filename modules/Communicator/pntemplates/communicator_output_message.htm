@@ -78,7 +78,7 @@
         <!--[if $message.priority eq 3]-->
             <img src="images/icons/extrasmall/agt_announcements.gif" /> <!--[gt text="The sender classified this mail as very important."]--><br />
         <!--[/if]-->
-        <!--[if $message.receipt eq 1 and $message.receipt_sent ne 1]-->
+        <!--[if $message.receipt eq 1 and $message.receipt_sent ne 1 and $preview ne 1]-->
             <div id="c_receipt_information" class="z-informationmsg">
                 <!--[gt text="Message sender requested a notice of receipt."]--> 
                 <!--[if $ajax eq 1]-->
