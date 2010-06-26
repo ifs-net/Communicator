@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula component\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-19 11:40+0200\n"
+"POT-Creation-Date: 2010-06-27 00:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,7 @@ msgstr ""
 msgid "Sending autoresponse failed!"
 msgstr ""
 
-#: pnuserapi.php:689
+#: pnuserapi.php:716
 msgid "Forwarded Mail"
 msgstr ""
 
@@ -72,22 +72,26 @@ msgstr ""
 msgid "Error deleting Hook!"
 msgstr ""
 
-#: pnadminapi.php:12
+#: pnadminapi.php:16
 msgid "Main Modul Configuration"
 msgstr ""
 
-#: pnadminapi.php:13
+#: pnadminapi.php:17
 msgid "Import Mails from InterCom"
 msgstr ""
 
-#: pnuser.php:27 pntemplates/communicator_output_message.htm:24
+#: pnuser.php:27
+#: pnstyle/pntemplates/communicator_output_ajax_folder_menu.htm:4
+#: pntemplates/communicator_output_message.htm:24
 #: pntemplates/communicator_output_message.htm:48
 #: pntemplates/communicator_user_main.htm:17
 #: pntemplates/communicator_output_ajax_folder_menu.htm:4
 msgid "Inbox"
 msgstr ""
 
-#: pnuser.php:27 pntemplates/communicator_output_message.htm:27
+#: pnuser.php:27
+#: pnstyle/pntemplates/communicator_output_ajax_folder_menu.htm:5
+#: pntemplates/communicator_output_message.htm:27
 #: pntemplates/communicator_output_message.htm:51
 #: pntemplates/communicator_user_main.htm:18
 #: pntemplates/communicator_output_ajax_folder_menu.htm:5
@@ -225,39 +229,39 @@ msgstr ""
 msgid "wrote at"
 msgstr ""
 
-#: includes/classes/user/compose.php:78
+#: includes/classes/user/compose.php:77
 msgid "Re:"
 msgstr ""
 
-#: includes/classes/user/compose.php:82
+#: includes/classes/user/compose.php:87
 msgid "Fwd:"
 msgstr ""
 
-#: includes/classes/user/compose.php:87
+#: includes/classes/user/compose.php:97
 msgid "You have no permission to include the specified message id"
 msgstr ""
 
-#: includes/classes/user/compose.php:129
+#: includes/classes/user/compose.php:139
 msgid "Message body is mandatory"
 msgstr ""
 
-#: includes/classes/user/compose.php:161
+#: includes/classes/user/compose.php:171
 msgid ""
 "You cannot send mails to the following user because this user does not want "
 "to recieve emails from you:"
 msgstr ""
 
-#: includes/classes/user/compose.php:168
+#: includes/classes/user/compose.php:180
 msgid "Please check recipients: user not found: "
 msgstr ""
 
-#: includes/classes/user/compose.php:206
+#: includes/classes/user/compose.php:213
 msgid ""
 "An error occured while trying to send the message. Please try again and "
 "contact the webmaster if sending fails again."
 msgstr ""
 
-#: includes/classes/user/compose.php:213
+#: includes/classes/user/compose.php:220
 msgid "Message sent succesfully to "
 msgstr ""
 
@@ -281,10 +285,302 @@ msgstr ""
 msgid "Settings updated"
 msgstr ""
 
+#: pnblocks/newmessages.php:31
+msgid "Unread Messages Block"
+msgstr ""
+
 #: pnadmin.php:55
 msgid ""
 "InterCom was not found as active module at your zikula instance. To import "
 "InterCom data InterCom has to be installed."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_intercom.htm:8
+#: pntemplates/communicator_admin_intercom.htm:8
+msgid "InterCom Import"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_intercom.htm:11
+#: pntemplates/communicator_admin_intercom.htm:11
+msgid ""
+"The InterCom import might take a long time and will be done step by step. On "
+"large installations this might take a long time. Just click the import "
+"button as long as the import needs... Mails that do not belong to any users "
+"any more will be skipped automatically..."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_intercom.htm:14
+#: pntemplates/communicator_admin_intercom.htm:14
+msgid "InterCom messages are procesed up tp message id"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_intercom.htm:17
+#: pntemplates/communicator_admin_intercom.htm:17
+msgid "How many InterCom mails should be processed with each request?"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_intercom.htm:22
+#: pntemplates/communicator_admin_intercom.htm:22
+msgid "Get the mails..."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_intercom.htm:23
+#: pntemplates/communicator_admin_intercom.htm:23
+msgid "Reset internal counter"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_email_notification.htm:3
+#: pnstyle/pntemplates/communicator_email_receipt.htm:3
+#: pntemplates/communicator_email_notification.htm:3
+#: pntemplates/communicator_email_receipt.htm:3
+msgid "Dear user"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_email_notification.htm:5
+#: pntemplates/communicator_email_notification.htm:5
+#, php-format
+msgid ""
+"the user \"%s\" has sent a private message to you with the title \"%s\"."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_email_notification.htm:7
+#: pntemplates/communicator_email_notification.htm:7
+msgid ""
+"Please take a look into your inbox folder. You have to be logged in to view "
+"your private messages."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_email_notification.htm:9
+#: pntemplates/communicator_email_notification.htm:9
+#, php-format
+msgid ""
+"Actually, there are %s unread messages awaiting you in your inbox folder."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_email_notification.htm:9
+#: pntemplates/communicator_email_notification.htm:9
+msgid ""
+"Actually, there is one unread messages awaiting you in your inbox folder."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_email_notification.htm:11
+#: pntemplates/communicator_email_notification.htm:11
+msgid "Login at"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_email_notification.htm:13
+#: pntemplates/communicator_email_notification.htm:13
+msgid "Read your messages"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_email_notification.htm:15
+#: pntemplates/communicator_email_notification.htm:15
+msgid ""
+"If you do not want to recieve notifications about new private messages any "
+"more please change your personal settings in your communication centre. The "
+"settings can be changed directly at the communication centre's index page."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_ajax_folder_menu.htm:9
+#: pnstyle/pntemplates/communicator_output_introtext.htm:17
+#: pntemplates/communicator_user_main.htm:22
+#: pntemplates/communicator_output_ajax_folder_menu.htm:9
+#: pntemplates/communicator_output_introtext.htm:17
+msgid "My settings"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_introtext.htm:13
+#: pntemplates/communicator_output_introtext.htm:13
+msgid "Welcome to your communication centre"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_introtext.htm:15
+#: pntemplates/communicator_output_introtext.htm:15
+msgid ""
+"Welcome to your communication center. You can read your emails and compose "
+"new messages to other contacts. Messages are listed in the table above this "
+"text. If this table is not big enough just click at the gray line and resize "
+"the messages list as you need it. For the case that you have many messages "
+"in your inbox you can start to create custom folders for your messages."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_introtext.htm:19
+#: pntemplates/communicator_output_introtext.htm:19
+msgid "You can manage some settings here."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_introtext.htm:22
+#: pntemplates/communicator_output_introtext.htm:22
+msgid "Disable email notification for new messages"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_introtext.htm:23
+#: pntemplates/communicator_output_introtext.htm:23
+msgid "Activate autoresponder"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_introtext.htm:25
+#: pntemplates/communicator_output_introtext.htm:25
+msgid ""
+"Enter some text that should be automatically sent as auto response for "
+"incoming mails"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_introtext.htm:31
+#: pntemplates/communicator_output_introtext.htm:31
+msgid "store settings"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_introtext.htm:40
+#: pntemplates/communicator_output_introtext.htm:40
+msgid "Custom mail folders"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_introtext.htm:42
+#: pntemplates/communicator_output_introtext.htm:42
+msgid ""
+"Inbox and outbox are system folders. They cannot be renamed or deleted. If "
+"you want more folders, feel free to create new folders as you need them. If "
+"you want to edit a folder just click the folder name and you will be able to "
+"rename or delete the folder."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_introtext.htm:48
+#: pntemplates/communicator_output_introtext.htm:48
+msgid "Create a new folder with the title"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_introtext.htm:50
+#: pntemplates/communicator_output_introtext.htm:50
+msgid "create"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_introtext.htm:65
+#: pntemplates/communicator_output_introtext.htm:65
+msgid "delete"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_introtext.htm:66
+#: pntemplates/communicator_output_introtext.htm:66
+msgid "update"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_introtext.htm:68
+#: pntemplates/communicator_output_introtext.htm:68
+#: pntemplates/communicator_user_compose.htm:57
+msgid "cancel"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_output_introtext.htm:77
+#: pntemplates/communicator_output_introtext.htm:77
+msgid "You have not ceated any custom folders yet."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_header.htm:3
+#: pntemplates/communicator_admin_header.htm:3
+msgid "Backend for Zikula Communication Center"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_settings.htm:8
+#: pntemplates/communicator_admin_settings.htm:8
+msgid "General Settings"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_settings.htm:10
+#: pntemplates/communicator_admin_settings.htm:10
+msgid ""
+"Format (from zikula pndate modifier) that should be used inside "
+"Communication Centre"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_settings.htm:14
+#: pntemplates/communicator_admin_settings.htm:14
+msgid ""
+"Message limit for a single user (after this limit is reached the user will "
+"not be able to send mails any more). To disable quota enter 0 please"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_settings.htm:19
+msgid "Enable WYSIWYG editor (This only works if scribite! is installed)."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_settings.htm:23
+#: pntemplates/communicator_admin_settings.htm:18
+msgid "Spam guard"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_settings.htm:24
+#: pntemplates/communicator_admin_settings.htm:19
+msgid "Time in minutes (0 to disable)"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_settings.htm:25
+#: pntemplates/communicator_admin_settings.htm:20
+msgid "a user is allowed to send a maximum of messages"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_settings.htm:25
+#: pntemplates/communicator_admin_settings.htm:20
+msgid "Messages"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_settings.htm:26
+#: pntemplates/communicator_admin_settings.htm:21
+msgid ""
+"Please note: Mails that are sent to buddies (ContactList module) will not be "
+"included into the spam guard calculation!"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_settings.htm:28
+#: pntemplates/communicator_admin_settings.htm:23
+msgid "Popup Notification"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_settings.htm:30
+#: pntemplates/communicator_admin_settings.htm:25
+msgid ""
+"If you want your users to be informed about new messages with an upcoming "
+"ajax notification please put the following code inside your theme templates "
+"- best place is before the body tag closes."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_settings.htm:36
+#: pntemplates/communicator_admin_settings.htm:32
+msgid ""
+"You do not need any clean up or repair functions for this module. This "
+"module will do a daily self-check and orphan messages will be deleted "
+"automatically. Just have fun with the module."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_settings.htm:37
+#: pntemplates/communicator_admin_settings.htm:33
+msgid ""
+"You like the module? Help us to keep this module up to date for the future, "
+"click here and donate some cents!"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_admin_settings.htm:40
+#: pntemplates/communicator_admin_settings.htm:38
+msgid "Store configuration"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_email_receipt.htm:5
+#: pntemplates/communicator_email_receipt.htm:5
+msgid ""
+"This message was generated by the mail system. The user sending this mail "
+"has read the following message you sent to this user."
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_email_receipt.htm:7
+#: pntemplates/communicator_output_message.htm:73
+#: pntemplates/communicator_user_main.htm:34
+#: pntemplates/communicator_email_receipt.htm:7
+msgid "Subject"
+msgstr ""
+
+#: pnstyle/pntemplates/communicator_email_receipt.htm:8
+#: pntemplates/communicator_email_receipt.htm:8
+msgid "Message was read at"
 msgstr ""
 
 #: pntemplates/communicator_output_popup.htm:7
@@ -298,34 +594,6 @@ msgstr ""
 
 #: pntemplates/communicator_output_popup.htm:11
 msgid "Close Notification"
-msgstr ""
-
-#: pntemplates/communicator_admin_intercom.htm:8
-msgid "InterCom Import"
-msgstr ""
-
-#: pntemplates/communicator_admin_intercom.htm:11
-msgid ""
-"The InterCom import might take a long time and will be done step by step. On "
-"large installations this might take a long time. Just click the import "
-"button as long as the import needs... Mails that do not belong to any users "
-"any more will be skipped automatically..."
-msgstr ""
-
-#: pntemplates/communicator_admin_intercom.htm:14
-msgid "InterCom messages are procesed up tp message id"
-msgstr ""
-
-#: pntemplates/communicator_admin_intercom.htm:17
-msgid "How many InterCom mails should be processed with each request?"
-msgstr ""
-
-#: pntemplates/communicator_admin_intercom.htm:22
-msgid "Get the mails..."
-msgstr ""
-
-#: pntemplates/communicator_admin_intercom.htm:23
-msgid "Reset internal counter"
 msgstr ""
 
 #: pntemplates/communicator_output_message.htm:13
@@ -368,12 +636,6 @@ msgstr ""
 msgid "delete message"
 msgstr ""
 
-#: pntemplates/communicator_output_message.htm:73
-#: pntemplates/communicator_user_main.htm:34
-#: pntemplates/communicator_email_receipt.htm:7
-msgid "Subject"
-msgstr ""
-
 #: pntemplates/communicator_output_message.htm:75
 msgid "From"
 msgstr ""
@@ -412,12 +674,6 @@ msgstr ""
 msgid "Switch to mailbox folders"
 msgstr ""
 
-#: pntemplates/communicator_user_main.htm:22
-#: pntemplates/communicator_output_ajax_folder_menu.htm:9
-#: pntemplates/communicator_output_introtext.htm:17
-msgid "My settings"
-msgstr ""
-
 #: pntemplates/communicator_user_main.htm:41
 msgid "User"
 msgstr ""
@@ -441,121 +697,6 @@ msgstr ""
 
 #: pntemplates/communicator_user_main.htm:469
 msgid "Your settings have been stored"
-msgstr ""
-
-#: pntemplates/communicator_email_notification.htm:3
-#: pntemplates/communicator_email_receipt.htm:3
-msgid "Dear user"
-msgstr ""
-
-#: pntemplates/communicator_email_notification.htm:5
-#, php-format
-msgid ""
-"the user \"%s\" has sent a private message to you with the title \"%s\"."
-msgstr ""
-
-#: pntemplates/communicator_email_notification.htm:7
-msgid ""
-"Please take a look into your inbox folder. You have to be logged in to view "
-"your private messages."
-msgstr ""
-
-#: pntemplates/communicator_email_notification.htm:9
-#, php-format
-msgid ""
-"Actually, there are %s unread messages awaiting you in your inbox folder."
-msgstr ""
-
-#: pntemplates/communicator_email_notification.htm:9
-msgid ""
-"Actually, there is one unread messages awaiting you in your inbox folder."
-msgstr ""
-
-#: pntemplates/communicator_email_notification.htm:11
-msgid "Login at"
-msgstr ""
-
-#: pntemplates/communicator_email_notification.htm:13
-msgid "Read your messages"
-msgstr ""
-
-#: pntemplates/communicator_email_notification.htm:15
-msgid ""
-"If you do not want to recieve notifications about new private messages any "
-"more please change your personal settings in your communication centre. The "
-"settings can be changed directly at the communication centre's index page."
-msgstr ""
-
-#: pntemplates/communicator_output_introtext.htm:13
-msgid "Welcome to your communication centre"
-msgstr ""
-
-#: pntemplates/communicator_output_introtext.htm:15
-msgid ""
-"Welcome to your communication center. You can read your emails and compose "
-"new messages to other contacts. Messages are listed in the table above this "
-"text. If this table is not big enough just click at the gray line and resize "
-"the messages list as you need it. For the case that you have many messages "
-"in your inbox you can start to create custom folders for your messages."
-msgstr ""
-
-#: pntemplates/communicator_output_introtext.htm:19
-msgid "You can manage some settings here."
-msgstr ""
-
-#: pntemplates/communicator_output_introtext.htm:22
-msgid "Disable email notification for new messages"
-msgstr ""
-
-#: pntemplates/communicator_output_introtext.htm:23
-msgid "Activate autoresponder"
-msgstr ""
-
-#: pntemplates/communicator_output_introtext.htm:25
-msgid ""
-"Enter some text that should be automatically sent as auto response for "
-"incoming mails"
-msgstr ""
-
-#: pntemplates/communicator_output_introtext.htm:31
-msgid "store settings"
-msgstr ""
-
-#: pntemplates/communicator_output_introtext.htm:40
-msgid "Custom mail folders"
-msgstr ""
-
-#: pntemplates/communicator_output_introtext.htm:42
-msgid ""
-"Inbox and outbox are system folders. They cannot be renamed or deleted. If "
-"you want more folders, feel free to create new folders as you need them. If "
-"you want to edit a folder just click the folder name and you will be able to "
-"rename or delete the folder."
-msgstr ""
-
-#: pntemplates/communicator_output_introtext.htm:48
-msgid "Create a new folder with the title"
-msgstr ""
-
-#: pntemplates/communicator_output_introtext.htm:50
-msgid "create"
-msgstr ""
-
-#: pntemplates/communicator_output_introtext.htm:65
-msgid "delete"
-msgstr ""
-
-#: pntemplates/communicator_output_introtext.htm:66
-msgid "update"
-msgstr ""
-
-#: pntemplates/communicator_output_introtext.htm:68
-#: pntemplates/communicator_user_compose.htm:57
-msgid "cancel"
-msgstr ""
-
-#: pntemplates/communicator_output_introtext.htm:77
-msgid "You have not ceated any custom folders yet."
 msgstr ""
 
 #: pntemplates/communicator_user_compose.htm:11
@@ -602,90 +743,27 @@ msgstr ""
 msgid "preview message"
 msgstr ""
 
-#: pntemplates/communicator_admin_header.htm:3
-msgid "Backend for Zikula Communication Center"
+#: pntemplates/communicator_admin_settings.htm:31
+msgid "Maintenance"
 msgstr ""
 
-#: pntemplates/communicator_admin_settings.htm:8
-msgid "General Settings"
-msgstr ""
-
-#: pntemplates/communicator_admin_settings.htm:10
-msgid ""
-"Format (from zikula pndate modifier) that should be used inside "
-"Communication Centre"
-msgstr ""
-
-#: pntemplates/communicator_admin_settings.htm:14
-msgid ""
-"Message limit for a single user (after this limit is reached the user will "
-"not be able to send mails any more). To disable quota enter 0 please"
-msgstr ""
-
-#: pntemplates/communicator_admin_settings.htm:19
-msgid "Enable WYSIWYG editor (This only works if scribite! is installed)."
-msgstr ""
-
-#: pntemplates/communicator_admin_settings.htm:23
-msgid "Spam guard"
-msgstr ""
-
-#: pntemplates/communicator_admin_settings.htm:24
-msgid "Time in minutes (0 to disable)"
-msgstr ""
-
-#: pntemplates/communicator_admin_settings.htm:25
-msgid "a user is allowed to send a maximum of messages"
-msgstr ""
-
-#: pntemplates/communicator_admin_settings.htm:25
-msgid "Messages"
-msgstr ""
-
-#: pntemplates/communicator_admin_settings.htm:26
-msgid ""
-"Please note: Mails that are sent to buddies (ContactList module) will not be "
-"included into the spam guard calculation!"
-msgstr ""
-
-#: pntemplates/communicator_admin_settings.htm:28
-msgid "Popup Notification"
-msgstr ""
-
-#: pntemplates/communicator_admin_settings.htm:30
-msgid ""
-"If you want your users to be informed about new messages with an upcoming "
-"ajax notification please put the following code inside your theme templates "
-"- best place is before the body tag closes."
-msgstr ""
-
-#: pntemplates/communicator_admin_settings.htm:36
-msgid ""
-"You do not need any clean up or repair functions for this module. This "
-"module will do a daily self-check and orphan messages will be deleted "
-"automatically. Just have fun with the module."
-msgstr ""
-
-#: pntemplates/communicator_admin_settings.htm:37
-msgid ""
-"You like the module? Help us to keep this module up to date for the future, "
-"click here and donate some cents!"
-msgstr ""
-
-#: pntemplates/communicator_admin_settings.htm:40
-msgid "Store configuration"
+#: pntemplates/communicator_admin_settings.htm:35
+msgid "Do not use automatical included clean up."
 msgstr ""
 
 #: pntemplates/communicator_output_messages_list.htm:46
 msgid "Folder is empty - no message found!"
 msgstr ""
 
-#: pntemplates/communicator_email_receipt.htm:5
-msgid ""
-"This message was generated by the mail system. The user sending this mail "
-"has read the following message you sent to this user."
+#: pntemplates/communicator_block_newmessages.htm:4
+msgid "You have new mail"
 msgstr ""
 
-#: pntemplates/communicator_email_receipt.htm:8
-msgid "Message was read at"
+#: pntemplates/communicator_block_newmessages.htm:5
+#, php-format
+msgid "You have %s unread message(s) in your inbox folder."
+msgstr ""
+
+#: pntemplates/communicator_block_newmessages.htm:6
+msgid "...read messages now!"
 msgstr ""
