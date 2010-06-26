@@ -730,8 +730,10 @@ function Communicator_userapi_sendMailAtHome($args)
 function Communicator_userapi_systeminit()
 {
     // get last checkup
-    $lastCheckUp = pnModGetVar('Communicator','lastCheckUp');
-    if ($lastCheckUp != date('Y-m-d',time())) {
+    $lastCheckUp   = pnModGetVar('Communicator','lastCheckUp');
+    $noAutoCleanUp = (int) pnModGetVar('Communicator','no_auto_cleanup');
+    
+    if (($lastCheckUp != date('Y-m-d',time())) && ($noAutoCleanUp != 1)) {
  
         // set last checkup timestamp - next time tomorrow...
         pnModSetVar('Communicator','lastCheckUp',date('Y-m-d',time()));

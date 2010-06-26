@@ -15,13 +15,6 @@
     <!--[pnformintinput id="quota" minValue="0"]-->
     </p>
 
-<!--[* preparations for later versions
-    <p>
-    <!--[pnformcheckbox id="allow_html" checked="0"]-->
-    <!--[pnformlabel for="allow_html" __text="Enable WYSIWYG editor (This only works if scribite! is installed)."]-->
-    </p>
-*]-->
-
     <h3><!--[gt text="Spam guard"]--></h3>
     <!--[pnformlabel for="spam_allowed_time" __text="Time in minutes (0 to disable)"]--> <!--[pnformintinput id="spam_allowed_time" minValue="0"]-->
     <!--[pnformlabel for="spam_allow_max" __text="a user is allowed to send a maximum of messages"]-->: <!--[pnformintinput id="spam_allow_max" minValue="0"]--> <!--[gt text="Messages"]-->.<br />
@@ -35,9 +28,12 @@
         &lt;!--[pnmodapifunc modname="Communicator" func="popup"]--&gt;
     </code></p>
 
+	<h3><!--[gt text="Maintenance"]--></h3>
     <div class="z-informationmsg"><!--[gt text="You do not need any clean up or repair functions for this module. This module will do a daily self-check and orphan messages will be deleted automatically. Just have fun with the module."]--><br />
     <a href="http://www.zksoft.de/donate.php"><!--[gt text="You like the module? Help us to keep this module up to date for the future, click here and donate some cents!"]--></a></div>
-
+	<p>
+	    <!--[pnformcheckbox id="no_auto_cleanup" checked="0"]--><!--[pnformlabel for="no_auto_cleanup" __text="Do not use automatical included clean up."]--><br />
+	</p>
     <p>
         <!--[pnformbutton commandName="update" __text="Store configuration"]-->
     </p>
