@@ -418,8 +418,8 @@ function Communicator_userapi_getIDFromUname($args)
     $uname = (string)$args['uname'];
     $tables = pnDBGetTables();
     $column = $tables['users_column'];
-    $where_cs = $column['uname']." = '".str_replace("'","\'",$uname)."'";
-    $where_ci = "lower(".$column['uname'].") LIKE '".str_replace("'","\'",strtolower($uname))."'";
+    $where_cs = $column['uname']." = '".DataUtil::formatForStore($uname)."'";
+    $where_ci = "lower(".$column['uname'].") LIKE '".DataUtil::formatForStore(strtolower($uname))."'";
     $res_cs = DBUtil::selectObjectArray('users',$where_cs);
     if (!$res_cs || (count($res_cs) == 0)) {
         // now use case insensitive where...
