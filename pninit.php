@@ -20,7 +20,6 @@ function Communicator_init()
   	if (!DBUtil::createTable('communicator_folders')) return false;
 
     // Module Variables
-    pnModSetVar('Communicator', 'allow_html',       0);     // use scribite's WYSIWYG?
     pnModSetVar('Communicator', 'spam_allow_max',   20);    // allow maximum of X messages in ...
     pnModSetVar('Communicator', 'spam_allowed_time',60);    // ... X minutes as spam protection
     pnModSetVar('Communicator', 'quota',            0);     // messages a user is allowed to have, 0 = unlimited
@@ -70,6 +69,9 @@ function Communicator_upgrade($oldversion)
         case '0.9.0':
         case '0.9.1':
         case '1.0.0':
+        case '1.0.1':
+        case '1.0.2':
+        case '1.0.3':
         default:
     	    return true;
     }

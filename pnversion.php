@@ -15,7 +15,7 @@ $modversion['displayname']    = __('Communicator', $domain);
 $modversion['url']            = 'Communicator';
 $modversion['description']    = __('More than just private messaging', $domain);
 
-$modversion['version']        = '1.0.2';
+$modversion['version']        = '1.0.3';
 
 $modversion['changelog']      = 'docs/changelog.txt';
 $modversion['credits']        = 'docs/credits.txt';
