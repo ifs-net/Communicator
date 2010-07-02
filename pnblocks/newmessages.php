@@ -44,7 +44,8 @@ function Communicator_newmessagesblock_info()
 function Communicator_newmessagesblock_display($blockinfo)
 {
     // Check if the Communicator module is available. 
-    if (!pnModAvailable('Communicator')) {
+	$act_mod  = strtolower(pnModGetName());
+    if (!pnModAvailable('Communicator') || ($act_mod == 'communicator')) {
         return false;
     }
 
