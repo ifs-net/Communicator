@@ -474,6 +474,7 @@ function Communicator_userapi_storeSettings($args)
 function Communicator_userapi_createFolder($args)
 {
     $folder = (string) $args['folder'];
+    $folder = str_replace(array('>','<'),null,$folder);
     $uid    = (int)    $args['uid'];
     if (!($uid > 1)) {
         if (pnUserLoggedIn()) {
