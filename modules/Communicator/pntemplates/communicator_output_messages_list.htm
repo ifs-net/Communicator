@@ -34,9 +34,9 @@
                         <!--[/if]-->
                     </td>
                 <!--[if $folder eq -1]-->
-                    <td class="c_messages_list_sender"><!--[$item.to_name|userprofilelink]--></td>
+                    <td onclick="javascript:c_loadmessage(<!--[$item.id]-->);" class="c_messages_list_sender"><!--[$item.to_name]--></td>
                 <!--[else]-->
-                    <td class="c_messages_list_sender"><!--[$item.from_name|userprofilelink]--></td>
+                    <td onclick="javascript:c_loadmessage(<!--[$item.id]-->);" class="c_messages_list_sender"><!--[$item.from_name]--></td>
                 <!--[/if]-->
                     <td onclick="javascript:c_loadmessage(<!--[$item.id]-->);" class="c_messages_list_date"><!--[$item.date|pndate_format:$dateformat]--></td>
                     <td id="c_msg_tablecell_flagged<!--[$item.id]-->"class="c_messages_list_icon <!--[if $item.flagged eq 1]-->c_messages_list_icon_flagged<!--[/if]-->">&nbsp;</td>
