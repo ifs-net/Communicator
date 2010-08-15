@@ -31,6 +31,7 @@
                             <!--[if $item.priority eq 3]-->
                                 <img src="<!--[pngetbaseurl]-->/images/icons/extrasmall/agt_announcements.gif" class="c_message_list_status_icons"/>
                             <!--[/if]-->
+
                         <!--[/if]-->
                     </td>
                 <!--[if $folder eq -1]-->
@@ -39,7 +40,8 @@
                     <td onclick="javascript:c_loadmessage(<!--[$item.id]-->);" class="c_messages_list_sender"><!--[$item.from_name]--></td>
                 <!--[/if]-->
                     <td onclick="javascript:c_loadmessage(<!--[$item.id]-->);" class="c_messages_list_date"><!--[$item.date|pndate_format:$dateformat]--></td>
-                    <td id="c_msg_tablecell_flagged<!--[$item.id]-->"class="c_messages_list_icon <!--[if $item.flagged eq 1]-->c_messages_list_icon_flagged<!--[/if]-->">&nbsp;</td>
+                    <td id="c_msg_tablecell_flagged<!--[$item.id]-->"class="c_messages_list_icon <!--[if $item.flagged eq 1]-->c_messages_list_icon_flagged<!--[/if]-->"></td>
+                    <td><img onclick="javascript:handle_ajax_delete(<!--[$item.id]-->);" class="c_link" src="<!--[pngetbaseurl]-->/images/icons/extrasmall/mail_delete.gif" title="<!--[gt text="Delete this message"]-->" alt="<!--[gt text="Delete this message"]-->"/></td>
                 </tr>
             <!--[foreachelse]-->
             <tr><td>

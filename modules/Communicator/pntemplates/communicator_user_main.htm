@@ -152,9 +152,9 @@
     <!--[pnmodurl fqurl="true"  modname="Communicator" type="ajax" func="moveMessageToFolder" assign="ajaxmovefolderurl"]-->
 
     var c_actual_folder  = <!--[$folder]-->;
-    
     var c_actual_message = <!--[$id]-->;
-
+	var c_delete_warning = 0;
+	
     function c_reset_message_preview(mode) {
         if (mode == 'clear') {
             $('c_message_preview').update('<!--[gt text="No message selected"]-->'); 
@@ -306,8 +306,11 @@
     /** handle delete via ajax action **/
 
     function handle_ajax_delete(id) {
-        var confirmed = confirm('<!--[gt text="Please confirm to delete the message"]-->');
-        if (confirmed == true) {
+        if (c_delete_warning == 0) {
+	        var confirmed = confirm('<!--[gt text="Please confirm to delete the message"]-->');
+        }
+        if ((confirmed == true) || (c_delete_warning == 1)) {
+            c_delete_warning = 1;
             new Ajax.Request('<!--[$ajaxdelurl]-->', {
             method: 'post',
             parameters: 'id='+id,
