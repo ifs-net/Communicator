@@ -41,7 +41,13 @@
                 <!--[/if]-->
                     <td onclick="javascript:c_loadmessage(<!--[$item.id]-->);" class="c_messages_list_date"><!--[$item.date|pndate_format:$dateformat]--></td>
                     <td id="c_msg_tablecell_flagged<!--[$item.id]-->"class="c_messages_list_icon <!--[if $item.flagged eq 1]-->c_messages_list_icon_flagged<!--[/if]-->"></td>
-                    <td><img onclick="javascript:handle_ajax_delete(<!--[$item.id]-->);" class="c_link" src="<!--[pngetbaseurl]-->/images/icons/extrasmall/mail_delete.gif" title="<!--[gt text="Delete this message"]-->" alt="<!--[gt text="Delete this message"]-->"/></td>
+                    <td>
+                        <!--[if $ajax eq 1]-->
+                            <img onclick="javascript:handle_ajax_delete(<!--[$item.id]-->);" class="c_link" src="<!--[pngetbaseurl]-->/images/icons/extrasmall/mail_delete.gif" title="<!--[gt text="Delete this message"]-->" alt="<!--[gt text="Delete this message"]-->"/>
+                        <!--[else]-->
+                            <a href="<!--[pnmodurl fqurl="true"  modname="Communicator" action="delete" folder=$item.folder id=$item.id]-->"><img onclick="javascript:handle_ajax_delete(<!--[$item.id]-->);" class="c_link" src="<!--[pngetbaseurl]-->/images/icons/extrasmall/mail_delete.gif" title="<!--[gt text="Delete this message"]-->" alt="<!--[gt text="Delete this message"]-->"/></a>
+                        <!--[/if]-->
+                    </td>
                 </tr>
             <!--[foreachelse]-->
             <tr><td>
