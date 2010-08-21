@@ -2,9 +2,9 @@
 /**
  * @package      Communicator
  * @version      $Id$
- * @author       Florian Schießl
+ * @author       Florian SchieÃŸl
  * @link         http://www.ifs-net.de
- * @copyright    Copyright (C) 20010
+ * @copyright    Copyright (C) 2010
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
@@ -65,7 +65,11 @@ function Communicator_pntables()
         'receipt_sent'          => "I(1) NOTNULL DEFAULT 0",
         'popup'                 => "I(1) NOTNULL DEFAULT 0"
         );
-
+    $pntable['communicator_mail_header_column_idx'] = array(
+        'user_read_mail'        => array('to',  'read'),
+        'from'                  => array('from','folder'), 
+        'to'                    => array('to','folder')
+        );
     $pntable['communicator_mail_body_column'] = array(
         'id'                    => 'id',
         'subject'               => 'c_subject',
