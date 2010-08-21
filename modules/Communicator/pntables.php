@@ -70,6 +70,7 @@ function Communicator_pntables()
         'from'                  => array('from','folder'), 
         'to'                    => array('to','folder')
         );
+
     $pntable['communicator_mail_body_column'] = array(
         'id'                    => 'id',
         'subject'               => 'c_subject',
@@ -93,7 +94,7 @@ function Communicator_pntables()
         'uid'                   => "I NOTNULL DEFAULT 1",
         'title'                 => "C(125) DEFAULT ''"
         );
-
+    
     // Return the table information
     return $pntable;
 }
