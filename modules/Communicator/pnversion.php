@@ -2,9 +2,9 @@
 /**
  * @package      Communicator
  * @version      $Id$
- * @author       Florian Schieﬂl
+ * @author       Florian Schie√ül
  * @link         http://www.ifs-net.de
- * @copyright    Copyright (C) 20010
+ * @copyright    Copyright (C) 2010
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
@@ -15,7 +15,7 @@ $modversion['displayname']    = __('Communicator', $domain);
 $modversion['url']            = 'Communicator';
 $modversion['description']    = __('More than just private messaging', $domain);
 
-$modversion['version']        = '1.0.4';
+$modversion['version']        = '1.0.5';
 
 $modversion['changelog']      = 'docs/changelog.txt';
 $modversion['credits']        = 'docs/credits.txt';

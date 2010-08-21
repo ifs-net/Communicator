@@ -2,9 +2,9 @@
 /**
  * @package      Communicator
  * @version      $Id$
- * @author       Florian Schieﬂl
+ * @author       Florian Schie√ül
  * @link         http://www.ifs-net.de
- * @copyright    Copyright (C) 20010
+ * @copyright    Copyright (C) 2010
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
@@ -106,7 +106,7 @@ function Communicator_userapi_getAll($args)
     $header_grp = (int)    $args['header_grp'];
     $header_ob1 = (string) $args['header_ob1'];
     $header_ob2 = (string) $args['header_ob2'];
-    $folder     = (int)    FormUtil::getPassedValue('folder');
+    $folder     = (int)    $args('folder');
     $sort       = (string) $args['sort'];
     $mode       = (string) $args['mode'];
    
@@ -773,7 +773,7 @@ function Communicator_userapi_popup()
 /** 
  * This function returns the amount of Messages within the inbox that are unread
  * 
- * @author Florian Schieﬂl and Sven Strickroth
+ * @author Florian SchieÔøΩl and Sven Strickroth
  *
  * @param   $args['uid']        int     user-id (optional)
  * @param   $args['folder']     int     folder-id

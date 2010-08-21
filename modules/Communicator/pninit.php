@@ -2,9 +2,9 @@
 /**
  * @package      Communicator
  * @version      $Id$
- * @author       Florian Schieﬂl
+ * @author       Florian Schie√ül
  * @link         http://www.ifs-net.de
- * @copyright    Copyright (C) 20010
+ * @copyright    Copyright (C) 2010
  * @license      http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 
@@ -15,9 +15,9 @@
  */
 function Communicator_init()
 {
-  	if (!DBUtil::createTable('communicator_mail_header')) return false;
-  	if (!DBUtil::createTable('communicator_mail_body')) return false;
-  	if (!DBUtil::createTable('communicator_folders')) return false;
+    if (!DBUtil::createTable('communicator_mail_header')) return false;
+    if (!DBUtil::createTable('communicator_mail_body')) return false;
+    if (!DBUtil::createTable('communicator_folders')) return false;
 
     // Module Variables
     pnModSetVar('Communicator', 'spam_allow_max',   20);    // allow maximum of X messages in ...
@@ -25,7 +25,7 @@ function Communicator_init()
     pnModSetVar('Communicator', 'quota',            0);     // messages a user is allowed to have, 0 = unlimited
     pnModSetVar('Communicator', 'dateformat',       '%d.%m.%y %H:%M');    // default date format
 
-	// install system init hook
+    // install system init hook
     $dom = ZLanguage::getModuleDomain('Communicator');
 
     if (!pnModRegisterHook('zikula', 'systeminit', 'GUI', 'Communicator', 'user', 'systeminit')) {
