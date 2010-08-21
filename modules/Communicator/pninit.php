@@ -73,6 +73,7 @@ function Communicator_upgrade($oldversion)
         case '1.0.2':
         case '1.0.3':
             pnModDelVar('Communicator', 'allow_html');     // not needed any more
+        case '1.0.4':
         default:
     	    return true;
     }
